@@ -68,31 +68,31 @@ export class SideBar {
                 id: 'First_Purchase_Income',
                 title: 'First Purchase Income',
                 type: 'item',
-                url: '/'
+                url: '/commission/first-purchase-income'
               },
               {
                 id: 're_prchase_weekly_income',
                 title: 'Re purchase weekly Income',
                 type: 'item',
-                url: '/'
+                url: '/commission/re-purchase-weekly-income'
               },
               {
                 id: 're_prchase_monthly_income',
                 title: 'Re purchase monthly Income',
                 type: 'item',
-                url: '/'
+                url: '/commission/re-purchase-monthly-income'
               },
               {
                 id: 'consistency_income',
                 title: 'Consistency Income',
                 type: 'item',
-                url: '/'
+                url: '/commission/consistency-income'
               },
               {
                 id: 'payout_report',
                 title: 'Payout Report',
                 type: 'item',
-                url: '/'
+                url: '/commission/payout-report'
               }
             ]
         },
@@ -106,7 +106,7 @@ export class SideBar {
                 id: 'First_income_deduction',
                 title: 'First Income Deduction',
                 type: 'item',
-                url: '/'
+                url: '/deduction/first-income-deduction'
               }
             ]
         },

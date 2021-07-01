@@ -12,6 +12,10 @@ export class AuthServicesService {
     return this.http.post("https://myshpl.com/api/login.php", userData)
   }
 
+  logout(logout: any) {
+    return this.http.post("https://myshpl.com/api/logout.php", logout)
+  }
+
   memberIncomeApi(memberIncome: any) {
     return this.http.post("https://myshpl.com/api/member_income_summery.php", memberIncome)
   }

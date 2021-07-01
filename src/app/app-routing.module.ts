@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
-import {AuthComponent} from './theme/layout/auth/auth.component';
+import { AuthComponent } from './theme/layout/auth/auth.component';
 
 const routes: Routes = [
   {
     path: '',
     component: AuthComponent,
     children: [
-          {
+      {
         path: '',
         redirectTo: 'auth/signin',
         pathMatch: 'full'
@@ -62,7 +62,9 @@ const routes: Routes = [
       }
     ]
   },
-  
+  { path: 'commission', loadChildren: () => import('./demo/commission/commission.module').then(m => m.CommissionModule) },
+  { path: 'deduction', loadChildren: () => import('./demo/deduction/deduction.module').then(m => m.DeductionModule) },
+
 ];
 
 @NgModule({
