@@ -1,0 +1,168 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* SCSS */
+@import "scss/style";
+
+body {
+  background:#1e2a36;
+}
+
+.pcoded-header.header-dark, .pcoded-navbar {
+  background:#2d3e50;
+}
+.pcoded-header.headerpos-fixed ~ .pcoded-main-container .page-header h5 {
+  color: #1abc9c;
+}
+.pcoded-header.headerpos-fixed ~ .pcoded-main-container .page-header .page-header-title + .breadcrumb > .breadcrumb-item a {
+  color: #71848e;
+}
+.card.c-bg, .chart-graph .card, .slick-slider, .update-chart .card, .update-rank .card {
+  background-color: #2a3b4d !important;
+  border-top:3px solid #394b5f !important ;
+}
+.card.c-bg h5, .chart-graph .card .card-header h5, .update-chart .card h5, .update-rank .card h5,
+.latest-update-card .timeline-slider .col.income-month h6 {
+  color:#1abc9c !important ;
+  font-size:15px ;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+}
+
+.card.c-bg p, .chart-graph .card p, .chart-graph span, .update-chart .card p, .apexcharts-legend-text,
+.update-rank .card p { 
+  color:#bfc9d2 !important ;
+}
+.card .card-header {
+  border-bottom: 1px solid #4b5c6d;
+}
+
+.chart-graph .card text {
+  fill:#bfc9d2 !important ;
+}
+
+.slick-class h6 {
+  color:#1abc9c !important ;
+  font-size:13px ;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  margin:10px 0 3px 0;
+}
+.slick-class p { 
+  color:#bfc9d2 !important ;
+  margin:0 0 3px 0;
+  font-size: 11px;
+}
+
+.slick-slider {
+    width: 100%;
+    margin: auto;
+    background: #fff
+  }
+  
+body .slick-prev, 
+body .slick-next {
+    height: 45px;
+     width: 30px;
+    background:#ababab  !important;
+    z-index: 100;
+}
+body .slick-prev {
+  -webkit-border-top-right-radius: 6px;
+-webkit-border-bottom-right-radius: 6px;
+-moz-border-radius-topright: 6px;
+-moz-border-radius-bottomright: 6px;
+border-top-right-radius: 6px;
+border-bottom-right-radius: 6px;
+}
+body .slick-next {
+  -webkit-border-top-left-radius: 6px;
+-webkit-border-bottom-left-radius: 6px;
+-moz-border-radius-topleft: 6px;
+-moz-border-radius-bottomleft: 6px;
+border-top-left-radius: 6px;
+border-bottom-left-radius: 6px;
+}
+
+.slick-prev:before, 
+.slick-next:before {
+  color:#fff !important;
+  font-family: "feather"  !important;
+}
+.slick-prev:before {
+  content: "\e843"  !important;
+} 
+.slick-next:before {
+  content: "\e844"  !important;
+}
+.team-list .slick-slider {padding-top:15px; padding-bottom:15px ;}
+
+.timeline-slider {
+  padding: 30px 0 0 0;
+  border:0 !important ;
+}
+.timeline-slider .slick-next,.timeline-slider .slick-prev{
+  position: absolute;
+  left:0;
+  right: 0;
+  margin: auto;
+  transform: rotate(90deg);
+}
+.timeline-slider .slick-prev{
+  top:-9px;
+  bottom: auto;
+}
+.timeline-slider .slick-next{
+  bottom:-36px;
+  top: auto;
+}
+.update-rank .ng-trigger-collapsedCard {overflow:visible !important;}
+.timeline-slider .card {margin-bottom:0;}
+.latest-update-card .card-body {padding-bottom:0;}
+
+.latest-update-card .timeline-slider .latest-update-box:after {
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.latest-update-card .timeline-slider .latest-update-box .update-meta {
+  min-width: 90px;
+  position: relative;
+}
+.latest-update-card .timeline-slider .latest-update-box .income-month {
+  margin-left: 40%;
+}
+.latest-update-card .timeline-slider .latest-update-box .update-meta i{
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #bfc9d2 !important;
+}
+.latest-update-card .timeline-slider .col.income-month {
+  background-color:#3e5871 ;
+  border:1px solid #9e9e9e;
+}
+.latest-update-card .timeline-slider .col.income-month h6 {
+  margin-bottom:3px ;
+}
+// .timeline-slider .slick-slide:nth-child(2n) .latest-update-box .update-meta{
+//   text-align: right!important;
+//   order: 2;
+// }
+// .timeline-slider .slick-slide:nth-child(2n) .latest-update-box .income-month {
+//   margin-left: 0;
+//   margin-right: 40%;
+//   order: 1;
+// }
+.update-chart .card, .update-rank .card{
+  height: 100%;
+}
+.slick-class .slick-list{
+  padding: 0 35px;
+}
+.slick-class .slick-prev.slick-arrow {
+left:0
+}
+.slick-class .slick-next.slick-arrow {
+  right:0
+  }

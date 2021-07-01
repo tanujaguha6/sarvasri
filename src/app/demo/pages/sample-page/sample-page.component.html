@@ -1,0 +1,276 @@
+<!-- <div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Hello Card">
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    </app-card>
+  </div>
+</div> -->
+
+
+
+<div class="row">
+  <div class="col-lg-4">
+    <div  class="card c-bg profile-card-2">
+      <div  class="card-img-block">
+        <img  src="assets/images/light-box/l1.jpg" alt="Card image cap" class="img-fluid">
+      </div>
+      <div class="card-body pt-5">
+        <img src="assets/images/user/avatar-4.jpg" alt="profile-image" class="profile">
+        <h5 class="card-title">Mark Stern</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of 
+          the card's content.</p>
+          <div class="icon-block">
+            <a href="javascript:void(0);"><i class="fa fa-facebook bg-facebook text-white"></i></a>
+            <a href="javascript:void(0);"><i class="fa fa-twitter bg-twitter text-white"></i></a>
+            <a href="javascript:void(0);"><i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+          </div>
+        </div>
+        <!-- <div class="card-body border-top border-light">
+          <div class="media align-items-center">
+            <div><img src="assets/images/gallery-grid/masonry-5.jpg" alt="skill img" class="skill-img"></div>
+   </div>
+</div> -->
+</div>
+</div>
+
+
+<div class="col-lg-8">
+    <app-card [hidHeader]="true" cardClass="tab-card">
+      <h5 class="mb-3">User Details</h5>
+      <ngb-tabset>
+        <ngb-tab title="Profile">
+          <ng-template ngbTabContent>
+            <div class="active tab-pane">
+                <form class="form-horizontal">
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">Name
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="member_name" class="form-control"
+                                placeholder="Enter Member Name" required="" readonly="readonly">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="gender" class="col-sm-3 control-label">Gender
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                            <div style="display: flex;align-items: center;">
+                            <div style="margin-right: 10px;">
+                                <input id="male" type="radio" value="male" name="gender">
+                                <label for="male">Male</label>
+                            </div>
+                            <div>
+                                <input id="female" type="radio" value="female" name="gender">
+                                <label for="female">Female</label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">Mobile
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text"  name="mobile" class="form-control"
+                                placeholder="Enter Mobile No" required="">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">E-Mail</label>
+
+                        <div class="col-sm-9">
+                            <input type="email"  name="email" class="form-control"
+                                placeholder="Enter E-Mail ID">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <div class="col-sm-offset-5 col-sm-7">
+                            <button type="submit" class="btn btn-success"
+                                >Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Address">
+          <ng-template ngbTabContent>
+            <div class="active tab-pane">
+                <form class="form-horizontal">
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">State
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                          <select class="form-control">
+                          <option value="">Please choose State</option>
+                           <option [value]=""></option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">District
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                          <select class="form-control">
+                          <option value=""></option>
+                           <option [value]="" ></option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">Pin Code
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="number"  name="Pin Code" class="form-control"
+                                placeholder="Enter Pin Code" required="">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">Address</label>
+
+                        <div class="col-sm-9">
+                            <textarea type="text"  name="Address" class="form-control"
+                                placeholder="Enter Address"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <div class="col-sm-offset-5 col-sm-7">
+                            <button type="submit" class="btn btn-success"
+                               >Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Nominee">
+          <ng-template ngbTabContent>
+            <div class="active tab-pane">
+                <form class="form-horizontal">
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">Nominee Name
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text"  name="Nominee Name" class="form-control"
+                                placeholder="Enter Nominee Name" required="">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">Nominee Relation
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text"  name="Nominee Relation" class="form-control"
+                                placeholder="Enter Nominee Relation" required="">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">Nominee Mobile
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="Nominee Mobile" class="form-control"
+                                placeholder="Enter Nominee Mobile No" required="">
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <label for="inputName" class="col-sm-3 control-label">Nominee Address
+                            <span class="red">*</span></label>
+                        <div class="col-sm-9">
+                            <textarea type="text" name="Nominee Address" class="form-control"
+                                placeholder="Enter Nominee Address" required=""></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <div class="col-sm-offset-5 col-sm-7">
+                            <button type="submit" class="btn btn-success"
+                                >Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="Bank">
+            <ng-template ngbTabContent>
+                <div class="tab-pane">
+                    <form class="form-horizontal">
+                        <div class="row align-items-center form-group">
+                            <label for="pan_no" class="col-sm-4 control-label">Pan No
+                                <span class="red">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" name="pan_no" class="form-control" id="pan_no" placeholder="Enter PAN No"
+                                 required="">
+                            </div>
+                        </div>
+    
+                        <div class="row align-items-center form-group">
+                            <label for="acc_name" class="col-sm-4 control-label">Account Name
+                                <span class="red">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" name="acc_name" class="form-control" id="acc_name"
+                                    placeholder="Enter Account Holder Name" required="">
+                            </div>
+                        </div>
+    
+                        <div class="row align-items-center form-group">
+                            <label for="account_no" class="col-sm-4 control-label">Account No
+                                <span class="red">*</span></label>
+    
+                            <div class="col-sm-8">
+                                <input type="text" name="account_no" class="form-control" id="account_no"
+                                    placeholder="Enter Account No"  required="">
+                            </div>
+                        </div>
+    
+                        <div class="row align-items-center form-group">
+                            <label for="ifsc_code" class="col-sm-4 control-label">IFSC Code
+                                <span class="red">*</span></label>
+    
+                            <div class="col-sm-8">
+                                <input type="text" name="ifsc_code" class="form-control" id="bank_ifsc"
+                                    placeholder="Enter IFSC Code"  required="">
+                            </div>
+                        </div>
+    
+                        <div class="row align-items-center form-group">
+                            <label for="bank_name" class="col-sm-4 control-label">Bank Name
+                                <span class="red">*</span></label>
+    
+                            <div class="col-sm-8">
+                                <input type="text" name="bank_name"  class="form-control" id="bank_name"
+                                    placeholder="Enter Bank Name" required="">
+                            </div>
+                        </div>
+    
+                        <div class="row align-items-center form-group">
+                            <label for="branch_name" class="col-sm-4 control-label">Branch Name
+                                <span class="red">*</span></label>
+    
+                            <div class="col-sm-8">
+                                <input type="text" name="branch_name"  class="form-control" id="bank_branch"
+                                    placeholder="Enter Branch Name"  required="">
+                            </div>
+                        </div>
+                        <div class="row align-items-center form-group">
+                            <div class="col-sm-offset-5 col-sm-7">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </ng-template>
+          </ngb-tab>
+      </ngb-tabset>
+    </app-card>
+  </div>

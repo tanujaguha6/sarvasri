@@ -1,0 +1,169 @@
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card text-white c-bg ">
+      <div class="card-body">
+        <h5 class="card-title text-white">Retail Income</h5>
+        <p class="card-text">Rs {{memberIncomeData?.total_repurchase_income}} /-</p>
+        <div><ngb-progressbar type="success" [value]="55"></ngb-progressbar></div>
+          <!-- <app-card cardTitle="Backgrounds" [options]="false"> -->
+            <!-- <div class="mb-4"><ngb-progressbar [value]="20">default</ngb-progressbar></div>
+            <div class="mb-4"><ngb-progressbar type="success" [value]="25">success</ngb-progressbar></div>
+            <div class="mb-4"><ngb-progressbar type="info" [value]="50">info</ngb-progressbar></div> -->
+            
+            <!-- <div class="mb-4"><ngb-progressbar type="danger" [value]="100">danger</ngb-progressbar></div> -->
+          <!-- </app-card> -->
+       
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card text-white c-bg ">
+      
+      <div class="card-body">
+        <h5 class="card-title text-white"> Team Bonus</h5>
+        <p class="card-text">Rs {{memberIncomeData?.total_repurchase_binary_income}} /-</p>
+        <div><ngb-progressbar [value]="40"></ngb-progressbar></div>
+       
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card text-white c-bg ">
+      
+      <div class="card-body">
+        <h5 class="card-title text-white"> First Purchase Income</h5>
+        <p class="card-text">Rs {{memberIncomeData?.total_first_purchase_income}} /-</p>
+        <div><ngb-progressbar type="danger" [value]="80"></ngb-progressbar></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card text-white c-bg ">
+      
+      <div class="card-body">
+        <h5 class="card-title text-white"> Team Consistancy Income</h5>
+        <p class="card-text">Rs {{memberIncomeData?.total_consistancy_income}} /-</p>
+        <div><ngb-progressbar type="warning" [value]="75"></ngb-progressbar></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="chart-graph" style="height: 100%;">
+      <app-card cardTitle="Bar chart stacked" [options]="false" *ngIf="retail_income.length>0">
+        <app-apex-chart chartID="bar-chart-2-cac" [chartConfig]="this.bar1CAC"></app-apex-chart>
+      </app-card>
+    </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="box-alighnment">
+      <div class="card text-white box-1 c-bg">
+        <div class="card-body">
+          <h5 class="card-title text-white">Retail Wallet Balance</h5>
+          <p class="card-text">Rs {{memberWalletData?.rp_balance}} /-</p>
+          <div><ngb-progressbar [value]="40"></ngb-progressbar></div>
+        </div>
+      </div>
+    <div class="card text-white box-1 c-bg">
+      <div class="card-body">
+        <h5 class="card-title text-white">First Purchase Wallet Balance</h5>
+        <p class="card-text">Rs {{memberWalletData?.fp_balance}} /-</p>
+        <div><ngb-progressbar type="danger" [value]="80"></ngb-progressbar></div>
+      </div>
+    </div>
+    <div class="card bg-light box-1 c-bg">
+      <div class="card-body">
+        <h5 class="card-title">Credit Wallet Balance</h5>
+        <p class="card-text">Rs {{memberWalletData?.cr_balance}} /-</p>
+        <div><ngb-progressbar type="warning" [value]="75"></ngb-progressbar></div>
+      </div>
+    </div>
+  </div>
+    </div>
+</div>
+
+<div class="row caarosel team-list">
+<div class="col-sm-12">
+  <ngx-slick-carousel class="carousel slick-class" 
+  #slickModal="slick-carousel" 
+  [config]="slideConfig" 
+  (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)"
+  (afterChange)="afterChange($event)"
+  (beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let member of directMember" class="slide">
+<img src="{{ member.profile_image }}" alt=""  class="img-radius wid-95 m-auto align-top text-center" style="border:1px solid rgb(51, 115, 158)">
+<div>
+  <h6 style="text-align: center;">{{member?.name}}</h6>
+  <p class="text-muted" style="text-align: center;">{{member?.mem_code}}</p>
+  <p class="text-muted m-b-0" style="text-align: center;">{{member?.mobile}}</p>
+</div>
+</div>
+</ngx-slick-carousel>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-8">
+  <app-card cardTitle="Pie Chart" [options]="false" class="update-chart">
+    <app-apex-chart chartID="pie-chart-1-cac" [chartConfig]="this.line2CAC"></app-apex-chart>
+  </app-card>
+</div>
+<div class="col-xl-4 col-md-12">
+  <app-card cardClass="latest-update-card" class="update-rank">
+  <ngx-slick-carousel class="carousel timeline-slider" 
+  #slickModal="slick-carousel" 
+  [config]="slideConfig1" 
+  (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)"
+  (afterChange)="afterChange($event)"
+  (beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let rank of rankMember" class="slide">
+    <div class="latest-update-box">
+      <div class="row p-t-30 p-b-30 align-items-center">
+        <div class="col income-month">
+          <a href="javascript:">
+            <h6>{{rank?.income_year}}</h6>
+          </a>
+          <p class="text-muted m-b-0">{{rank?.income_month}}</p>
+         
+        </div>
+        <div class="col-auto text-left update-meta">
+          <i class="fas fa-long-arrow-alt-right"></i>
+            <p class="img-radius wid-95 m-auto align-middle">{{rank?.rank_name}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ngx-slick-carousel>
+  </app-card>
+
+</div>
+    <!-- <div class="col-sm-12">
+      <ngx-slick-carousel class="carousel" 
+      #slickModal="slick-carousel" 
+      [config]="slideConfig1" 
+      (init)="slickInit($event)"
+      (breakpoint)="breakpoint($event)"
+      (afterChange)="afterChange($event)"
+      (beforeChange)="beforeChange($event)">
+    <div ngxSlickItem *ngFor="let rank of rankMember" class="slide">
+      <div class="latest-update-box">
+        <div class="row p-t-30 p-b-30">
+          <div class="col-auto text-right update-meta">
+            <p class="text-muted m-b-0 d-inline-flex">{{rank?.income_month}}</p>
+            <i class="feather icon-twitter bg-twitter update-icon"></i>
+          </div>
+          <div class="col">
+            <a href="javascript:">
+              <h6>{{rank?.income_year}}</h6>
+            </a>
+            <p class="text-muted m-b-0">{{rank?.rank_name}}</p>
+          </div>
+        </div>
+        </div>
+    </div>
+    </ngx-slick-carousel>
+    </div> -->
+</div>
