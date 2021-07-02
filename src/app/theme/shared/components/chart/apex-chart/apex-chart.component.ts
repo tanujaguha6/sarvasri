@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import ApexCharts from 'apexcharts/dist/apexcharts.common.js';
 import {ApexChartService} from './apex-chart.service';
 
@@ -13,11 +13,16 @@ export class ApexChartComponent implements OnInit {
   @Input() xAxis: any;
   @Input() newData: any;
 
+  @Output() changedData:EventEmitter<string> =   new EventEmitter();
   public chart: any;
+  public selectDate:string;
 
   constructor(private apexEvent: ApexChartService) { }
 
   ngOnInit() {
+    this.updateData();
+  }
+  updateData(){
     setTimeout(() => {
       this.chart = new ApexCharts(document.querySelector('#' + this.chartID), this.chartConfig);
       this.chart.render();
@@ -38,6 +43,9 @@ export class ApexChartComponent implements OnInit {
         }]);
       }
     });
+  }
+  changeData(){
+    this.changedData.emit(this.selectDate);
   }
 
 }

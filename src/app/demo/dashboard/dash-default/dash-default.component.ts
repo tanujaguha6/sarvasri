@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SupportChartData1} from './chart/support-chart-data-1';
 import { SupportChartData2} from './chart/support-chart-data-2';
 import { SeoChart1 } from './chart/seo-chart-1';
@@ -7,6 +7,7 @@ import { SeoChart3 } from './chart/seo-chart-3';
 import { PowerCardChart1 } from './chart/power-card-chart-1';
 import { PowerCardChart2 } from './chart/power-card-chart-2';
 import { HttpClient } from '@angular/common/http';
+import { ApexChartComponent } from '../../../theme/shared/components/chart/apex-chart/apex-chart.component';
 import { ChartDB } from 'src/app/fack-db/chart-data';
 import { AuthServicesService } from 'src/app/core/services/auth-services.service';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
@@ -58,14 +59,15 @@ export class DashDefaultComponent implements OnInit {
   public retail_binary:any = [];
   public first_purchase:any = [];
   public consistancy:any = [];
-
+  public xAxis:any = [];
   public intervalSub: any;
   public intervalMain: any;
-
+  public date_range:number=1;
   public dailyVisitorStatus: string;
   public dailyVisitorAxis: any;
   monthlyGraph:any;
   yearlyGraph;any;
+  @ViewChild(ApexChartComponent, { static: false }) apexChart: ApexChartComponent;
   constructor(
     private auth:AuthServicesService) {
 
@@ -129,6 +131,7 @@ export class DashDefaultComponent implements OnInit {
         show: false
       }
     };
+    
     this.bar1CAC = {
       chart: {
         height: 350,
@@ -161,7 +164,7 @@ export class DashDefaultComponent implements OnInit {
         data: this.first_purchase
       }],
       xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        categories: this.xAxis,
       },
       yaxis: {
         title: {
@@ -259,22 +262,27 @@ export class DashDefaultComponent implements OnInit {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      date_range:1
+      date_range:this.date_range
     };
     this.auth.yearlyGraphApi(user).subscribe((res: any) => {
       this.yearlyGraph = res.data_array;
-      console.log(this.yearlyGraph);
+      res.x_array.map(d=>{
+        this.xAxis.push(d);
+      })
       this.yearlyGraph.map(data=>{
         this.retail_income.push(data.retail_income);
         this.retail_binary.push(data.retail_binary);
         this.first_purchase.push(data.first_purchase);
         this.consistancy.push(data.consistancy);
+       
         
       })
-      console.log(this.retail_income);
     });
   }
-
+  changeData(e){
+    this.date_range = e;
+    this.getYearlyWiseGraphdata();
+  }
   getMonthlyWiseGraphdata(){
     const user = {
       username: this.userData.username,
