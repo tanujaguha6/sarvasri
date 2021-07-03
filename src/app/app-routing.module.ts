@@ -57,13 +57,18 @@ const routes: Routes = [
         loadChildren: () => import('./demo/pages/core-maps/core-maps.module').then(module => module.CoreMapsModule)
       },
       {
-        path: 'sample-page',
+        path: 'profile-page',
         loadChildren: () => import('./demo/pages/sample-page/sample-page.module').then(module => module.SamplePageModule)
-      }
+      },
+      { 
+        path: 'commission', loadChildren: () => import('./demo/commission/commission.module').then(m => m.CommissionModule) 
+      },
+      { 
+        path: 'deduction', loadChildren: () => import('./demo/deduction/deduction.module').then(m => m.DeductionModule) 
+      },
     ]
   },
-  { path: 'commission', loadChildren: () => import('./demo/commission/commission.module').then(m => m.CommissionModule) },
-  { path: 'deduction', loadChildren: () => import('./demo/deduction/deduction.module').then(m => m.DeductionModule) },
+  
 
 ];
 

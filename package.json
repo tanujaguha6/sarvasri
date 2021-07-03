@@ -13,7 +13,7 @@
   "dependencies": {
     "@agm/core": "^1.0.0-beta.6",
     "@angular/animations": "~9.0.2",
-    "@angular/cdk": "^12.0.5",
+    "@angular/cdk": "^12.1.1",
     "@angular/common": "~9.0.2",
     "@angular/compiler": "~9.0.2",
     "@angular/core": "~9.0.2",

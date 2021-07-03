@@ -50,7 +50,7 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <div class="chart-graph" style="height: 100%;">{{retail_income.length}}
+      <div class="chart-graph" style="height: 100%;">
       <app-card cardTitle="Bar chart stacked" [options]="false" >
         <app-apex-chart chartID="bar-chart-2-cac" (changedData)="changeData($event)" [dropdownchange]="dropdownchange" [chartConfig]="bar1CAC" [type]="yearly"></app-apex-chart>
       </app-card>
@@ -106,7 +106,7 @@
 
 <div class="row">
 <div class="col-md-8 chart-graph">
-  <app-card cardTitle="Pie Chart" [options]="false" class="update-chart">
+  <app-card cardTitle="Bar Chart" [options]="false" class="update-chart">
     <app-apex-chart chartID="pie-chart-1-cac" [chartConfig]="bar2CAC" (changedDataMonthly)="changeDataMonthly($event)" [dropdownchangeMonthly]="dropdownchangeMonthly" [type]="monthly"></app-apex-chart>
   </app-card>
 </div>

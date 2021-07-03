@@ -8,13 +8,14 @@ import { RePurchaseWeeklyIncomeComponent } from './re-purchase-weekly-income/re-
 import { RePurchaseMonthlyIncomeComponent } from './re-purchase-monthly-income/re-purchase-monthly-income.component';
 import { ConsistencyIncomeComponent } from './consistency-income/consistency-income.component';
 import { PayoutReportComponent } from './payout-report/payout-report.component';
-
+import {SharedModule} from '../../theme/shared/shared.module';
 
 @NgModule({
   declarations: [CommissionComponent, FirstPurchaseIncomeComponent, RePurchaseWeeklyIncomeComponent, RePurchaseMonthlyIncomeComponent, ConsistencyIncomeComponent, PayoutReportComponent],
   imports: [
     CommonModule,
-    CommissionRoutingModule
+    CommissionRoutingModule,
+    SharedModule
   ]
 })
 export class CommissionModule { }
