@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './theme/shared/shared.module';
-
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { AuthComponent } from './theme/layout/auth/auth.component';
@@ -58,7 +58,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     SlickCarouselModule,
     CoreModule.forRoot()
   ],
-  providers: [NavigationItem],
+  providers: [
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    NavigationItem],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
-<div id="selectBox">
+<div id="selectBox" *ngIf="type === 'yearly'">
 <span>Select date range -</span> 
-<select (change)="changeData()"[(ngModel)]="selectDate">
+<select (change)="changeData('yearly')"[(ngModel)]="selectDate">
     <option value="1">2020-2021</option>
     <option value="2">2019-2020</option>
     <option value="3">2018-2019</option>
@@ -9,4 +9,12 @@
 
 </select>
 </div>
+<div id="selectBox" *ngIf="type === 'monthly'">
+    <span>Get the report of last -</span> 
+    <select (change)="changeData('monthly')" [(ngModel)]="selectDateMonthly">
+        <option value="30">30 Days</option>
+        <option value="60">60 Days</option>
+        <option value="90">90 Days</option>
+    </select>
+    </div>
 <div id="{{this.chartID}}"></div>

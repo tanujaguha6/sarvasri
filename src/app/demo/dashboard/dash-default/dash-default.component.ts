@@ -7,7 +7,7 @@ import { SeoChart3 } from './chart/seo-chart-3';
 import { PowerCardChart1 } from './chart/power-card-chart-1';
 import { PowerCardChart2 } from './chart/power-card-chart-2';
 import { HttpClient } from '@angular/common/http';
-import { ApexChartComponent } from '../../../theme/shared/components/chart/apex-chart/apex-chart.component';
+// import { ApexChartComponent } from '../../../theme/shared/components/chart/apex-chart/apex-chart.component';
 import { ChartDB } from 'src/app/fack-db/chart-data';
 import { AuthServicesService } from 'src/app/core/services/auth-services.service';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
@@ -54,20 +54,28 @@ export class DashDefaultComponent implements OnInit {
   public lastDate: number;
   public line2CAC: any;
   public bar1CAC: any;
+  public bar2CAC: any;
   public data: any;
   public retail_income:any =[];
   public retail_binary:any = [];
   public first_purchase:any = [];
   public consistancy:any = [];
   public xAxis:any = [];
+  public monthlyxAxis: any=[];
+  public total_income: any =[];
   public intervalSub: any;
   public intervalMain: any;
   public date_range:number=1;
+  public date_range_monthly:number=30;
   public dailyVisitorStatus: string;
   public dailyVisitorAxis: any;
+  public dropdownchange: any;
+  public dropdownchangeMonthly: any;
+  public monthly = 'monthly';
+  public yearly = 'yearly';
   monthlyGraph:any;
   yearlyGraph;any;
-  @ViewChild(ApexChartComponent, { static: false }) apexChart: ApexChartComponent;
+  // @ViewChild(ApexChartComponent, { static: false }) apexChart: ApexChartComponent;
   constructor(
     private auth:AuthServicesService) {
 
@@ -85,73 +93,37 @@ export class DashDefaultComponent implements OnInit {
     this.data = [];
 
     this.getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, {min: 10, max: 90});
-    this.line2CAC = {
+    
+    this.bar1CAC  = {
       chart: {
-        height: 300,
-        type: 'line',
-        animations: {
-          enabled: true,
-          easing: 'linear',
-          dynamicAnimation: {
-            speed: 2000
-          }
-        },
+        height: 350,
+        type: 'bar',
+        stacked: true,
         toolbar: {
-          show: false
+          show: true
         },
         zoom: {
-          enabled: false
+          enabled: true
         }
       },
       dataLabels: {
         enabled: false
       },
-      stroke: {
-        curve: 'smooth'
-      },
-      series: [{
-        data: this.data
+      colors: ['#1abc9c', '#0e9e4a', '#ffa21d', '#ff5252'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          legend: {
+            position: 'bottom',
+            // offsetX: -10,
+            // offsetY: 0
+          }
+        }
       }],
-      colors: ['#1abc9c'],
-      title: {
-        text: 'Dynamic Updating Chart',
-        align: 'left'
-      },
-      markers: {
-        size: 0
-      },
-      xaxis: {
-        type: 'datetime',
-        range: 777600000,
-      },
-      yaxis: {
-        max: 100
-      },
-      legend: {
-        show: false
-      }
-    };
-    
-    this.bar1CAC = {
-      chart: {
-        height: 350,
-        type: 'bar',
-      },
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '55%',
-          endingShape: 'rounded'
         },
-      },
-      dataLabels: {
-        enabled: false
-      },
-      colors: ['#0e9e4a', '#1abc9c', '#e74c3c'],
-      stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent']
       },
       series: [{
         name: 'Retail Income',
@@ -162,24 +134,68 @@ export class DashDefaultComponent implements OnInit {
       }, {
         name: 'First Purchase',
         data: this.first_purchase
+      }, {
+        name: 'Consistancy',
+        data: this.consistancy
       }],
       xaxis: {
         categories: this.xAxis,
       },
-      yaxis: {
-        title: {
-          text: '$ (thousands)'
-        }
+      
+      legend: {
+        position: 'right',
+        offsetY: 20
       },
       fill: {
         opacity: 1
-  
       },
-      tooltip: {
-        y: {
-          formatter: (val) => '$ ' + val + ' thousands'
+    };
+    this.bar2CAC  = {
+      chart: {
+        height: 350,
+        type: 'bar',
+        stacked: true,
+        toolbar: {
+          show: true
+        },
+        zoom: {
+          enabled: true
         }
-      }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      colors: ['#1abc9c'],
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          legend: {
+            position: 'bottom',
+            offsetX: -10,
+            offsetY: 0
+          }
+        }
+      }],
+      plotOptions: {
+        bar: {
+          horizontal: false,
+        },
+      },
+      series: [{
+        name: 'Total Income',
+        data: this.total_income
+      }],
+      xaxis: {
+        categories: this.monthlyxAxis,
+      },
+      
+      legend: {
+        position: 'right',
+        offsetY: 20
+      },
+      fill: {
+        opacity: 1
+      },
     };
     this.dailyVisitorStatus = '1y';
   }
@@ -258,6 +274,7 @@ export class DashDefaultComponent implements OnInit {
   }
 
   getYearlyWiseGraphdata(){
+    
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
@@ -266,6 +283,8 @@ export class DashDefaultComponent implements OnInit {
     };
     this.auth.yearlyGraphApi(user).subscribe((res: any) => {
       this.yearlyGraph = res.data_array;
+      
+      this.dropdownchange =  this.yearlyGraph;
       res.x_array.map(d=>{
         this.xAxis.push(d);
       })
@@ -274,24 +293,43 @@ export class DashDefaultComponent implements OnInit {
         this.retail_binary.push(data.retail_binary);
         this.first_purchase.push(data.first_purchase);
         this.consistancy.push(data.consistancy);
-       
-        
       })
     });
   }
+  refresh(){
+    this.xAxis.length = 0;
+    this.retail_income.length = 0;
+    this.retail_binary.length = 0;
+    this.first_purchase.length = 0;
+    this.consistancy.length=0;
+  }
   changeData(e){
+    this.refresh();
     this.date_range = e;
     this.getYearlyWiseGraphdata();
+  }
+  changeDataMonthly(e){
+    this.monthlyxAxis.length = 0;
+    this.total_income.length = 0;
+    this.date_range_monthly = e;
+    this.getMonthlyWiseGraphdata();
   }
   getMonthlyWiseGraphdata(){
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      date_range:30
+      date_range:this.date_range_monthly
     };
-    this.auth.monthlyGraphApi(user).subscribe((res) => {
-      this.monthlyGraph = res['result'];
+    this.auth.monthlyGraphApi(user).subscribe((res: any) => {
+      this.monthlyGraph = res.data_array;
+      this.dropdownchangeMonthly =  this.monthlyGraph;
+      res.x_array.map(d=>{
+        this.monthlyxAxis.push(d.income_date);
+      })
+      this.monthlyGraph.map(data=>{
+        this.total_income.push(data.total_income);
+      })
     });
   }
 
