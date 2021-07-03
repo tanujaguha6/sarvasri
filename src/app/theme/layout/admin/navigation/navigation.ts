@@ -26,7 +26,7 @@ export interface Navigation extends NavigationItem {
 }
 const NavigationItems = [{
       id: 'navigation',
-      title: '',
+      title: 'Main Navigation',
       type: 'group',
       icon: 'feather icon-monitor',
       children: [
@@ -54,17 +54,15 @@ const NavigationItems = [{
                     id: 'balance',
                     title: 'Balance',
                     type: 'item',
-                    url: '/',
-                    icon: 'fa fa-circle-o',
-                    target: true
+                    url: '/wallet/balance/retail',
+                    icon: 'fa fa-circle-o'
                   },
                   {
                     id: 'transaction',
                     title: 'Transacton',
                     type: 'item',
-                    url: '/',
-                    icon: 'fa fa-circle-o',
-                    target: true
+                    url: '/wallet/transaction/retail',
+                    icon: 'fa fa-circle-o'
                   }
                 ]
             },
@@ -78,17 +76,15 @@ const NavigationItems = [{
                     id: 'balance',
                     title: 'Balance',
                     type: 'item',
-                    url: '/',
-                    icon: 'fa fa-circle-o',
-                    target: true
+                    url: '/wallet/balance/first_wallet',
+                    icon: 'fa fa-circle-o'
                   },
                   {
                     id: 'transaction',
                     title: 'Transacton',
                     type: 'item',
-                    url: '/',
-                    icon: 'fa fa-circle-o',
-                    target: true
+                    url: '/wallet/transaction/first_wallet',
+                    icon: 'fa fa-circle-o'
                   }
                 ]
             }
@@ -163,14 +159,14 @@ const NavigationItems = [{
                 title: 'First Purchase',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/matching-report/first-purchase'
               },
               {
                 id: 're_purchase',
                 title: 'Re Purchase',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/matching-report/re-purchase'
               }
             ]
         },
@@ -185,7 +181,7 @@ const NavigationItems = [{
                 title: 'Recognition View',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/recognition/recognition-view'
               }
             ]
         },
@@ -200,28 +196,28 @@ const NavigationItems = [{
                 title: 'Member Add',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/member/member-add'
               },
               {
                 id: 'member_view',
                 title: 'Member View',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/member/member-view'
               },
               {
                 id: 'direct_downline',
                 title: 'Direct Downline',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/member/direct-downline'
               },
               {
                 id: 'binary_tree',
                 title: 'Binary Tree',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/member/binary-tree'
               }
             ]
         },
@@ -236,28 +232,28 @@ const NavigationItems = [{
                 title: 'Retail Invoice',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/invoice/retail'
               },
               {
                 id: 'retail_package_invoice',
                 title: 'Retail Package Invoice',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/invoice/retail-package'
               },
               {
                 id: 'first_invoice',
                 title: 'First Invoice',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/invoice/first'
               },
               {
                 id: 'first_package_invoice',
                 title: 'First Package Invoice',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/invoice/first-package'
               }
             ]
         },
@@ -272,7 +268,7 @@ const NavigationItems = [{
                 title: 'Product View',
                 type: 'item',
                 icon: 'fa fa-circle-o',
-                url: '/'
+                url: '/product/view'
               }
             ]
         }

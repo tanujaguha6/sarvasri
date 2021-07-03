@@ -66,6 +66,24 @@ const routes: Routes = [
       { 
         path: 'deduction', loadChildren: () => import('./demo/deduction/deduction.module').then(m => m.DeductionModule) 
       },
+      { 
+        path: 'wallet', loadChildren: () => import('./demo/wallet/wallet.module').then(m => m.WalletModule) 
+      },
+      { 
+        path: 'matching-report', loadChildren: () => import('./demo/matching-report/matching-report.module').then(m => m.MatchingReportModule) 
+      },
+      { 
+        path: 'recognition', loadChildren: () => import('./demo/recognition/recorgnition-view.module').then(m => m.RecorgnitionViewModule) 
+      },
+      { 
+        path: 'member', loadChildren: () => import('./demo/member/member.module').then(m => m.MemberModule) 
+      },
+      { 
+        path: 'invoice', loadChildren: () => import('./demo/invoice/invoice.module').then(m => m.InvoiceModule) 
+      },
+      { 
+        path: 'product', loadChildren: () => import('./demo/product/product.module').then(m => m.ProductModule) 
+      },
     ]
   },
   
