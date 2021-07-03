@@ -41,12 +41,12 @@
         <ngb-tab title="Profile">
           <ng-template ngbTabContent>
             <div class="active tab-pane">
-                <form class="form-horizontal">
+                <form class="form-horizontal" [formGroup]="userProfileFrm">
                     <div class="row align-items-center form-group">
                         <label for="inputName" class="col-sm-3 control-label">Name
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="member_name" class="form-control"
+                            <input type="text" formControlName="name_" name="member_name" class="form-control"
                                 placeholder="Enter Member Name" required="" readonly="readonly">
                         </div>
                     </div>
@@ -57,11 +57,11 @@
                         <div class="col-sm-9">
                             <div style="display: flex;align-items: center;">
                             <div style="margin-right: 10px;">
-                                <input id="male" type="radio" value="male" name="gender">
+                                <input id="male" type="radio" value="M" name="gender" [(ngModel)]="userData.gender" formControlName="gender">
                                 <label for="male">Male</label>
                             </div>
                             <div>
-                                <input id="female" type="radio" value="female" name="gender">
+                                <input id="female" type="radio" value="F" name="gender" [(ngModel)]="userData.gender" formControlName="gender">
                                 <label for="female">Female</label>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                         <label for="inputName" class="col-sm-3 control-label">Mobile
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text"  name="mobile" class="form-control"
+                            <input type="text" formControlName="mobileNo_" name="mobile" class="form-control"
                                 placeholder="Enter Mobile No" required="">
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                         <label for="inputName" class="col-sm-3 control-label">E-Mail</label>
 
                         <div class="col-sm-9">
-                            <input type="email"  name="email" class="form-control"
+                            <input type="email" formControlName="email_" name="email" class="form-control"
                                 placeholder="Enter E-Mail ID">
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                     <div class="row align-items-center form-group">
                         <div class="col-sm-offset-5 col-sm-7">
                             <button type="submit" class="btn btn-success"
-                                >Submit</button>
+                                (click)="submit(userProfileFrm.value)">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -99,14 +99,14 @@
         <ngb-tab title="Address">
           <ng-template ngbTabContent>
             <div class="active tab-pane">
-                <form class="form-horizontal">
+                <form class="form-horizontal" [formGroup]="userAddressFrm">
                     <div class="row align-items-center form-group">
                         <label for="inputName" class="col-sm-3 control-label">State
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                          <select class="form-control">
+                          <select class="form-control" formControlName="state_" (change)="selectState($event)">
                           <option value="">Please choose State</option>
-                           <option [value]=""></option>
+                           <option [value]="state?.state_id" *ngFor="let state of states">{{state?.state_name}}</option>
                         </select>
                         </div>
                     </div>
@@ -115,9 +115,9 @@
                         <label for="inputName" class="col-sm-3 control-label">District
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                          <select class="form-control">
+                          <select class="form-control" formControlName="district_">
                           <option value=""></option>
-                           <option [value]="" ></option>
+                           <option [value]="dist?.dist_id" *ngFor="let dist of district">{{dist?.dist_name}}</option>
                         </select>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                         <label for="inputName" class="col-sm-3 control-label">Pin Code
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                            <input type="number"  name="Pin Code" class="form-control"
+                            <input type="number" formControlName="pinCode_" name="Pin Code" class="form-control"
                                 placeholder="Enter Pin Code" required="">
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                         <label for="inputName" class="col-sm-3 control-label">Address</label>
 
                         <div class="col-sm-9">
-                            <textarea type="text"  name="Address" class="form-control"
+                            <textarea type="text" formControlName="address_" name="Address" class="form-control"
                                 placeholder="Enter Address"></textarea>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                     <div class="row align-items-center form-group">
                         <div class="col-sm-offset-5 col-sm-7">
                             <button type="submit" class="btn btn-success"
-                               >Submit</button>
+                               (click)="submit(userAddressFrm.value)">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -153,12 +153,12 @@
         <ngb-tab title="Nominee">
           <ng-template ngbTabContent>
             <div class="active tab-pane">
-                <form class="form-horizontal">
+                <form class="form-horizontal" [formGroup]="userNomineeFrm">
                     <div class="row align-items-center form-group">
                         <label for="inputName" class="col-sm-3 control-label">Nominee Name
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text"  name="Nominee Name" class="form-control"
+                            <input type="text" formControlName="nomineeName_" name="Nominee Name" class="form-control"
                                 placeholder="Enter Nominee Name" required="">
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                         <label for="inputName" class="col-sm-3 control-label">Nominee Relation
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text"  name="Nominee Relation" class="form-control"
+                            <input type="text" formControlName="nomineeRelation_" name="Nominee Relation" class="form-control"
                                 placeholder="Enter Nominee Relation" required="">
                         </div>
                     </div>
@@ -176,7 +176,7 @@
                         <label for="inputName" class="col-sm-3 control-label">Nominee Mobile
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                            <input type="text" name="Nominee Mobile" class="form-control"
+                            <input type="text" formControlName="nomineeMobile_" name="Nominee Mobile" class="form-control"
                                 placeholder="Enter Nominee Mobile No" required="">
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                         <label for="inputName" class="col-sm-3 control-label">Nominee Address
                             <span class="red">*</span></label>
                         <div class="col-sm-9">
-                            <textarea type="text" name="Nominee Address" class="form-control"
+                            <textarea type="text" formControlName="nomineeAddress_" name="Nominee Address" class="form-control"
                                 placeholder="Enter Nominee Address" required=""></textarea>
                         </div>
                     </div>
@@ -204,13 +204,13 @@
         <ngb-tab title="Bank">
             <ng-template ngbTabContent>
                 <div class="tab-pane">
-                    <form class="form-horizontal">
+                    <form [formGroup]="userBankDetailsFrm" class="form-horizontal">
                         <div class="row align-items-center form-group">
                             <label for="pan_no" class="col-sm-4 control-label">Pan No
                                 <span class="red">*</span></label>
                             <div class="col-sm-8">
                                 <input type="text" name="pan_no" class="form-control" id="pan_no" placeholder="Enter PAN No"
-                                 required="">
+                                    formControlName="panNo_" required="">
                             </div>
                         </div>
     
@@ -219,7 +219,7 @@
                                 <span class="red">*</span></label>
                             <div class="col-sm-8">
                                 <input type="text" name="acc_name" class="form-control" id="acc_name"
-                                    placeholder="Enter Account Holder Name" required="">
+                                    placeholder="Enter Account Holder Name" formControlName="acctName_" required="">
                             </div>
                         </div>
     
@@ -229,7 +229,7 @@
     
                             <div class="col-sm-8">
                                 <input type="text" name="account_no" class="form-control" id="account_no"
-                                    placeholder="Enter Account No"  required="">
+                                    placeholder="Enter Account No" formControlName="acctNo_" required="">
                             </div>
                         </div>
     
@@ -239,7 +239,7 @@
     
                             <div class="col-sm-8">
                                 <input type="text" name="ifsc_code" class="form-control" id="bank_ifsc"
-                                    placeholder="Enter IFSC Code"  required="">
+                                    placeholder="Enter IFSC Code" (keyup)="ifscCode()" formControlName="ifscCode_" required="">
                             </div>
                         </div>
     
@@ -248,8 +248,8 @@
                                 <span class="red">*</span></label>
     
                             <div class="col-sm-8">
-                                <input type="text" name="bank_name"  class="form-control" id="bank_name"
-                                    placeholder="Enter Bank Name" required="">
+                                <input type="text" name="bank_name" [(ngModel)]="bankName" class="form-control" id="bank_name"
+                                    placeholder="Enter Bank Name" formControlName="bankName_" required="">
                             </div>
                         </div>
     
@@ -258,8 +258,8 @@
                                 <span class="red">*</span></label>
     
                             <div class="col-sm-8">
-                                <input type="text" name="branch_name"  class="form-control" id="bank_branch"
-                                    placeholder="Enter Branch Name"  required="">
+                                <input type="text" name="branch_name" [(ngModel)]="branchName" class="form-control" id="bank_branch"
+                                    placeholder="Enter Branch Name" formControlName="branchName_" required="">
                             </div>
                         </div>
                         <div class="row align-items-center form-group">
