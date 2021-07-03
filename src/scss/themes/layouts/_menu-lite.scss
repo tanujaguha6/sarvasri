@@ -749,6 +749,7 @@
                     + .pcoded-mtext {
                         position: relative;
                         top: 0;
+                        font-size: 13px;
                     }
                 }
             }
@@ -823,12 +824,11 @@
 
                         > a {
                             text-align: left;
-                            padding: 7px 7px 7px 45px;
+                            padding: 0px 0px 0px 10px;
                             margin: 0;
                             display: block;
 
                             &:before {
-                                content: "\e844";
                                 font-family: 'feather';
                                 position: absolute;
                                 top: 10px;

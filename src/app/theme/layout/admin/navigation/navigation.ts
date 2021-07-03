@@ -24,6 +24,260 @@ export interface NavigationItem {
 export interface Navigation extends NavigationItem {
   children?: NavigationItem[];
 }
+const NavigationItems = [{
+      id: 'navigation',
+      title: '',
+      type: 'group',
+      icon: 'feather icon-monitor',
+      children: [
+        {
+          id: 'dashboard',
+          title: 'Dashboard',
+          type: 'item',
+          url: '/dashboard/default',
+          classes: 'nav-item',
+          icon: 'fa fa-dashboard'
+        },
+        {
+          id: 'wallet',
+          title: 'Wallet',
+          type: 'collapse',
+          icon: 'fa fa-money',
+          children: [
+            {
+              id: 'retail_wallet',
+              title: 'Retail Wallet',
+              type: 'collapse',
+              icon: 'fa fa-circle-o',
+              children: [
+                  {
+                    id: 'balance',
+                    title: 'Balance',
+                    type: 'item',
+                    url: '/',
+                    icon: 'fa fa-circle-o',
+                    target: true
+                  },
+                  {
+                    id: 'transaction',
+                    title: 'Transacton',
+                    type: 'item',
+                    url: '/',
+                    icon: 'fa fa-circle-o',
+                    target: true
+                  }
+                ]
+            },
+            {
+              id: 'first_wallet',
+              title: 'First Wallet',
+              type: 'collapse',
+              icon: 'fa fa-circle-o',
+              children: [
+                  {
+                    id: 'balance',
+                    title: 'Balance',
+                    type: 'item',
+                    url: '/',
+                    icon: 'fa fa-circle-o',
+                    target: true
+                  },
+                  {
+                    id: 'transaction',
+                    title: 'Transacton',
+                    type: 'item',
+                    url: '/',
+                    icon: 'fa fa-circle-o',
+                    target: true
+                  }
+                ]
+            }
+          ]
+        },
+        {
+          id: 'commission',
+          title: 'Commission',
+          type: 'collapse',
+          icon: 'fa fa-suitcase',
+          children: [
+            {
+              id: 'First_Purchase_Income',
+              title: 'First Purchase Income',
+              type: 'item',
+              icon: 'fa fa-circle-o',
+              url: '/commission/first-purchase-income'
+            },
+            {
+              id: 're_prchase_weekly_income',
+              title: 'Re purchase weekly Income',
+              type: 'item',
+              icon: 'fa fa-circle-o',
+              url: '/commission/re-purchase-weekly-income'
+            },
+            {
+              id: 're_prchase_monthly_income',
+              title: 'Re purchase monthly Income',
+              type: 'item',
+              icon: 'fa fa-circle-o',
+              url: '/commission/re-purchase-monthly-income'
+            },
+            {
+              id: 'consistency_income',
+              title: 'Consistency Income',
+              type: 'item',
+              icon: 'fa fa-circle-o',
+              url: '/commission/consistency-income'
+            },
+            {
+              id: 'payout_report',
+              title: 'Payout Report',
+              type: 'item',
+              icon: 'fa fa-circle-o',
+              url: '/commission/payout-report'
+            }
+          ]
+        },
+        {
+            id: 'deduction',
+            title: 'Deduction',
+            type: 'collapse',
+            icon: 'fa fa-suitcase',
+            children: [
+              {
+                id: 'First_income_deduction',
+                title: 'First Income Deduction',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/deduction/first-income-deduction'
+              }
+            ]
+        },
+        {
+            id: 'matching_report',
+            title: 'Matching Report',
+            type: 'collapse',
+            icon: 'fa fa-balance-scale',
+            children: [
+              {
+                id: 'First_purchase',
+                title: 'First Purchase',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              },
+              {
+                id: 're_purchase',
+                title: 'Re Purchase',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              }
+            ]
+        },
+        {
+            id: 'recognition',
+            title: 'Recognition',
+            type: 'collapse',
+            icon: 'fa fa-mortar-board',
+            children: [
+              {
+                id: 'recognition_view',
+                title: 'Recognition View',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              }
+            ]
+        },
+        {
+            id: 'member',
+            title: 'Member',
+            type: 'collapse',
+            icon: 'fa fa-users',
+            children: [
+              {
+                id: 'member_add',
+                title: 'Member Add',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              },
+              {
+                id: 'member_view',
+                title: 'Member View',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              },
+              {
+                id: 'direct_downline',
+                title: 'Direct Downline',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              },
+              {
+                id: 'binary_tree',
+                title: 'Binary Tree',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              }
+            ]
+        },
+        {
+            id: 'invoice',
+            title: 'Invoice',
+            type: 'collapse',
+            icon: 'fa fa-list-alt',
+            children: [
+              {
+                id: 'retail_invoice',
+                title: 'Retail Invoice',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              },
+              {
+                id: 'retail_package_invoice',
+                title: 'Retail Package Invoice',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              },
+              {
+                id: 'first_invoice',
+                title: 'First Invoice',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              },
+              {
+                id: 'first_package_invoice',
+                title: 'First Package Invoice',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              }
+            ]
+        },
+        {
+            id: 'product',
+            title: 'Product',
+            type: 'collapse',
+            icon: 'fa fa-gg',
+            children: [
+              {
+                id: 'product_view',
+                title: 'Product View',
+                type: 'item',
+                icon: 'fa fa-circle-o',
+                url: '/'
+              }
+            ]
+        }
+      ]}];
+
 
 // const NavigationItems = [
 //   {
@@ -265,7 +519,7 @@ export interface Navigation extends NavigationItem {
 //     ]
 //   }
 // ];
-const NavigationItems = SideBar.NavigationItems;
+
 @Injectable()
 export class NavigationItem {
   public get() {
