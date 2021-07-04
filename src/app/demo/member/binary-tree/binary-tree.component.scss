@@ -1,0 +1,103 @@
+.tree,
+.tree ul,
+.tree li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.tree {
+    margin: 0 0 1em;
+    text-align: center;
+    width: 100%;
+}
+
+.tree,
+.tree ul {
+    display: table;
+}
+
+.tree ul {
+    width: 100%;
+}
+
+.tree li {
+    display: table-cell;
+    padding: .5em 0;
+    vertical-align: top;
+}
+
+.tree li:before {
+    outline: solid 1px #666;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tree li:first-child:before {
+    left: 50%;
+}
+
+.tree li:last-child:before {
+    right: 50%;
+}
+
+.tree code,
+.tree span {
+    border: solid .1em #666;
+    border-radius: .2em;
+    display: inline-block;
+    margin: 0 .2em .5em;
+    padding: .2em .5em;
+    position: relative;
+    color: white;
+    width: 90px;
+    font-size: 9px;
+}
+
+.tree ul:before,
+.tree code:before,
+.tree img:before,
+.tree div:before {
+    outline: solid 1px #666;
+    content: "";
+    height: .5em;
+    left: 50%;
+    position: absolute;
+}
+img{
+    border-radius: 30px;
+    display: block;
+    margin: 0 0px 0 23px;
+    padding: .2em .5em;
+    position: relative;
+    width: 50px;
+}
+div{
+    display: inline-block;
+    margin: 0 .2em .5em;
+    padding: .2em .5em;
+    position: relative;
+}
+.tree ul:before {
+    top: -.5em;
+}
+
+.tree code:before,
+.tree div:before {
+    top: -.55em;
+}
+
+.tree>li {
+    margin-top: 0;
+}
+
+.tree>li:before,
+.tree>li:after,
+.tree>li>code:before,
+.tree>li>div:before {
+    outline: none;
+}
