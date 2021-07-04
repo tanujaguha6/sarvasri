@@ -166,3 +166,64 @@ left:0
 .slick-class .slick-next.slick-arrow {
   right:0
   }
+  .progress{
+    height: .40rem !important;
+  }
+  .pcoded-content {
+    padding: 15px 25px;
+  }
+  .pcoded-header.headerpos-fixed ~ .pcoded-main-container .page-header h5 {
+    margin-bottom: 6px;
+}
+.page-header {
+  margin-bottom: 12px;
+}
+.col-sm-3 .card, .box-alighnment .card {margin-bottom:10px;}
+.card .card-header {
+  padding: 10px 15px;
+}
+.card-title {
+  margin-bottom: 6px;
+}
+.card .card-block, .card .card-body {
+  padding: 15px 15px;
+}
+.box-alighnment .card {
+  height: 146px !important;
+}
+.col-md-8 .chart-graph .card-body {
+  padding-bottom:0;
+}
+.pcoded-navbar .main-menu-header {
+  padding:9px 20px;
+  height: 56px;
+}
+.apexcharts-canvas {
+  width:100% !important;
+}
+.card-tab {height: 544px;}
+.card-tab .form-group label {
+  color:#fff;
+}
+.card-tab .form-group .form-control {
+  background-color: #5f7082;
+  opacity: 1;
+  border: 0;
+  color: #90c9ff;
+}
+.nav-tabs .nav-link.active {
+  background: #3e5871;
+  color: #fff;
+}
+.nav-tabs {
+  border-bottom: 1px solid #3e5871;
+}
+.profile-card-2 .card-body{position:relative}
+.profile-card-2 .profile{border-radius:50%;position:absolute;top:-42px;left:15%;
+  max-width:75px;border:3px solid #fff;transform:translate(-50%)}
+.profile-card-2 h5{font-weight:600}
+.profile-card-2 .card-text{font-weight:300;font-size:15px}
+.profile-card-2 .icon-block{float:left;width:100%}
+.profile-card-2 .icon-block a{text-decoration:none}
+.profile-card-2 i{display:inline-block;text-align:center;width:30px;height:30px;
+  line-height:30px;border-radius:50%;margin:0 5px}
