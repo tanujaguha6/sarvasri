@@ -51,7 +51,8 @@ export class CardComponent implements OnInit {
   @Input() captionClass: string;
   @Input() isCardFooter: boolean;
   @Input() footerClass: string;
-
+  @Input() forModal: string;
+  
   @Output() openModal= new EventEmitter();
   public animation: string;
   public fullIcon: string;

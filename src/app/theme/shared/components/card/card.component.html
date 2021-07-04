@@ -2,9 +2,8 @@
   <div class="card-header" *ngIf="!hidHeader" [ngClass]="headerClass">
     <h5 *ngIf="!customHeader">{{ cardTitle }}</h5>
     <p *ngIf="!customHeader && cardCaption" [ngClass]="captionClass">{{cardCaption}}</p>
-    <button type="button" class="btn btn-primary" (click)="show_modal()">Filter</button>
-
-    <!-- <div class="card-header-right" *ngIf="this.options && !customHeader">
+    <button *ngIf="forModal" type="button" class="btn btn-primary" (click)="show_modal()">Filter</button>
+    <div class="card-header-right" *ngIf="this.options && !customHeader">
       <div class="btn-group card-option dropdown" ngbDropdown placement="auto">
         <button type="button" class="btn dropdown-toggle btn-icon" ngbDropdownToggle>
           <i class="feather icon-more-horizontal"></i>
@@ -17,7 +16,7 @@
           <li class="dropdown-item close-card" (click)="cardRemoveAction()"><a href="javascript:"><i class="feather icon-trash"></i> Remove</a></li>
         </ul>
       </div>
-    </div> -->
+    </div>
     <ng-content *ngIf="customHeader" select=".app-card-header"></ng-content>
   </div>
   <div [@collapsedCard]="collapsedCard" *ngIf="this.options; else subMenuContent">
