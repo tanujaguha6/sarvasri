@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {SideBar} from './sidebar';
 export interface NavigationItem {
   id: string;
   title: string;
@@ -274,7 +273,7 @@ const NavigationItems = [{
         }
       ]}];
 
-
+/****************new section *******************/
 // const NavigationItems = [
 //   {
 //     id: 'navigation',

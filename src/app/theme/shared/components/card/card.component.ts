@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 /*import { AnimationBuilder, AnimationService } from 'css-animator';*/
 import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
@@ -52,6 +52,7 @@ export class CardComponent implements OnInit {
   @Input() isCardFooter: boolean;
   @Input() footerClass: string;
 
+  @Output() openModal= new EventEmitter();
   public animation: string;
   public fullIcon: string;
   public isAnimating: boolean;
@@ -133,7 +134,9 @@ export class CardComponent implements OnInit {
     this.collapsedCard = this.collapsedCard === 'collapsed' ? 'expanded' : 'collapsed';
     this.collapsedIcon = this.collapsedCard === 'collapsed' ? 'icon-plus' : 'icon-minus';
   }
-
+ show_modal(){
+  this.openModal.emit();
+ }
   cardRefresh() {
     this.loadCard = true;
     this.cardClass = 'card-load';

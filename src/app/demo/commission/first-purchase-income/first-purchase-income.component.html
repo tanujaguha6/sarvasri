@@ -3,7 +3,7 @@
     <!-- [ dark-table ] end -->
     <!-- [ striped-table ] start -->
     <div class="col-xl-12">
-      <app-card cardTitle="Striped Table" blockClass="table-border-style">
+      <app-card cardTitle="Striped Table" blockClass="table-border-style" (openModal)="showModal()">
         <div class="table-responsive">
           <table class="table table-striped">
             <thead>
@@ -15,7 +15,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <!-- <tr>
               <td>1</td>
               <td>Mark</td>
               <td>Otto</td>
@@ -32,15 +32,35 @@
               <td>Larry</td>
               <td>the Bird</td>
               <td>@twitter</td>
-            </tr>
+            </tr> -->
+            <tr *ngFor="let item of items | slice: (defaultPage-1) * itemsPerPage : defaultPage * itemsPerPage">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.surname}}</td>
+                <td>{{item.social}}</td>
+              </tr>
             </tbody>
           </table>
+      <ngb-pagination [collectionSize]="items.length" [(page)]="defaultPage" [(pageSize)]="itemsPerPage" aria-label="Default pagination"></ngb-pagination>
+      <app-ui-modal #modalDefault>
+        <div class="app-modal-header">
+          <h5 class="modal-title">Modal Title</h5>
+          <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="app-modal-body">
+          <p>Woohoo, you're reading this text in a modal!</p>
+        </div>
+        <div class="app-modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalDefault.hide()">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </app-ui-modal>
         </div>
       </app-card>
     </div>
     <!-- [ striped-table ] end -->
     <!-- [ Contextual-table ] start -->
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <app-card cardTitle="Contextual Classes" blockClass="table-border-style">
         <div class="table-responsive">
           <table class="table">
@@ -111,10 +131,10 @@
           </table>
         </div>
       </app-card>
-    </div>
+    </div> -->
     <!-- [ Contextual-table ] end -->
     <!-- [ Background-Utilities ] start -->
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <app-card cardTitle="Background Utilities" blockClass="table-border-style">
         <div class="table-responsive">
           <table class="table table-dark">
@@ -185,6 +205,6 @@
           </table>
         </div>
       </app-card>
-    </div>
+    </div> -->
     <!-- [ Background-Utilities ] end -->
   </div>

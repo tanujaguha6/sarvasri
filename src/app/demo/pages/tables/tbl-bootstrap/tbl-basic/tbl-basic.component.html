@@ -13,7 +13,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr>
+          <!-- <tr>
             <td>1</td>
             <td>Mark</td>
             <td>Otto</td>
@@ -30,9 +30,17 @@
             <td>Larry</td>
             <td>the Bird</td>
             <td>@twitter</td>
+          </tr> -->
+          <tr *ngFor="let item of items | slice: (defaultPage-1) * itemsPerPage : defaultPage * itemsPerPage">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.surname}}</td>
+            <td>{{item.social}}</td>
           </tr>
           </tbody>
         </table>
+      <ngb-pagination [collectionSize]="items.length" [(page)]="defaultPage" [(pageSize)]="itemsPerPage" aria-label="Default pagination"></ngb-pagination>
+
       </div>
     </app-card>
   </div>
@@ -333,6 +341,7 @@
           </tr>
           </tbody>
         </table>
+        
       </div>
     </app-card>
   </div>

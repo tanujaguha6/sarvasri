@@ -9,13 +9,16 @@ import { RePurchaseMonthlyIncomeComponent } from './re-purchase-monthly-income/r
 import { ConsistencyIncomeComponent } from './consistency-income/consistency-income.component';
 import { PayoutReportComponent } from './payout-report/payout-report.component';
 import {SharedModule} from '../../theme/shared/shared.module';
+import {NgbButtonsModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [CommissionComponent, FirstPurchaseIncomeComponent, RePurchaseWeeklyIncomeComponent, RePurchaseMonthlyIncomeComponent, ConsistencyIncomeComponent, PayoutReportComponent],
   imports: [
     CommonModule,
     CommissionRoutingModule,
-    SharedModule
+    SharedModule,
+    NgbButtonsModule,
+    NgbPaginationModule
   ]
 })
 export class CommissionModule { }
