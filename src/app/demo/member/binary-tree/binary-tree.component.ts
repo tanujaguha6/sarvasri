@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UiModalComponent } from '../../../theme/shared/components/modal/ui-modal/ui-modal.component';
+
 
 @Component({
   selector: 'app-binary-tree',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./binary-tree.component.scss']
 })
 export class BinaryTreeComponent implements OnInit {
-
+  @ViewChild(UiModalComponent) uimoadal : UiModalComponent;
+  public id : string;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  fetchdata(id){
+    this.id = id;
+    this.uimoadal.show();
   }
 
 }

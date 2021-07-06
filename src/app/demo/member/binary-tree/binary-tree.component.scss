@@ -46,7 +46,7 @@
 }
 
 .tree code,
-.tree span {
+.tree .tree-box {
     border: solid .1em #666;
     border-radius: .2em;
     display: inline-block;
@@ -61,7 +61,7 @@
 .tree ul:before,
 .tree code:before,
 .tree img:before,
-.tree div:before {
+.tree .tree-item:before {
     outline: solid 1px #666;
     content: "";
     height: .5em;
@@ -76,7 +76,7 @@ img{
     position: relative;
     width: 50px;
 }
-div{
+.tree-item{
     display: inline-block;
     margin: 0 .2em .5em;
     padding: .2em .5em;
@@ -87,7 +87,7 @@ div{
 }
 
 .tree code:before,
-.tree div:before {
+.tree .tree-item:before {
     top: -.55em;
 }
 
