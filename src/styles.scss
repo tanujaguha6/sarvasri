@@ -227,3 +227,19 @@ left:0
 .profile-card-2 .icon-block a{text-decoration:none}
 .profile-card-2 i{display:inline-block;text-align:center;width:30px;height:30px;
   line-height:30px;border-radius:50%;margin:0 5px}
+
+@media screen and (max-width: 425px){
+  .apexcharts-legend{
+    height: 82px;
+    padding-top: 31px !important;
+    margin-bottom: 10px;
+  }
+  #selectBox{
+    display: none;
+  }
+  #bar-chart-2-cac{
+    .apexcharts-tooltip{
+      left:2px!important;
+    }
+  }
+}
