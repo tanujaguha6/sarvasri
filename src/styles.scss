@@ -227,7 +227,16 @@ left:0
 .profile-card-2 .icon-block a{text-decoration:none}
 .profile-card-2 i{display:inline-block;text-align:center;width:30px;height:30px;
   line-height:30px;border-radius:50%;margin:0 5px}
-
+.apexcharts-legend{
+  
+  visibility: hidden!important;
+  // display: -webkit-inline-box!important;
+  // // margin-left: 60px!important;
+  // top: 0px!important;
+  // right: 0px!important;
+  // position: inherit!important;
+  // display: none!important;
+}
 @media screen and (max-width: 425px){
   .apexcharts-legend{
     height: 82px;

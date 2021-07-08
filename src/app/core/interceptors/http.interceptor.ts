@@ -32,7 +32,9 @@ export class HttpConfigInterceptor implements HttpInterceptor {
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
                     console.log('event--->>>', event);
-
+                    if(event.body.status === 0){
+                        document.getElementById('logout_btn').click();
+                    }
                 }
                 return event;
             }),
