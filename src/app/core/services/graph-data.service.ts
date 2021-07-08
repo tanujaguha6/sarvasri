@@ -9,7 +9,7 @@ export class GraphDataService {
         this.bar1CA  = {
             chart: {
               height: 350,
-              width: 738,
+              width: 658,
               type: 'bar',
               stacked: true,
               toolbar: {
@@ -24,41 +24,47 @@ export class GraphDataService {
             },
             colors: ['#1abc9c', '#0e9e4a', '#ffa21d', '#ff5252'],
             responsive: [{
-              breakpoint: 1025,
+                breakpoint: 1330,
+                  options: {
+                    chart: {
+                        width: 620
+                    }
+                  }
+                },{
+            breakpoint: 1288,
               options: {
                 chart: {
                     width: 600
                 }
               }
-            },{
-                breakpoint: 769,
+            },
+             {breakpoint: 1213,
+              options: {
+                chart: {
+                    width: 580
+                }
+              }
+            },
+            {breakpoint: 1181,
                 options: {
                   chart: {
-                      width: 580
+                      width: 560
                   }
                 }
-              },{
-                breakpoint: 426,
+              },
+              {breakpoint: 1143,
+              options: {
+                chart: {
+                    width: 450
+                }
+              }
+            },{breakpoint: 992,
                 options: {
                   chart: {
-                      width: 450
+                      width: "100%"
                   }
                 }
-            },{
-                breakpoint: 376,
-                options: {
-                  chart: {
-                      width: 420
-                  }
-                }
-            },{
-                breakpoint: 321,
-                options: {
-                  chart: {
-                      width: 380
-                  }
-                }
-            }],
+              }],
             plotOptions: {
               bar: {
                 horizontal: false,
@@ -79,7 +85,7 @@ export class GraphDataService {
             },
             
             legend: {
-              position: 'right',
+              position: 'top',
               offsetY: 20
             },
             fill: {

@@ -163,10 +163,11 @@ export class DashDefaultComponent implements OnInit {
     this.bar2CAC  = {
       chart: {
         height: 350,
+        width: 658,
         type: 'bar',
         stacked: true,
         toolbar: {
-          show: true
+          show: false
         },
         zoom: {
           enabled: true
@@ -177,12 +178,44 @@ export class DashDefaultComponent implements OnInit {
       },
       colors: ['#1abc9c'],
       responsive: [{
-        breakpoint: 480,
+        breakpoint: 1330,
+          options: {
+            chart: {
+                width: 620
+            }
+          }
+        },{
+    breakpoint: 1288,
+      options: {
+        chart: {
+            width: 600
+        }
+      }
+    },
+     {breakpoint: 1213,
+      options: {
+        chart: {
+            width: 580
+        }
+      }
+    },
+    {breakpoint: 1181,
         options: {
-          legend: {
-            position: 'bottom',
-            offsetX: -10,
-            offsetY: 0
+          chart: {
+              width: 560
+          }
+        }
+      },
+      {breakpoint: 1143,
+      options: {
+        chart: {
+            width: 680
+        }
+      }
+    },{breakpoint: 992,
+        options: {
+          chart: {
+              width: "100%"
           }
         }
       }],
@@ -200,7 +233,7 @@ export class DashDefaultComponent implements OnInit {
       },
       
       legend: {
-        position: 'right',
+        position: 'top',
         offsetY: 20
       },
       fill: {
@@ -215,7 +248,6 @@ export class DashDefaultComponent implements OnInit {
     //this.loadTestApiData();
     this.graph.getGraph().subscribe(res=>{
       this.dataGraph = res;
-      console.log('jjjjjjjjj',this.dataGraph);
     })
     this.userData = JSON.parse(localStorage.getItem('userData'));
     if(this.userData === null){

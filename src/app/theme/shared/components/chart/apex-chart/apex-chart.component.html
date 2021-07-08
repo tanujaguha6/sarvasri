@@ -1,5 +1,5 @@
 <div class="d-flex" style="justify-content: space-between;">
-    <div class="color-box">
+    <!-- <div class="color-box">
     <div class="apexcharts-legend-series" rel="1" data:collapsed="false" style="margin: 0px 5px;">
         <span class="apexcharts-legend-marker" rel="1" data:collapsed="false" 
         style="background: rgb(26, 188, 156); color: rgb(26, 188, 156);
@@ -33,7 +33,7 @@
         font-family: Helvetica, Arial, sans-serif;">First Purchase
         </span>
     </div>
-    <!-- <div class="apexcharts-legend-series"  *ngIf="type === 'yearly'" rel="4" data:collapsed="false" style="margin: 0px 5px;">
+    <div class="apexcharts-legend-series"  *ngIf="type === 'yearly'" rel="4" data:collapsed="false" style="margin: 0px 5px;">
         <span class="apexcharts-legend-marker" rel="4" data:collapsed="false" 
         style="background: rgb(255, 82, 82); color: rgb(255, 82, 82); height: 12px; width: 12px; 
         left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 2px;">
@@ -42,26 +42,26 @@
         style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; 
         font-family: Helvetica, Arial, sans-serif;">Consistancy
         </span>
+    </div>
     </div> -->
-    </div>
-    <div id="selectBox" *ngIf="type === 'yearly'">
-        <select id="yearselect" (change)="changeData('yearly')"[(ngModel)]="selectDate">
-            <option value="1">2020-2021</option>
-            <option value="2">2019-2020</option>
-            <option value="3">2018-2019</option>
-            <option value="4">2017-2018</option>
-            <option value="5">2016-2017</option>
-        </select>
-    </div>
-    <div id="selectBox" *ngIf="type === 'monthly'">
-        <span>Get the report of last -</span> 
-        <select (change)="changeData('monthly')" [(ngModel)]="selectDateMonthly">
-            <option value="30">30 Days</option>
-            <option value="60">60 Days</option>
-            <option value="90">90 Days</option>
-        </select>
-    </div>
+    
 </div>
-
+<div id="selectBox" *ngIf="type === 'yearly'">
+    <select id="yearselect" (change)="changeData('yearly')"[(ngModel)]="selectDate">
+        <option value="1">2020-2021</option>
+        <option value="2">2019-2020</option>
+        <option value="3">2018-2019</option>
+        <option value="4">2017-2018</option>
+        <option value="5">2016-2017</option>
+    </select>
+</div>
+<div id="selectBox" *ngIf="type === 'monthly'">
+    <span>Get the report of last -</span> 
+    <select (change)="changeData('monthly')" [(ngModel)]="selectDateMonthly">
+        <option value="30">30 Days</option>
+        <option value="60">60 Days</option>
+        <option value="90">90 Days</option>
+    </select>
+</div>
 
 <div id="{{this.chartID}}"></div>
