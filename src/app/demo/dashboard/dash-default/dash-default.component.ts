@@ -9,8 +9,9 @@ import { PowerCardChart2 } from './chart/power-card-chart-2';
 import { HttpClient } from '@angular/common/http';
 // import { ApexChartComponent } from '../../../theme/shared/components/chart/apex-chart/apex-chart.component';
 import { ChartDB } from 'src/app/fack-db/chart-data';
-import { AuthServicesService } from 'src/app/core/services/auth-services.service';
+import { AuthServicesService } from '../../../core/services/auth-services.service';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dash-default',
@@ -77,7 +78,7 @@ export class DashDefaultComponent implements OnInit {
   yearlyGraph;any;
   // @ViewChild(ApexChartComponent, { static: false }) apexChart: ApexChartComponent;
   constructor(
-    private auth:AuthServicesService) {
+    private auth:AuthServicesService,private router:Router) {
 
     // this.supportChartData1 = SupportChartData1.supportChartData;
     // this.supportChartData2 = SupportChartData2.supportChartData;
@@ -204,12 +205,16 @@ export class DashDefaultComponent implements OnInit {
   ngOnInit(): void {
     //this.loadTestApiData();
     this.userData = JSON.parse(localStorage.getItem('userData'));
+    if(this.userData === null){
+      this.router.navigate(['/auth/signin']);
+    }else{
     this.loadMemberIncome();
     this.loadMemberWallet();
     this.directMemberSlider();
     this.raankMemberSlider();
     this.getMonthlyWiseGraphdata();
     this.getYearlyWiseGraphdata();
+    }
   }
 
   getOwlOptions(){
@@ -282,18 +287,20 @@ export class DashDefaultComponent implements OnInit {
       date_range:this.date_range
     };
     this.auth.yearlyGraphApi(user).subscribe((res: any) => {
-      this.yearlyGraph = res.data_array;
-      
-      this.dropdownchange =  this.yearlyGraph;
-      res.x_array.map(d=>{
-        this.xAxis.push(d);
-      })
-      this.yearlyGraph.map(data=>{
-        this.retail_income.push(data.retail_income);
-        this.retail_binary.push(data.retail_binary);
-        this.first_purchase.push(data.first_purchase);
-        this.consistancy.push(data.consistancy);
-      })
+      if(res){
+        this.yearlyGraph = res.data_array;
+        
+        this.dropdownchange =  this.yearlyGraph;
+        res.x_array.map(d=>{
+          this.xAxis.push(d);
+        })
+        this.yearlyGraph.map(data=>{
+          this.retail_income.push(data.retail_income);
+          this.retail_binary.push(data.retail_binary);
+          this.first_purchase.push(data.first_purchase);
+          this.consistancy.push(data.consistancy);
+        })
+      }
     });
   }
   refresh(){
@@ -322,14 +329,16 @@ export class DashDefaultComponent implements OnInit {
       date_range:this.date_range_monthly
     };
     this.auth.monthlyGraphApi(user).subscribe((res: any) => {
-      this.monthlyGraph = res.data_array;
-      this.dropdownchangeMonthly =  this.monthlyGraph;
-      res.x_array.map(d=>{
-        this.monthlyxAxis.push(d.income_date);
-      })
-      this.monthlyGraph.map(data=>{
-        this.total_income.push(data.total_income);
-      })
+      if(res){
+        this.monthlyGraph = res.data_array;
+        this.dropdownchangeMonthly =  this.monthlyGraph;
+        res.x_array.map(d=>{
+          this.monthlyxAxis.push(d.income_date);
+        })
+        this.monthlyGraph.map(data=>{
+          this.total_income.push(data.total_income);
+        })
+      }
     });
   }
 

@@ -12,8 +12,14 @@ export class AuthServicesService {
     return this.http.post("https://myshpl.com/api/login.php", userData)
   }
 
-  logout(logout: any) {
-    return this.http.post("https://myshpl.com/api/logout.php", logout)
+  logout() {
+    let userData = JSON.parse(localStorage.getItem('userData'));
+    const user = {
+      username: userData.username,
+      login_type: userData.login_type,
+      auth_token: userData.auth_token
+    };
+    return this.http.post("https://myshpl.com/api/logout.php", user)
   }
 
   memberIncomeApi(memberIncome: any) {

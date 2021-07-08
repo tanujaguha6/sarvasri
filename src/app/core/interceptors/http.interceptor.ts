@@ -10,14 +10,16 @@ import {
 
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { AuthServicesService } from '../services/auth-services.service';
 
 
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
-    constructor() { }
+    constructor(private auth:AuthServicesService,private router:Router) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token: string = localStorage.getItem('token');
-
+        
         if (token) {
             request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
         }
@@ -33,19 +35,18 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                 if (event instanceof HttpResponse) {
                     console.log('event--->>>', event);
                     if(event.body.status === 0){
-                        document.getElementById('logout_btn').click();
+                        this.auth.logout().subscribe((res) => {
+                            localStorage.clear();
+                            this.router.navigate(['/auth/signin'])
+                        });
                     }
                 }
                 return event;
             }),
             catchError((error: HttpErrorResponse) => {
                 let data = {};
-                data = {
-                    reason: error && error.error.reason ? error.error.reason : '',
-                    status: error.status
-                };
-                console.log(data);
-
+                //console.log(error)
+                
                 return throwError(error);
             }));
     }
