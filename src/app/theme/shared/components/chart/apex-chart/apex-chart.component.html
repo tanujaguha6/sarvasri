@@ -33,7 +33,7 @@
         font-family: Helvetica, Arial, sans-serif;">First Purchase
         </span>
     </div>
-    <div class="apexcharts-legend-series"  *ngIf="type === 'yearly'" rel="4" data:collapsed="false" style="margin: 0px 5px;">
+    <!-- <div class="apexcharts-legend-series"  *ngIf="type === 'yearly'" rel="4" data:collapsed="false" style="margin: 0px 5px;">
         <span class="apexcharts-legend-marker" rel="4" data:collapsed="false" 
         style="background: rgb(255, 82, 82); color: rgb(255, 82, 82); height: 12px; width: 12px; 
         left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 2px;">
@@ -42,10 +42,9 @@
         style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; 
         font-family: Helvetica, Arial, sans-serif;">Consistancy
         </span>
-    </div>
+    </div> -->
     </div>
     <div id="selectBox" *ngIf="type === 'yearly'">
-        <span>Select date range -</span> 
         <select id="yearselect" (change)="changeData('yearly')"[(ngModel)]="selectDate">
             <option value="1">2020-2021</option>
             <option value="2">2019-2020</option>

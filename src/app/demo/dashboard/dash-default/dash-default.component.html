@@ -52,7 +52,8 @@
     <div class="col-md-8">
       <div class="chart-graph" style="height: 100%;">
       <app-card cardTitle="Bar chart stacked" [options]="false" >
-        <app-apex-chart chartID="bar-chart-2-cac" (changedData)="changeData($event)" [dropdownchange]="dropdownchange" [chartConfig]="bar1CAC" [type]="yearly"></app-apex-chart>
+        
+        <app-apex-chart  *ngIf="dataGraph" chartID="bar-chart-2-cac" (changedData)="changeData($event)" [dropdownchange]="dropdownchange" [chartConfig]="dataGraph" [type]="yearly"></app-apex-chart>
       </app-card>
     </div>
     </div>

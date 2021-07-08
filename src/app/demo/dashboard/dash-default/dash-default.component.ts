@@ -7,9 +7,12 @@ import { SeoChart3 } from './chart/seo-chart-3';
 import { PowerCardChart1 } from './chart/power-card-chart-1';
 import { PowerCardChart2 } from './chart/power-card-chart-2';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 // import { ApexChartComponent } from '../../../theme/shared/components/chart/apex-chart/apex-chart.component';
 import { ChartDB } from 'src/app/fack-db/chart-data';
 import { AuthServicesService } from '../../../core/services/auth-services.service';
+import { GraphDataService } from '../../../core/services/graph-data.service';
+
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
 
@@ -74,11 +77,15 @@ export class DashDefaultComponent implements OnInit {
   public dropdownchangeMonthly: any;
   public monthly = 'monthly';
   public yearly = 'yearly';
+  //public graphData = new Subject<object>();
+  public dataGraph : any;
   monthlyGraph:any;
   yearlyGraph;any;
   // @ViewChild(ApexChartComponent, { static: false }) apexChart: ApexChartComponent;
   constructor(
-    private auth:AuthServicesService,private router:Router) {
+    private auth:AuthServicesService,
+    private router:Router,
+    private graph: GraphDataService) {
 
     // this.supportChartData1 = SupportChartData1.supportChartData;
     // this.supportChartData2 = SupportChartData2.supportChartData;
@@ -95,62 +102,64 @@ export class DashDefaultComponent implements OnInit {
 
     this.getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, {min: 10, max: 90});
     
-    this.bar1CAC  = {
-      chart: {
-        height: 350,
-        type: 'bar',
-        stacked: true,
-        toolbar: {
-          show: true
-        },
-        zoom: {
-          enabled: true
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      colors: ['#1abc9c', '#0e9e4a', '#ffa21d', '#ff5252'],
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          legend: {
-            position: 'bottom',
-            // offsetX: -10,
-            // offsetY: 0
-          }
-        }
-      }],
-      plotOptions: {
-        bar: {
-          horizontal: false,
-        },
-      },
-      series: [{
-        name: 'Retail Income',
-        data: this.retail_income
-      }, {
-        name: 'Retail Binary',
-        data: this.retail_binary
-      }, {
-        name: 'First Purchase',
-        data: this.first_purchase
-      }, {
-        name: 'Consistancy',
-        data: this.consistancy
-      }],
-      xaxis: {
-        categories: this.xAxis,
-      },
+    // this.bar1CAC  = {
+    //   chart: {
+    //     height: 350,
+    //     width: 850,
+    //     type: 'bar',
+    //     stacked: true,
+    //     toolbar: {
+    //       show: true
+    //     },
+    //     zoom: {
+    //       enabled: true
+    //     }
+    //   },
+    //   dataLabels: {
+    //     enabled: false
+    //   },
+    //   colors: ['#1abc9c', '#0e9e4a', '#ffa21d', '#ff5252'],
+    //   responsive: [{
+    //     breakpoint: 480,
+    //     options: {
+    //       legend: {
+    //         position: 'bottom',
+    //         // offsetX: -10,
+    //         // offsetY: 0
+    //       }
+    //     }
+    //   }],
+    //   plotOptions: {
+    //     bar: {
+    //       horizontal: false,
+    //     },
+    //   },
+    //   series: [{
+    //     name: 'Retail Income',
+    //     data: this.retail_income
+    //   }, {
+    //     name: 'Retail Binary',
+    //     data: this.retail_binary
+    //   }, {
+    //     name: 'First Purchase',
+    //     data: this.first_purchase
+    //   }, {
+    //     name: 'Consistancy',
+    //     data: this.consistancy
+    //   }],
+    //   xaxis: {
+    //     categories: this.xAxis,
+    //   },
       
-      legend: {
-        position: 'right',
-        offsetY: 20
-      },
-      fill: {
-        opacity: 1
-      },
-    };
+    //   legend: {
+    //     position: 'right',
+    //     offsetY: 20
+    //   },
+    //   fill: {
+    //     opacity: 1
+    //   },
+    // };
+    
     this.bar2CAC  = {
       chart: {
         height: 350,
@@ -204,16 +213,21 @@ export class DashDefaultComponent implements OnInit {
   
   ngOnInit(): void {
     //this.loadTestApiData();
+    this.graph.getGraph().subscribe(res=>{
+      this.dataGraph = res;
+      console.log('jjjjjjjjj',this.dataGraph);
+    })
     this.userData = JSON.parse(localStorage.getItem('userData'));
     if(this.userData === null){
       this.router.navigate(['/auth/signin']);
     }else{
-    this.loadMemberIncome();
-    this.loadMemberWallet();
-    this.directMemberSlider();
-    this.raankMemberSlider();
-    this.getMonthlyWiseGraphdata();
-    this.getYearlyWiseGraphdata();
+      this.loadMemberIncome();
+      this.loadMemberWallet();
+      this.directMemberSlider();
+      this.raankMemberSlider();
+      this.getMonthlyWiseGraphdata();
+      this.getYearlyWiseGraphdata();
+      this.graph.creategraph(this.retail_income,this.retail_binary,this.first_purchase,this.xAxis);
     }
   }
 

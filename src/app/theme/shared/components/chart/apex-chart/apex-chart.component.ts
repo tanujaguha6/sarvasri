@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import ApexCharts from 'apexcharts/dist/apexcharts.common.js';
 import {ApexChartService} from './apex-chart.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-apex-chart',
@@ -8,7 +9,7 @@ import {ApexChartService} from './apex-chart.service';
   styleUrls: ['./apex-chart.component.scss']
 })
 export class ApexChartComponent implements OnChanges {
-  @Input() chartID: string;
+  @Input() chartID: any;
   @Input() chartConfig: any;
   @Input() xAxis: any;
   @Input() newData: any;
@@ -27,6 +28,11 @@ export class ApexChartComponent implements OnChanges {
     this.updateData();
   }
   updateData(){
+    // let chartId = $('#chartIDs').val();
+    // let chartconfig= $('#chartConfig').val();
+    // this.chartID = this.chartID?this.chartID:chartId;
+    // this.chartConfig = this.chartID?this.chartID:chartconfig;
+    
     setTimeout(() => {
       document.querySelector('#' + this.chartID).innerHTML = '';
       this.chart = new ApexCharts(document.querySelector('#' + this.chartID), this.chartConfig);
