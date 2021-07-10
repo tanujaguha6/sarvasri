@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-lg-4">
     <div class="card text-white c-bg ">
       <div class="card-body">
         <h5 class="card-title text-white">Retail Income</h5>
@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-lg-4">
     <div class="card text-white c-bg ">
       
       <div class="card-body">
@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-lg-4">
     <div class="card text-white c-bg ">
       
       <div class="card-body">
@@ -49,7 +49,7 @@
   </div> -->
   </div>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-lg-8">
       <div class="chart-graph" style="height: 100%;">
       <app-card cardTitle="Bar chart stacked" [options]="false" >
         
@@ -57,7 +57,7 @@
       </app-card>
     </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-lg-4">
       <div class="box-alighnment">
       <div class="card text-white box-1 c-bg">
         <div class="card-body">
@@ -85,7 +85,7 @@
 </div>
 
 <div class="row caarosel team-list">
-<div class="col-sm-12">
+<div class="col-lg-12">
   <ngx-slick-carousel class="carousel slick-class" 
   #slickModal="slick-carousel" 
   [config]="slideConfig" 
@@ -106,12 +106,12 @@
 </div>
 
 <div class="row">
-<div class="col-md-12 chart-graph col-sm-12 col-lg-12 col-xl-8">
+<div class=" b-chart chart-graph col-sm-8 col-lg-8">
   <app-card cardTitle="Bar Chart" [options]="false" class="update-chart">
     <app-apex-chart chartID="pie-chart-1-cac" [chartConfig]="bar2CAC" (changedDataMonthly)="changeDataMonthly($event)" [dropdownchangeMonthly]="dropdownchangeMonthly" [type]="monthly"></app-apex-chart>
   </app-card>
 </div>
-<div class="col-xl-4 col-md-12">
+<div class="col-sm-4 col-lg-4">
   <app-card cardClass="latest-update-card" class="update-rank">
   <ngx-slick-carousel class="carousel timeline-slider" 
   #slickModal="slick-carousel" 

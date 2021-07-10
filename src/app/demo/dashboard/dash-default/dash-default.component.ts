@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SupportChartData1} from './chart/support-chart-data-1';
-import { SupportChartData2} from './chart/support-chart-data-2';
+import { SupportChartData1 } from './chart/support-chart-data-1';
+import { SupportChartData2 } from './chart/support-chart-data-2';
 import { SeoChart1 } from './chart/seo-chart-1';
 import { SeoChart2 } from './chart/seo-chart-2';
 import { SeoChart3 } from './chart/seo-chart-3';
@@ -23,23 +23,67 @@ import { Router } from '@angular/router';
 })
 
 export class DashDefaultComponent implements OnInit {
-  slideConfig = {"slidesToShow": 6, "slidesToScroll": 1,'autoplay': true};
-  slideConfig1 = {"slidesToShow": 3, "slidesToScroll": 1,'autoplay': true,'vertical': true,};
+  slideConfig = {
+    "slidesToShow": 6, "slidesToScroll": 1, 'autoplay': true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  };
+  slideConfig1 = {
+    "slidesToShow": 3, "slidesToScroll": 1, 'autoplay': true, 'vertical': true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  };
   slickInit(e) {
     console.log('slick initialized');
   }
-  
+
   breakpoint(e) {
     //console.log('breakpoint');
   }
-  
+
   afterChange(e) {
     //console.log('afterChange');
   }
-  
+
   beforeChange(e) {
     //console.log('beforeChange');
-  }  
+  }
   // public supportChartData1: any;
   // public supportChartData2: any;
   // public seoChartData1: any;
@@ -47,30 +91,30 @@ export class DashDefaultComponent implements OnInit {
   // public seoChartData3: any;
   // public powerCardChartData1: any;
   // public powerCardChartData2: any;
-  userData:any;
+  userData: any;
   dashBoardData: any;
   memberData: any;
   public chartDB: any;
-  memberIncomeData:any;
-  memberWalletData:any;
-  directMember:any;
-  rankMember:any;
+  memberIncomeData: any;
+  memberWalletData: any;
+  directMember: any;
+  rankMember: any;
   public lastDate: number;
   public line2CAC: any;
   public bar1CAC: any;
   public bar2CAC: any;
   public data: any;
-  public retail_income:any =[];
-  public retail_binary:any = [];
-  public first_purchase:any = [];
-  public consistancy:any = [];
-  public xAxis:any = [];
-  public monthlyxAxis: any=[];
-  public total_income: any =[];
+  public retail_income: any = [];
+  public retail_binary: any = [];
+  public first_purchase: any = [];
+  public consistancy: any = [];
+  public xAxis: any = [];
+  public monthlyxAxis: any = [];
+  public total_income: any = [];
   public intervalSub: any;
   public intervalMain: any;
-  public date_range:number=1;
-  public date_range_monthly:number=30;
+  public date_range: number = 1;
+  public date_range_monthly: number = 30;
   public dailyVisitorStatus: string;
   public dailyVisitorAxis: any;
   public dropdownchange: any;
@@ -78,13 +122,13 @@ export class DashDefaultComponent implements OnInit {
   public monthly = 'monthly';
   public yearly = 'yearly';
   //public graphData = new Subject<object>();
-  public dataGraph : any;
-  monthlyGraph:any;
-  yearlyGraph;any;
+  public dataGraph: any;
+  monthlyGraph: any;
+  yearlyGraph; any;
   // @ViewChild(ApexChartComponent, { static: false }) apexChart: ApexChartComponent;
   constructor(
-    private auth:AuthServicesService,
-    private router:Router,
+    private auth: AuthServicesService,
+    private router: Router,
     private graph: GraphDataService) {
 
     // this.supportChartData1 = SupportChartData1.supportChartData;
@@ -100,8 +144,8 @@ export class DashDefaultComponent implements OnInit {
     this.lastDate = 0;
     this.data = [];
 
-    this.getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, {min: 10, max: 90});
-    
+    this.getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 });
+
     // this.bar1CAC  = {
     //   chart: {
     //     height: 350,
@@ -150,7 +194,7 @@ export class DashDefaultComponent implements OnInit {
     //   xaxis: {
     //     categories: this.xAxis,
     //   },
-      
+
     //   legend: {
     //     position: 'right',
     //     offsetY: 20
@@ -159,8 +203,8 @@ export class DashDefaultComponent implements OnInit {
     //     opacity: 1
     //   },
     // };
-    
-    this.bar2CAC  = {
+
+    this.bar2CAC = {
       chart: {
         height: 350,
         width: 658,
@@ -179,43 +223,47 @@ export class DashDefaultComponent implements OnInit {
       colors: ['#1abc9c'],
       responsive: [{
         breakpoint: 1330,
-          options: {
-            chart: {
-                width: 620
-            }
-          }
-        },{
-    breakpoint: 1288,
-      options: {
-        chart: {
-            width: 600
-        }
-      }
-    },
-     {breakpoint: 1213,
-      options: {
-        chart: {
-            width: 580
-        }
-      }
-    },
-    {breakpoint: 1181,
         options: {
           chart: {
-              width: 560
+            width: 620
+          }
+        }
+      }, {
+        breakpoint: 1288,
+        options: {
+          chart: {
+            width: 600
           }
         }
       },
-      {breakpoint: 1143,
-      options: {
-        chart: {
-            width: 680
-        }
-      }
-    },{breakpoint: 992,
+      {
+        breakpoint: 1213,
         options: {
           chart: {
-              width: "100%"
+            width: 580
+          }
+        }
+      },
+      {
+        breakpoint: 1181,
+        options: {
+          chart: {
+            width: 560
+          }
+        }
+      },
+      {
+        breakpoint: 1143,
+        options: {
+          chart: {
+            width: 680
+          }
+        }
+      }, {
+        breakpoint: 992,
+        options: {
+          chart: {
+            width: "100%"
           }
         }
       }],
@@ -231,7 +279,7 @@ export class DashDefaultComponent implements OnInit {
       xaxis: {
         categories: this.monthlyxAxis,
       },
-      
+
       legend: {
         position: 'top',
         offsetY: 20
@@ -243,28 +291,28 @@ export class DashDefaultComponent implements OnInit {
     this.dailyVisitorStatus = '1y';
   }
 
-  
+
   ngOnInit(): void {
     //this.loadTestApiData();
-    this.graph.getGraph().subscribe(res=>{
+    this.graph.getGraph().subscribe(res => {
       this.dataGraph = res;
     })
     this.userData = JSON.parse(localStorage.getItem('userData'));
-    if(this.userData === null){
+    if (this.userData === null) {
       this.router.navigate(['/auth/signin']);
-    }else{
+    } else {
       this.loadMemberIncome();
       this.loadMemberWallet();
       this.directMemberSlider();
       this.raankMemberSlider();
       this.getMonthlyWiseGraphdata();
       this.getYearlyWiseGraphdata();
-      this.graph.creategraph(this.retail_income,this.retail_binary,this.first_purchase,this.xAxis);
+      this.graph.creategraph(this.retail_income, this.retail_binary, this.first_purchase, this.xAxis);
     }
   }
 
-  getOwlOptions(){
-   
+  getOwlOptions() {
+
   }
 
   loadMemberIncome() {
@@ -289,7 +337,7 @@ export class DashDefaultComponent implements OnInit {
     });
   }
 
-  directMemberSlider(){
+  directMemberSlider() {
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
@@ -300,7 +348,7 @@ export class DashDefaultComponent implements OnInit {
     });
   }
 
-  raankMemberSlider(){
+  raankMemberSlider() {
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
@@ -310,37 +358,37 @@ export class DashDefaultComponent implements OnInit {
       this.rankMember = res['result'];
     });
   }
-  
+
   getDayWiseTimeSeries(baseval, count, yrange) {
     let i = 0;
     while (i < count) {
       const x = baseval;
       const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
-      this.data.push({x, y});
+      this.data.push({ x, y });
       this.lastDate = baseval;
       baseval += 86400000;
       i++;
     }
   }
 
-  getYearlyWiseGraphdata(){
-    
+  getYearlyWiseGraphdata() {
+
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      date_range:this.date_range
+      date_range: this.date_range
     };
     this.auth.yearlyGraphApi(user).subscribe((res: any) => {
-      if(res){
+      if (res) {
         this.yearlyGraph = res.data_array;
-        
-        this.dropdownchange =  this.yearlyGraph;
-        res.x_array.map(d=>{
+
+        this.dropdownchange = this.yearlyGraph;
+        res.x_array.map(d => {
           this.xAxis.push(d);
         })
-        this.yearlyGraph.map(data=>{
+        this.yearlyGraph.map(data => {
           this.retail_income.push(data.retail_income);
           this.retail_binary.push(data.retail_binary);
           this.first_purchase.push(data.first_purchase);
@@ -349,39 +397,39 @@ export class DashDefaultComponent implements OnInit {
       }
     });
   }
-  refresh(){
+  refresh() {
     this.xAxis.length = 0;
     this.retail_income.length = 0;
     this.retail_binary.length = 0;
     this.first_purchase.length = 0;
-    this.consistancy.length=0;
+    this.consistancy.length = 0;
   }
-  changeData(e){
+  changeData(e) {
     this.refresh();
     this.date_range = e;
     this.getYearlyWiseGraphdata();
   }
-  changeDataMonthly(e){
+  changeDataMonthly(e) {
     this.monthlyxAxis.length = 0;
     this.total_income.length = 0;
     this.date_range_monthly = e;
     this.getMonthlyWiseGraphdata();
   }
-  getMonthlyWiseGraphdata(){
+  getMonthlyWiseGraphdata() {
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      date_range:this.date_range_monthly
+      date_range: this.date_range_monthly
     };
     this.auth.monthlyGraphApi(user).subscribe((res: any) => {
-      if(res){
+      if (res) {
         this.monthlyGraph = res.data_array;
-        this.dropdownchangeMonthly =  this.monthlyGraph;
-        res.x_array.map(d=>{
+        this.dropdownchangeMonthly = this.monthlyGraph;
+        res.x_array.map(d => {
           this.monthlyxAxis.push(d.income_date);
         })
-        this.monthlyGraph.map(data=>{
+        this.monthlyGraph.map(data => {
           this.total_income.push(data.total_income);
         })
       }
