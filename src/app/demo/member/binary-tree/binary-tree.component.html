@@ -1,59 +1,60 @@
 <ul class="tree">
-    <li> 
-        <div class="tree-item" (click)="fetchdata('SH2276143')">
+    <li *ngIf="treeData.length"> 
+        <div class="tree-item" (click)="fetchdata('SH2276143')" >
             <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-            <span class="tree-box">SH2276143
-                SHARFRAZ ALAM</span>
+            <span class="tree-box">{{treeData[0][0]}}<br/>
+              {{treeData[0][1]}}</span>
         </div>
       <ul>
         <li> 
-            <div class="tree-item" (click)="fetchdata('SH8718412')">
+            <div class="tree-item" (click)="fetchdata('SH8718412')" >
                 <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                <span class="tree-box">SH8718412
-                    ABHISHEK KUMAR</span>
+                <span class="tree-box">{{treeData[1][0]}}<br/>
+                  {{treeData[1][1]}}</span>
             </div>
           <ul>
             <li> 
-                <div class="tree-item" (click)="fetchdata('SH4525899')">
+                <div class="tree-item" (click)="fetchdata('SH4525899')" >
                     <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                    <span class="tree-box">SH4525899<br/>
-                        SHPL</span>
+                    <span class="tree-box">{{treeData[3][0]}}<br/>
+                      {{treeData[3][1]}}</span>
                 </div>
               <ul>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH7299676')">
+                    <div class="tree-item" (click)="fetchdata('SH7299676')" >
                         <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                        <span class="tree-box">SH7299676<br/>
-                            SHPL</span>
+                        <span class="tree-box">{{treeData[7][0]}}<br/>
+                          {{treeData[7][1]}}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH1507600')">
+                    <div class="tree-item" (click)="fetchdata('SH1507600')" >
                         <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                        <span class="tree-box">SH1507600<br/>
-                            SHPL</span>
+                        <span class="tree-box">{{treeData[8][0]}}<br/>
+                          {{treeData[8][1]}}</span>
                     </div>
                 </li>
               </ul>
             </li>
             <li> 
-                <div class="tree-item" (click)="fetchdata('SH9548636')">
+                <div class="tree-item" (click)="fetchdata('SH9548636')" >
                     <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                    <span class="tree-box">SH9548636<br/>
-                        SHPL Block Id</span>
+                    <span class="tree-box">{{treeData[4][0]}}<br/>
+                      {{treeData[4][1]}}</span>
                 </div>
               <ul>
                 <li>
                     <div class="tree-item" (click)="fetchdata('SH8720358')">
                         <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                        <span class="tree-box">SH8720358<br/>
-                            SURAJ MALHOTRA</span>
+                        <span class="tree-box">{{treeData[9][0]}}<br/>
+                          {{treeData[9][1]}}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH4603547')">
+                    <div class="tree-item" (click)="fetchdata('SH4603547')" >
                         <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                        <span class="tree-box">SH4603547<br/>SHPL</span>
+                        <span class="tree-box">{{treeData[10][0]}}<br/>
+                          {{treeData[10][1]}}</span>
                     </div>
                 </li>
               </ul>
@@ -61,56 +62,54 @@
           </ul>
         </li>
         <li> 
-            <div class="tree-item" (click)="fetchdata('SH5867417')">
+            <div class="tree-item" (click)="fetchdata('SH5867417')" > 
                 <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                <span class="tree-box">SH5867417<br/>
-                    SAARVASRI HERBS PVT LTD</span>
+                <span class="tree-box">{{treeData[2][0]}}<br/>
+                  {{treeData[2][1]}}</span>
             </div>
           <ul>
             <li> 
-                <div class="tree-item" (click)="fetchdata('SH3258248')">
+                <div class="tree-item" (click)="fetchdata('SH3258248')" >
                     <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                    <span class="tree-box">SH3258248<br/>
-                        SAARVASRI HERBS PVT. LTD.</span>
+                    <span class="tree-box">{{treeData[5][0]}}<br/>
+                      {{treeData[5][1]}}</span>
                 </div>
               <ul>
                 <li>
                     <div class="tree-item" (click)="fetchdata('SH1584287')">
                         <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                        <span class="tree-box">SH1584287<br/>
-                            SAARVASRI HERBS PRIVATE LIMITED
-                            </span>
+                        <span class="tree-box">{{treeData[11][0]}}<br/>
+                          {{treeData[11][1]}}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH8287977')">
+                    <div class="tree-item" (click)="fetchdata('SH8287977')" >
                         <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                        <span class="tree-box">SH8287977<br/>
-                            SHANTI DEVI
-                            </span>
+                        <span class="tree-box">{{treeData[13][0]}}<br/>
+                          {{treeData[13][1]}}</span>
                     </div>
                 </li>
               </ul>
             </li>
             <li> 
-                <div class="tree-item" (click)="fetchdata('SH2939663')">
+                <div class="tree-item" (click)="fetchdata('SH2939663')" >
                     <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                    <span class="tree-box">SH2939663<br/>
-                        SAARVASRI</span>
+                    <span class="tree-box">{{treeData[6][0]}}<br/>
+                      {{treeData[6][1]}}</span>
                 </div>
               <ul>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH6295429')">
+                    <div class="tree-item" (click)="fetchdata('SH6295429')" >
                         <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                        <span class="tree-box">SH6295429<br/>
-                            SAARVASRI HERBS PVT. LTD.</span>
+                        <span class="tree-box">{{treeData[13][0]}}<br/>
+                          {{treeData[13][1]}}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH5531234')">
+                    <div class="tree-item" (click)="fetchdata('SH5531234')" >
                         <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50">
-                        <span class="tree-box">SH5531234<br/>
-                            SIB NARAYAN BADAIK</span>
+                        <span class="tree-box">{{treeData[14][0]}}<br/>
+                          {{treeData[14][1]}}</span>
                     </div>
                 </li>
               </ul>
@@ -120,30 +119,95 @@
        
       </ul>
     </li>
-    <app-ui-modal #modalDefault>
+    <app-ui-modal #modalDefault >
         <div class="app-modal-header">
-          <h5 class="modal-title">Modal Title {{id}}</h5>
+          <h5 class="modal-title">{{modalData.Member_Name}}</h5>
           <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
         </div>
-        <div class="app-modal-body">
-          <p>Woohoo, you're reading this text in a modal!</p>
+        <div class="app-modal-body" style="overflow: auto">
+          <table class="table table_small" style="margin-bottom: 0px !important;">
+            <tbody>
+              <tr>
+                <td><strong>Member Name</strong></td>
+                <td colspan="3">{{modalData.Member_Name}} </td>
+              </tr>
+              
+              <tr>
+                <td><strong>DOR</strong></td><td>{{modalData.DOR}}</td>
+                <td><strong>DOA</strong></td><td>{{modalData.DOA}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Rank</strong></td><td>{{modalData.Rank}}</td>
+                <td><strong>Current Rank</strong></td><td>{{modalData.Current_Rank}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Total Associate A Team</strong></td><td>{{modalData.Total_Associate_A_Team}}</td>
+                <td><strong>Total Associate B Team</strong></td><td>{{modalData.Total_Associate_B_Team}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Active Associate A Team</strong></td><td>{{modalData.Active_Associate_A_Team}}</td>
+                <td><strong>Active Associate B Team</strong></td><td>{{modalData.Active_Associate_B_Team}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Total Self Purchase BV</strong></td><td>{{modalData.Total_Self_Purchase_BV}}</td>
+                <td><strong>Current Self Purchase BV</strong></td><td>{{modalData.Current_Self_Purchase_BV}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Total Self Purchase Rs</strong></td><td>{{modalData.Total_Self_Purchase_Rs}}</td>
+                <td><strong>Current Self Purchase Rs</strong></td><td>{{modalData.Current_Self_Purchase_Rs}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Total A Team BV</strong></td><td>{{modalData.Total_A_Team_BV}}</td>
+                <td><strong>Total B Team BV</strong></td><td>{{modalData.Total_B_Team_BV}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Current A Team BV</strong></td><td>{{modalData.Current_A_Team_BV}}</td>
+                <td><strong>Current B Team BV</strong></td><td>{{modalData.Current_B_Team_BV}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Current A Team BV (RP)</strong></td><td>{{modalData.Current_A_Team_BV_RP}}</td>
+                <td><strong>Current B Team BV (RP)</strong></td><td>{{modalData.Current_B_Team_BV_RP}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Current A Team BV (FP)</strong></td><td>{{modalData.Current_A_Team_BV_FP}}</td>
+                <td><strong>Current B Team BV (FP)</strong></td><td>{{modalData.Current_B_Team_BV_FP}}</td>
+              </tr>
+              
+              
+              <tr>
+                <td><strong>BP Purchase Status</strong></td><td>{{modalData.BP_Purchase_Status}}</td>
+                <td><strong>Total BP Matching</strong></td><td>{{modalData.Total_BP_Matching}}</td>
+              </tr>
+              
+              <tr>
+                <td><strong>Left Active</strong></td><td>{{modalData.Left_Active}}</td>
+                <td><strong>Right Active</strong></td><td>{{modalData.Right_Active}}</td>
+              </tr>
+              <tr>
+                <td><strong>Total Left BP (P)</strong></td><td>{{modalData.Total_Left_BP_P}}</td>
+                <td><strong>Total Right BP (P)</strong></td><td>{{modalData.Total_Right_BP_P}}</td>
+              </tr>
+              <tr>
+                <td><strong>Current Left BP (P)</strong></td><td>{{modalData.Current_Left_BP_P}}</td>
+                <td><strong>Current Right BP (P)</strong></td><td>{{modalData.Current_Right_BP_P}}</td>
+              </tr>
+              <tr>
+                <td><strong>Carry Forward Left BP (P)</strong></td><td>{{modalData.Carry_Forward_Left_BP_P}}</td>
+                <td><strong>Carry Forward Right BP (P)</strong></td><td>{{modalData.Carry_Forward_Right_BP_P}}</td>
+              </tr>       
+            </tbody>
+          </table>
         </div>
-        <div class="app-modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalDefault.hide()">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        
       </app-ui-modal>
   </ul>
-  <!-- <app-ui-modal #modalDefault>
-    <div class="app-modal-header">
-      <h5 class="modal-title">Modal Title {{id}}</h5>
-      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
-    </div>
-    <div class="app-modal-body">
-      <p>Woohoo, you're reading this text in a modal!</p>
-    </div>
-    <div class="app-modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalDefault.hide()">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
-    </div>
-  </app-ui-modal> -->
+  

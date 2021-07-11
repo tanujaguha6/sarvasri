@@ -103,7 +103,6 @@ export class GraphDataService {
 
     getGraph(): Observable<any> {
         this.subject.next(this.bar1CA);
-        console.log('oooo',this.subject.asObservable())
         return this.subject.asObservable();
     }
 }

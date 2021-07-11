@@ -44,7 +44,10 @@
 .tree li:last-child:before {
     right: 50%;
 }
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
 
+    padding: 5px !important; // currently 8px
+}
 .tree code,
 .tree .tree-box {
     border: solid .1em #666;

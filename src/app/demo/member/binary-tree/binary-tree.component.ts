@@ -12,13 +12,18 @@ export class BinaryTreeComponent implements OnInit {
   @ViewChild(UiModalComponent) uimoadal : UiModalComponent;
   public id : string;
   binarytree:any;
+  treeData: any = [];
+  modalData: any = [];
   constructor(private auth:GraphService) { }
 
   ngOnInit(): void {
     this.binaryTreeGraph();
   }
-  fetchdata(id){
+  fetchdata(id: string){
     this.id = id;
+    this.auth.getData(this.id).subscribe((modal) => {
+      this.modalData = modal['result'][0];
+    });
     this.uimoadal.show();
   }
 
@@ -32,8 +37,9 @@ export class BinaryTreeComponent implements OnInit {
     };
     this.auth.binaryTree(user).subscribe((res) => {
       this.binarytree = res['result'];
-      console.log(this.binarytree);
-      
+      this.binarytree.map(each=>{
+        this.treeData[each.position-1] = [each.name,each.mem_code];
+      })
     });
   }
 
