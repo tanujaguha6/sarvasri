@@ -62,16 +62,14 @@
   <li>
     <div class="drp-user dropdown" ngbDropdown placement="auto">
       <a href="javascript:" ngbDropdownToggle>
-        <i class="feather icon-user"></i>
-      </a>
-      <div class=" dropdown-menu-right profile-notification" ngbDropdownMenu>
-        <div class="pro-head">
+        <div class="pro-head top-user">
           <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
           <span>{{userData?.name}}</span>
-          <!-- <a href="javascript:" class="dud-logout" (click)="logOut()" title="Logout">
-            <i class="feather icon-log-out"></i>
-          </a> -->
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
         </div>
+      </a>
+      <div class=" dropdown-menu-right profile-notification" ngbDropdownMenu>
+        
         <ul class="pro-body">
           <li><a href="javascript:" [routerLink]="['/profile-page']" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
           <!-- <li><a href="javascript:" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li> -->

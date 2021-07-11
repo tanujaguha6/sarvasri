@@ -24,7 +24,7 @@ import { Router } from '@angular/router';
 
 export class DashDefaultComponent implements OnInit {
   slideConfig = {
-    "slidesToShow": 6, "slidesToScroll": 1, 'autoplay': true,
+    "slidesToShow": 6, "slidesToScroll": 1, 'autoplay': false, 'infinite': false,
     responsive: [
       {
         breakpoint: 1024,
@@ -47,7 +47,7 @@ export class DashDefaultComponent implements OnInit {
     ]
   };
   slideConfig1 = {
-    "slidesToShow": 3, "slidesToScroll": 1, 'autoplay': true, 'vertical': true,
+    "slidesToShow": 3, "slidesToScroll": 1, 'autoplay': false, 'infinite': false, 'vertical': true,
     responsive: [
       {
         breakpoint: 1024,

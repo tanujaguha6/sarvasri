@@ -1,39 +1,51 @@
-<div class="row">
-  <div class="col-lg-4">
+<div class="row c-row">
+  <div class="col-lg-4 c-pad">
     <div class="card text-white c-bg ">
       <div class="card-body">
-        <h5 class="card-title text-white">Retail Income</h5>
+        <div class="card-wrap d-flex align-items-center">
+            <div class="card-icon">
+              <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            </div>
+            <div class="card-des">
+              <h5 class="card-title text-white">Retail Income</h5>
         <p class="card-text">Rs {{memberIncomeData?.total_repurchase_income}} /-</p>
-        <div><ngb-progressbar type="success" [value]="55"></ngb-progressbar></div>
-          <!-- <app-card cardTitle="Backgrounds" [options]="false"> -->
-            <!-- <div class="mb-4"><ngb-progressbar [value]="20">default</ngb-progressbar></div>
-            <div class="mb-4"><ngb-progressbar type="success" [value]="25">success</ngb-progressbar></div>
-            <div class="mb-4"><ngb-progressbar type="info" [value]="50">info</ngb-progressbar></div> -->
-            
-            <!-- <div class="mb-4"><ngb-progressbar type="danger" [value]="100">danger</ngb-progressbar></div> -->
-          <!-- </app-card> -->
-       
+        <div><ngb-progressbar type="success" [value]="55"></ngb-progressbar></div> 
+            </div>
+
+        </div>
+        
       </div>
     </div>
   </div>
-  <div class="col-lg-4">
-    <div class="card text-white c-bg ">
-      
+  <div class="col-lg-4 c-pad">
+    <div class="card text-white c-bg ">      
       <div class="card-body">
+        <div class="card-wrap d-flex align-items-center">
+          <div class="card-icon">
+            <i class="fa fa-users" aria-hidden="true"></i>
+          </div>
+        <div class="card-des">
         <h5 class="card-title text-white"> Team Bonus</h5>
         <p class="card-text">Rs {{memberIncomeData?.total_repurchase_binary_income}} /-</p>
         <div><ngb-progressbar [value]="40"></ngb-progressbar></div>
-       
+       </div>
+       </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-4">
-    <div class="card text-white c-bg ">
-      
+  <div class="col-lg-4 c-pad">
+    <div class="card text-white c-bg ">      
       <div class="card-body">
+        <div class="card-wrap d-flex align-items-center">
+          <div class="card-icon">
+            <i class="fa fa-money" aria-hidden="true"></i>
+          </div>
+        <div class="card-des">
         <h5 class="card-title text-white"> First Purchase Income</h5>
         <p class="card-text">Rs {{memberIncomeData?.total_first_purchase_income}} /-</p>
         <div><ngb-progressbar type="danger" [value]="80"></ngb-progressbar></div>
+          </div>
+          </div>
       </div>
     </div>
   </div>
@@ -48,8 +60,8 @@
     </div>
   </div> -->
   </div>
-  <div class="row">
-    <div class="col-lg-8">
+  <div class="row c-row">
+    <div class="col-lg-8 c-pad">
       <div class="chart-graph" style="height: 100%;">
       <app-card cardTitle="Bar chart stacked" [options]="false" >
         
@@ -57,27 +69,48 @@
       </app-card>
     </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4 c-pad">
       <div class="box-alighnment">
       <div class="card text-white box-1 c-bg">
         <div class="card-body">
+          <div class="card-wrap d-flex align-items-center">
+            <div class="card-icon">
+              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            </div>
+          <div class="card-des">
           <h5 class="card-title text-white">Retail Wallet Balance</h5>
           <p class="card-text">Rs {{memberWalletData?.rp_balance}} /-</p>
           <div><ngb-progressbar [value]="40"></ngb-progressbar></div>
+            </div>
+            </div>
         </div>
       </div>
     <div class="card text-white box-1 c-bg">
       <div class="card-body">
+        <div class="card-wrap d-flex align-items-center">
+          <div class="card-icon">
+            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+          </div>
+        <div class="card-des">
         <h5 class="card-title text-white">First Purchase Wallet Balance</h5>
         <p class="card-text">Rs {{memberWalletData?.fp_balance}} /-</p>
         <div><ngb-progressbar type="danger" [value]="80"></ngb-progressbar></div>
+          </div>
+          </div>
       </div>
     </div>
     <div class="card bg-light box-1 c-bg">
       <div class="card-body">
+        <div class="card-wrap d-flex align-items-center">
+          <div class="card-icon">
+            <i class="fa fa-credit-card" aria-hidden="true"></i>
+          </div>
+        <div class="card-des">
         <h5 class="card-title">Credit Wallet Balance</h5>
         <p class="card-text">Rs {{memberWalletData?.cr_balance}} /-</p>
         <div><ngb-progressbar type="warning" [value]="75"></ngb-progressbar></div>
+        </div>
+        </div>
       </div>
     </div>
   </div>
@@ -98,20 +131,20 @@
 <div>
   <h6 style="text-align: center;">{{member?.name}}</h6>
   <p class="text-muted" style="text-align: center;">{{member?.mem_code}}</p>
-  <p class="text-muted m-b-0" style="text-align: center;">{{member?.mobile}}</p>
+  <!-- <p class="text-muted m-b-0" style="text-align: center;">{{member?.mobile}}</p> -->
 </div>
 </div>
 </ngx-slick-carousel>
 </div>
 </div>
 
-<div class="row">
-<div class=" b-chart chart-graph col-sm-8 col-lg-8">
+<div class="row c-row">
+<div class=" b-chart chart-graph col-sm-8 col-lg-8 c-pad">
   <app-card cardTitle="Bar Chart" [options]="false" class="update-chart">
     <app-apex-chart chartID="pie-chart-1-cac" [chartConfig]="bar2CAC" (changedDataMonthly)="changeDataMonthly($event)" [dropdownchangeMonthly]="dropdownchangeMonthly" [type]="monthly"></app-apex-chart>
   </app-card>
 </div>
-<div class="col-sm-4 col-lg-4">
+<div class="col-sm-4 col-lg-4 c-pad">
   <app-card cardClass="latest-update-card" class="update-rank">
   <ngx-slick-carousel class="carousel timeline-slider" 
   #slickModal="slick-carousel" 
