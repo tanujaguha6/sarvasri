@@ -21,7 +21,10 @@ export class SearchModalComponent implements OnInit  {
   @Input() productcode: any;
   @Input() statusItems: any;
   @Input() incomeTypeItems: any;
+  @Input() sidesItem:any;
   @Output() closeModal = new EventEmitter();
+  @Output() sendSearchData = new EventEmitter();
+
   constructor(private cdref: ChangeDetectorRef) { }
 
   ngOnInit(){}
@@ -33,6 +36,10 @@ export class SearchModalComponent implements OnInit  {
   
   closeModals(){
     this.closeModal.emit('false');
+  }
+  search(){
+    this.sendSearchData.emit("here send the form builder value");
+    this.closeModals();
   }
   
 }

@@ -22,6 +22,7 @@ export class DirectDownlineComponent implements OnInit {
   public invoiceno: boolean = true;
   public amount: boolean = true;
   public productcode:boolean = true;
+  public sides:any;
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }
@@ -30,13 +31,15 @@ export class DirectDownlineComponent implements OnInit {
     this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
       this.items = data;
     });
-    this.comission.getColums('firstincomededuction').subscribe((data) => {
+    this.comission.getColums('directdownline').subscribe((data) => {
       this.columns = data;
     });
-    this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
+    this.comission.getTotalItems('directdownline').subscribe((data) => {
       this.total  = data;
     });
-    
+    this.comission.getSides('directdownline').subscribe((data) => {
+      this.sides  = data;
+    });
     
   }
   onPageChange(e){

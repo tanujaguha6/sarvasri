@@ -122,4 +122,17 @@ export class ComissionService {
     }]
     return Observable.of(status);
   }
+  getSides(type){
+    let status = [{
+      name : 'All',
+      value: ''
+    },{
+      name : 'LEFT',
+      value: 'L'
+    },{
+      name : 'RIGHT',
+      value: 'R'
+    }]
+    return Observable.of(status);
+  }
 }

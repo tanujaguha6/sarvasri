@@ -22,6 +22,7 @@ export class FirstPackageInvoiceComponent implements OnInit {
   public invoiceno: boolean = true;
   public amount: boolean = true;
   public productcode:boolean = true;
+  public sides:any;
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }
@@ -36,7 +37,9 @@ export class FirstPackageInvoiceComponent implements OnInit {
     this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
       this.total  = data;
     });
-    
+    this.comission.getSides('retailinvoice').subscribe((data) => {
+      this.sides  = data;
+    });
     
   }
   onPageChange(e){

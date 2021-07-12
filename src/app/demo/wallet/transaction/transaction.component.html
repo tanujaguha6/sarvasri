@@ -1,1 +1,11 @@
-<p>transaction works!</p>
+<div class="row">
+    <div class="col-xl-12">
+      <app-card   blockClass="table-border-style" >
+        <div class="table-responsive">
+          <app-listing [items] = "items" [columns]="columns"></app-listing>
+          <ngb-pagination [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+          
+        </div>
+      </app-card>
+    </div>
+  </div>

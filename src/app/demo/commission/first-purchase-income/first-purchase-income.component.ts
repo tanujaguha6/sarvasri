@@ -53,4 +53,10 @@ export class FirstPurchaseIncomeComponent implements OnInit {
   hideModals(e){
     this.showModals =  false;
   }
+  getSearchData(event){
+    console.log(event);
+    this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
+      this.items = data;
+    });
+  }
 }

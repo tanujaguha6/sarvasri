@@ -1,7 +1,7 @@
 <app-ui-modal #modalDefault (hideModal)="closeModals()">
 <div class="app-modal-header">
     <h5 class="modal-title">{{title}}</h5>
-    <!-- <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button> -->
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
   </div>
   <!-- <form class="form-horizontal" action="income-first-purchase-view.php" method="POST"> -->
   <div class="app-modal-body">
@@ -57,12 +57,9 @@
                     <div class="col-sm-3"><strong>Side</strong></div>
                     <div class="col-sm-5">
                         <select name="upliner_side" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
-                            <option value="">
-                            ALL</option>
-                            <option value="L">
-                            LEFT</option>
-                            <option value="R">
-                            RIGHT</option>
+                            <option *ngFor="let sideItem of sidesItem" [value]="sideItem.value">
+                            {{sideItem.name}}</option>
+                            
                         </select>
                     </div>
                 </div>
@@ -1566,6 +1563,6 @@
   </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default pull-left" data-dismiss="modal" (click)="closeModals()">Close</button>
-    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" class="btn btn-primary" (click)="search()">Search</button>
   </div>
   </app-ui-modal>
