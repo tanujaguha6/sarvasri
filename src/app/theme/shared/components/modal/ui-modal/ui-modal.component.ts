@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input,Output, OnInit,EventEmitter, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-ui-modal',
@@ -11,6 +11,7 @@ export class UiModalComponent implements OnInit {
   @Input() hideHeader = false;
   @Input() hideFooter = false;
   @Input() containerClick = true;
+  @Output() hideModal = new EventEmitter();
   public visible = false;
   public visibleAnimate = false;
 
@@ -29,6 +30,7 @@ export class UiModalComponent implements OnInit {
     this.visibleAnimate = false;
     setTimeout(() => this.visible = false, 300);
     document.querySelector('body').classList.remove('modal-open');
+    this.hideModal.emit();
   }
 
   public onContainerClicked(event: MouseEvent): void {

@@ -16,7 +16,8 @@ import { ToastComponent } from './components/toast/toast.component';
 import {ToastService} from './components/toast/toast.service';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import {LightboxModule} from 'ngx-lightbox';
-
+import {ListingComponent} from './components/listing/listing.component';
+import {SearchModalComponent} from '../../demo/search-modal/search-modal.component';
 /*import 'hammerjs';
 import 'mousetrap';
 import { GalleryModule } from '@ks89/angular-modal-gallery';*/
@@ -54,7 +55,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SpinnerComponent,
     ApexChartComponent,
     GalleryComponent,
-    ToastComponent
+    ToastComponent,
+    ListingComponent,
+    SearchModalComponent
   ],
   declarations: [
     DataFilterPipe,
@@ -63,7 +66,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SpinnerComponent,
     ApexChartComponent,
     ToastComponent,
-    GalleryComponent
+    GalleryComponent,
+    ListingComponent,
+    SearchModalComponent
   ],
   providers: [
     {

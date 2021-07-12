@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 import { ChartDB } from 'src/app/fack-db/chart-data';
 import { AuthServicesService } from '../../../core/services/auth-services.service';
 import { GraphDataService } from '../../../core/services/graph-data.service';
+import {ToastService} from '../../../theme/shared/components/toast/toast.service';
 
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
@@ -99,6 +100,7 @@ export class DashDefaultComponent implements OnInit {
   memberWalletData: any;
   directMember: any;
   rankMember: any;
+  loggedin: string;
   public lastDate: number;
   public line2CAC: any;
   public bar1CAC: any;
@@ -129,7 +131,8 @@ export class DashDefaultComponent implements OnInit {
   constructor(
     private auth: AuthServicesService,
     private router: Router,
-    private graph: GraphDataService) {
+    private graph: GraphDataService,
+    public toastEvent: ToastService) {
 
     // this.supportChartData1 = SupportChartData1.supportChartData;
     // this.supportChartData2 = SupportChartData2.supportChartData;
@@ -291,9 +294,14 @@ export class DashDefaultComponent implements OnInit {
     this.dailyVisitorStatus = '1y';
   }
 
-
+  show(){
+    this.toastEvent.toast({uid: 'toast2',delay: 4000});
+  }
+  ngAfterViewInit(){
+   localStorage.setItem('loggedIn','true');
+  }
   ngOnInit(): void {
-    //this.loadTestApiData();
+   this.loggedin = localStorage.getItem('loggedIn');
     this.graph.getGraph().subscribe(res => {
       this.dataGraph = res;
     })

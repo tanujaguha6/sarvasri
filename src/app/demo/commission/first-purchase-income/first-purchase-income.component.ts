@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { UiModalComponent } from '../../../theme/shared/components/modal/ui-modal/ui-modal.component';
+import { ComissionService } from '../../../core/services/comission.service';
+
 @Component({
   selector: 'app-first-purchase-income',
   templateUrl: './first-purchase-income.component.html',
@@ -8,61 +8,49 @@ import { UiModalComponent } from '../../../theme/shared/components/modal/ui-moda
 })
 export class FirstPurchaseIncomeComponent implements OnInit {
   public defaultPage: number;
-  public itemsPerPage:number;
+  public showModals: boolean;
   public items:any;
-  @ViewChild(UiModalComponent) uimoadal : UiModalComponent;
- 
-  constructor(private modalService: NgbModal) { }
+  public columns: any;
+  public total: number;
+  public incomeTypeItems:any;
+  public statusItems:any;
+  public title: string ="First Purchase Income";
+  public incometype: boolean = true;
+  public date: boolean = true;
+  public status: boolean = true;
+  constructor(private comission: ComissionService) { 
+    this.defaultPage = 1;
+  }
 
   ngOnInit(): void {
-    this.defaultPage = 1;
-    this.itemsPerPage=2;
-    this.items = [{
-      id :1,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :2,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :3,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :4,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :5,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :6,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :7,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    }]
+    this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
+      this.items = data;
+    });
+    this.comission.getColums('firstpurchase').subscribe((data) => {
+      this.columns = data;
+    });
+    this.comission.getTotalItems('firstpurchase').subscribe((data) => {
+      this.total  = data;
+    });
+    this.comission.getIncomeType('firstpurchase').subscribe((data) => {
+      this.incomeTypeItems = data;
+    });
+    this.comission.getStatus('firstpurchase').subscribe((data) => {
+      this.statusItems = data;
+    });
+    
   }
-  
+  onPageChange(e){
+    this.defaultPage = e;
+    this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
+      this.items = data;
+    });
+  }
   showModal(){
+    this.showModals = true;
     //this.modalService.open(this.modalDefault);
-    this.uimoadal.show();
+  }
+  hideModals(e){
+    this.showModals =  false;
   }
 }

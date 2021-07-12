@@ -70,6 +70,7 @@ const routes: Routes = [
         path: 'other',
         loadChildren: () => import('./basic-other/basic-other.module').then(module => module.BasicOtherModule)
       }
+
     ]
   }
 ];
