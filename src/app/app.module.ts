@@ -23,11 +23,10 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +53,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     NgbTooltipModule,
     NgbButtonsModule,
     NgbTabsetModule,
+    NgbDatepickerModule,
     HttpClientModule,
     SlickCarouselModule,
     CoreModule.forRoot()

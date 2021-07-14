@@ -5,10 +5,11 @@ import {SharedModule} from '../../theme/shared/shared.module';
 
 import { WalletRoutingModule } from './wallet-routing.module';
 import {TransactionComponent} from './transaction/transaction.component';
+import {BalanceComponent} from './balance/balance.component';
 
 
 @NgModule({
-  declarations: [TransactionComponent],
+  declarations: [TransactionComponent, BalanceComponent],
   imports: [
     CommonModule,
     SharedModule,

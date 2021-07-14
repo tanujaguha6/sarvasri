@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-xl-12">
-      <app-card forModal="modal"  blockClass="table-border-style" (openModal)="showModal()">
+      <app-card cardTitle="Re-Purchase Binary Income" forModal="modal"  blockClass="table-border-style" (openModal)="showModal()">
         <div class="table-responsive">
           <app-listing [items] = "items" [columns]="columns"></app-listing>
           <ngb-pagination [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 
-                  [title]="title" [incometype]="incometype" 
+                  title="Re-Purchase Binary Income" [incometype]="incometype" 
                   [date]="date" [status]="status"
                   [incomeTypeItems]="incomeTypeItems" [statusItems]="statusItems"></app-search-modal>
         </div>
