@@ -18,7 +18,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   public scrollWidth: any;
   public windowWidth: number;
   public isNavProfile: boolean;
-
+  userData:any;
   @Output() onNavMobCollapse = new EventEmitter();
 
   @ViewChild('navbarContent') navbarContent: ElementRef;
@@ -38,6 +38,7 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.userData = JSON.parse(localStorage.getItem('userData'));
     if (this.windowWidth < 992) {
       this.flatConfig['layout'] = 'vertical';
       setTimeout(() => {
