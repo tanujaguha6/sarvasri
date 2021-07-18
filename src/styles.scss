@@ -259,15 +259,33 @@ left:0
 .top-user .fa {margin-left:10px;}
 .profile-notification .pro-body {padding:10px 0 !important;}
 
+.mob-box {display:none;}
 
 @media screen and (min-width:768px) and (max-width:1024px){
 .latest-update-card .timeline-slider .latest-update-box .update-meta {
   min-width:100%;  position:relative; text-align:center !important; margin-top:10px;}
   .latest-update-box .wid-95 {width:100% !important;}
   .latest-update-card .timeline-slider .latest-update-box .income-month {margin:auto;}
+  
 
 
 
+}
+@media screen and (max-width:991px){ 
+  .pcoded-content {padding:15px 10px;}
+  .apexcharts-legend {position: relative !important;     top: 0 !important;}
+  .apexcharts-legend-series {margin:0 1px !important; font-size:11px !important;}
+  .profile-area .card-body {padding-left:10px  !important; padding-right:10px  !important;}
+  .profile-area .card-body .nav-link {padding:0.5rem 0.7rem;}
+  .profile-area .card-tab {height:auto;}
+  .profile-card-2 .card-img-block img {height:200px; object-fit:cover; width:100%;}
+  .mob-box {display:block;}
+  .mob-box  .top-user span {display:none;}
+  .mob-box  .top-user .fa {color:#fff;}
+  .mob-box ul li {padding-right:0 !important;}
+  .mob-box .top-user .img-radius {width:35px; height:35px; margin-right:0;}
+  .logo-lg {font-size:18px  !important;}
+  .b-brand.logo {    margin-left: auto !important;}
 }
 @media screen and (max-width:767px){
 .col-md-8 .chart-graph .card-body, .card-body.ng-star-inserted {padding:10px 0  0 0;}
@@ -289,7 +307,7 @@ left:0
     .timeline-slider {padding: 30px 0;}
     .timeline-slider .slick-next {bottom: -7px;}
     .timeline-slider .slick-prev {top:-19px;}
-
+    .profile-card-2 .card-img-block img {height:150px; object-fit:cover; width:100%;}
 
 }
 @media screen and (max-width: 425px){

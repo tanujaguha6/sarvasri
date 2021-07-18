@@ -8,7 +8,9 @@
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b>Saarvasri</b> Herbs</span>
     </a>
-    <a class="mob-toggler" [ngClass]="{'on' : this.menuClass}" href="javascript:" (click)="toggleMobOption()"><i class="feather icon-more-vertical"></i></a>
+    <div class="mob-box ml-auto">
+    <app-nav-right class=""></app-nav-right>
+  </div>
   </div>
   <div class="collapse navbar-collapse" [style.display]="this.collapseStyle">
     <app-nav-left class="mr-auto"></app-nav-left>
