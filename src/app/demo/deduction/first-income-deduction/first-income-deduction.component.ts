@@ -42,9 +42,11 @@ export class FirstIncomeDeductionComponent implements OnInit {
   }
   loadData(){
     this.comission.getFirstPurchaseIncomeItems(this.params,'deduction_first_purchase_income.php').subscribe((data: any) => {
-      this.items = data.result;
-      this.keys = Object.keys(data.result[0]);
-      this.columns =  Object.keys(data.result[0]);
+      if(data.result && data.result.length){
+        this.items = data.result;
+        this.keys = Object.keys(data.result[0]);
+        this.columns =  Object.keys(data.result[0]);
+      }
     });
   }
   onPageChange(e){
