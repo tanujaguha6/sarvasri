@@ -8,6 +8,8 @@
       <div class="row align-items-center text-center">
         <div class="col-md-12">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <app-alert type="danger" *ngIf="loggedOut" dismiss="true">Logged Out Successfully!! </app-alert>
+
           <div class="card-body">
             <div class="row px-3"> <label class="mb-1">
               <h6 class="mb-0 text-sm">User Name</h6>

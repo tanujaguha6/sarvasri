@@ -20,6 +20,7 @@ export class NavRightComponent implements OnInit {
   logOut(){
     this.auth.logout().subscribe((res) => {
       localStorage.clear();
+      localStorage.setItem("logout",'true');
       this.router.navigate(['/auth/signin'])
     });
   }

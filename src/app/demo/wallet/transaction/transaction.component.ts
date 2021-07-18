@@ -43,17 +43,13 @@ export class TransactionComponent implements OnInit {
       this.api = 'wallet_transaction_first.php';
     }
     this.loadData();
-    this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
-      this.total  = data;
-    });
-    
-    
   }
   loadData(){
     this.comission.getFirstPurchaseIncomeItems(this.params, this.api).subscribe((data:any) => {
       this.items = data.result;
       this.keys = Object.keys(data.result[0]);
       this.columns =  Object.keys(data.result[0]);
+      this.total = data.total_count;
     });
   }
   onPageChange(e){

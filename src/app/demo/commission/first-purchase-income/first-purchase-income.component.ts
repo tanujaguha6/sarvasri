@@ -38,9 +38,7 @@ export class FirstPurchaseIncomeComponent implements OnInit {
     }
    
     this.loadData();
-    this.comission.getTotalItems('firstpurchase').subscribe((data) => {
-      this.total  = data;
-    });
+    
     this.comission.getIncomeType('firstpurchase').subscribe((data) => {
       this.incomeTypeItems = data;
     });
@@ -54,6 +52,7 @@ export class FirstPurchaseIncomeComponent implements OnInit {
       this.items = data.result;
       this.keys = Object.keys(data.result[0]);
       this.columns =  Object.keys(data.result[0]);
+      this.total = data.total_count;
     });
   }
   onPageChange(e){
@@ -70,6 +69,10 @@ export class FirstPurchaseIncomeComponent implements OnInit {
   }
   getSearchData(event){
     console.log(event);
+    this.params.starte_date = '';
+    this.params.end_date = '';
+    this.params.income_type = '';
+    this.params.status = '';
     this.loadData();
   }
 }

@@ -10,6 +10,7 @@ import { AuthServicesService } from 'src/app/core/services/auth-services.service
 export class AuthSigninComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
+  loggedOut = false;
   ipAddress: string;
   constructor(private router : Router,
      private auth: AuthServicesService,
@@ -25,6 +26,10 @@ export class AuthSigninComponent implements OnInit {
     //   this.ipAddress = res.ip;
     //   console.log(this.ipAddress)
     // })
+    if(localStorage.getItem("logout")){
+      this.loggedOut = true;
+      localStorage.clear();
+    }
   }
 
   get f() {

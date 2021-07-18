@@ -32,20 +32,16 @@ export class FirstIncomeDeductionComponent implements OnInit {
       end_date:'',
       page: 1
     }
-    
     this.loadData();
-    this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
-      this.total  = data;
-    });
-    
-    
   }
+
   loadData(){
     this.comission.getFirstPurchaseIncomeItems(this.params,'deduction_first_purchase_income.php').subscribe((data: any) => {
       if(data.result && data.result.length){
         this.items = data.result;
         this.keys = Object.keys(data.result[0]);
         this.columns =  Object.keys(data.result[0]);
+        this.total = data.total_count;
       }
     });
   }
@@ -59,6 +55,12 @@ export class FirstIncomeDeductionComponent implements OnInit {
   }
   hideModals(e){
     this.showModals =  false;
+  }
+  getSearchData(event){
+    console.log(event);
+    this.params.starte_date = '';
+    this.params.end_date = '';
+    this.loadData();
   }
 
 }

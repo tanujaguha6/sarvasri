@@ -39,9 +39,7 @@ export class RePurchaseMonthlyIncomeComponent implements OnInit {
     }
    
     this.loadData();
-    this.comission.getTotalItems('repurchasemonthly').subscribe((data) => {
-      this.total  = data;
-    });
+    
     this.comission.getIncomeType('repurchasemonthly').subscribe((data) => {
       this.incomeTypeItems = data;
     });
@@ -55,6 +53,7 @@ export class RePurchaseMonthlyIncomeComponent implements OnInit {
       this.items = data.result;
       this.keys = Object.keys(data.result[0]);
       this.columns =  Object.keys(data.result[0]);
+      this.total = data.total_count;
     });
   }
   onPageChange(e){
@@ -67,6 +66,14 @@ export class RePurchaseMonthlyIncomeComponent implements OnInit {
   }
   hideModals(e){
     this.showModals =  false;
+  }
+  getSearchData(event){
+    console.log(event);
+    this.params.starte_date = '';
+    this.params.end_date = '';
+    this.params.income_type = '';
+    this.params.status = '';
+    this.loadData();
   }
 
 }

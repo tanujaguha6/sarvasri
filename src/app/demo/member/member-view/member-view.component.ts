@@ -54,4 +54,10 @@ export class MemberViewComponent implements OnInit {
   hideModals(e){
     this.showModals =  false;
   }
+  getSearchData(event){
+    console.log(event);
+    // this.params.starte_date = '';
+    // this.params.end_date = '';
+    // this.loadData();
+  }
 }

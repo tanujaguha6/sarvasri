@@ -6,6 +6,7 @@
           <ngb-pagination [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 
+                  (sendSearchData)="getSearchData($event)"
                   title="Member View" [date]="date" [member]="member" [upliner]="upliner"
                   [introducer]="introducer" [side]="side" [invoiceno]="invoiceno" 
                   [amount]="amount" [productcode]="productcode" [sidesItem]="sides"></app-search-modal>

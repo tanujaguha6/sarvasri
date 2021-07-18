@@ -34,15 +34,13 @@ export class RePurchaseComponent implements OnInit {
     }
     
     this.loadData();
-    this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
-      this.total  = data;
-    });
   }
   loadData(){
     this.comission.getFirstPurchaseIncomeItems(this.params, 'matching_repurchase.php').subscribe((data:any) => {
       this.items = data.result;
       this.keys = Object.keys(data.result[0]);
       this.columns =  Object.keys(data.result[0]);
+      this.total = data.total_count;
     });
   }
   onPageChange(e){
@@ -56,6 +54,11 @@ export class RePurchaseComponent implements OnInit {
   hideModals(e){
     this.showModals =  false;
   }
-
+  getSearchData(event){
+    console.log(event);
+    this.params.starte_date = '';
+    this.params.end_date = '';
+    this.loadData();
+  }
 
 }
