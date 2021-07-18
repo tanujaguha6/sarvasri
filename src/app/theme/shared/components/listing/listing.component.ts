@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ListingComponent implements OnInit {
   @Input() items: any;
   @Input() columns: any;
+  @Input() keys: any;
   constructor() { }
 
   ngOnInit(): void {

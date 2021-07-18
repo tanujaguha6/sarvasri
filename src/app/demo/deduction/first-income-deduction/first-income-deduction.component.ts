@@ -15,28 +15,42 @@ export class FirstIncomeDeductionComponent implements OnInit {
   public total: number;
   public title: string ="First Income Deduction";
   public date: boolean = true;
+  public keys: any;
+  public params: any;
+  userData = JSON.parse(localStorage.getItem('userData'));
+
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }
 
   ngOnInit(): void {
-    this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
-      this.items = data;
-    });
-    this.comission.getColums('firstincomededuction').subscribe((data) => {
-      this.columns = data;
-    });
+    this.params = {
+      username: this.userData.username,
+      login_type: this.userData.login_type,
+      auth_token: this.userData.auth_token,
+      starte_date:'',
+      end_date:'',
+      page: 1
+    }
+    
+    this.loadData();
     this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
       this.total  = data;
     });
     
     
   }
+  loadData(){
+    this.comission.getFirstPurchaseIncomeItems(this.params,'deduction_first_purchase_income.php').subscribe((data: any) => {
+      this.items = data.result;
+      this.keys = Object.keys(data.result[0]);
+      this.columns =  Object.keys(data.result[0]);
+    });
+  }
   onPageChange(e){
     this.defaultPage = e;
-    this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
-      this.items = data;
-    });
+    this.params.page = e
+    this.loadData();
   }
   showModal(){
     this.showModals = true;

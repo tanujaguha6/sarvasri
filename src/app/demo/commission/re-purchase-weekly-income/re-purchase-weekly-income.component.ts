@@ -12,6 +12,7 @@ export class RePurchaseWeeklyIncomeComponent implements OnInit {
   public showModals: boolean;
   public items:any;
   public columns: any;
+  public keys: any;
   public total: number;
   public incomeTypeItems:any;
   public statusItems:any;
@@ -19,17 +20,26 @@ export class RePurchaseWeeklyIncomeComponent implements OnInit {
   public incometype: boolean = true;
   public date: boolean = true;
   public status: boolean = true;
+  public params: any;
+  userData = JSON.parse(localStorage.getItem('userData'));
+
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }
 
   ngOnInit(): void {
-    this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
-      this.items = data;
-    });
-    this.comission.getColums('repurchaseweekly').subscribe((data) => {
-      this.columns = data;
-    });
+    this.params = {
+      username: this.userData.username,
+      login_type: this.userData.login_type,
+      auth_token: this.userData.auth_token,
+      starte_date:'',
+      end_date:'',
+      income_type:'',
+      status:'',
+      page: 1
+    }
+   
+    this.loadData();
     this.comission.getTotalItems('repurchaseweekly').subscribe((data) => {
       this.total  = data;
     });
@@ -41,11 +51,17 @@ export class RePurchaseWeeklyIncomeComponent implements OnInit {
     });
     
   }
+  loadData(){
+    this.comission.getFirstPurchaseIncomeItems(this.params,'income_repurchase_binary.php').subscribe((data:any) => {
+      this.items = data.result;
+      this.keys = Object.keys(data.result[0]);
+      this.columns =  Object.keys(data.result[0]);
+    });
+  }
   onPageChange(e){
     this.defaultPage = e;
-    this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
-      this.items = data;
-    });
+    this.params.page = e;
+    this.loadData();
   }
   showModal(){
     this.showModals = true;

@@ -20,9 +20,9 @@ export class PayoutReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
-      this.items = data;
-    });
+    // this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
+    //   this.items = data;
+    // });
     this.comission.getColums('payoutreport').subscribe((data) => {
       this.columns = data;
     });
@@ -33,9 +33,9 @@ export class PayoutReportComponent implements OnInit {
   }
   onPageChange(e){
     this.defaultPage = e;
-    this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
-      this.items = data;
-    });
+    // this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
+    //   this.items = data;
+    // });
   }
   showModal(){
     this.showModals = true;

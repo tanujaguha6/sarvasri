@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComissionService } from '../../../core/services/comission.service';
-
+import { ActivatedRoute, ParamMap  } from '@angular/router'
 @Component({
   selector: 'app-transaction',
   templateUrl: './transaction.component.html',
@@ -12,29 +12,54 @@ export class TransactionComponent implements OnInit {
   public items:any;
   public columns: any;
   public total: number;
-  
-  constructor(private comission: ComissionService) { 
+  public type: string;
+  public keys: any;
+  public params: any;
+  public api: string;
+  userData = JSON.parse(localStorage.getItem('userData'));
+
+  constructor(private comission: ComissionService, private route: ActivatedRoute) { 
     this.defaultPage = 1;
   }
 
   ngOnInit(): void {
-    this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
-      this.items = data;
-    });
-    this.comission.getColums('firstincomededuction').subscribe((data) => {
-      this.columns = data;
-    });
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.type =params.get('type')
+    })
+    
+    this.params = {
+      username: this.userData.username,
+      login_type: this.userData.login_type,
+      auth_token: this.userData.auth_token,
+      starte_date:'',
+      end_date:'',
+      income_type:'',
+      status:'',
+      page: 1
+    }
+    if( this.type === "retail"){
+      this.api = 'wallet_transaction_retail.php';
+    }else{
+      this.api = 'wallet_transaction_first.php';
+    }
+    this.loadData();
     this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
       this.total  = data;
     });
     
     
   }
+  loadData(){
+    this.comission.getFirstPurchaseIncomeItems(this.params, this.api).subscribe((data:any) => {
+      this.items = data.result;
+      this.keys = Object.keys(data.result[0]);
+      this.columns =  Object.keys(data.result[0]);
+    });
+  }
   onPageChange(e){
     this.defaultPage = e;
-    this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
-      this.items = data;
-    });
+    this.params.page = e;
+    this.loadData();
   }
   
 

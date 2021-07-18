@@ -2,7 +2,7 @@
     <div class="col-xl-12">
       <app-card cardTitle="First Purchase Matching Report" forModal="modal"  blockClass="table-border-style" (openModal)="showModal()">
         <div class="table-responsive">
-          <app-listing [items] = "items" [columns]="columns"></app-listing>
+          <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
           <ngb-pagination [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 

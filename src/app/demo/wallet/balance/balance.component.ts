@@ -18,9 +18,9 @@ export class BalanceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
-      this.items = data;
-    });
+    // this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
+    //   this.items = data;
+    // });
     this.comission.getColums('firstincomededuction').subscribe((data) => {
       this.columns = data;
     });
@@ -32,9 +32,9 @@ export class BalanceComponent implements OnInit {
   }
   onPageChange(e){
     this.defaultPage = e;
-    this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
-      this.items = data;
-    });
+    // this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
+    //   this.items = data;
+    // });
   }
   
 

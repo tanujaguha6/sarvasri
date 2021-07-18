@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/observable/of';
 
 @Injectable({
@@ -7,86 +8,87 @@ import 'rxjs/add/observable/of';
 })
 export class ComissionService {
 
-  constructor() { }
-  getFirstPurchaseIncomeItems(page){
-    let items = [];
-    if(page == 1){
-     items = [{
-      id :1,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :2,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :3,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :4,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :5,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :6,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :7,
-      name: 'Lary',
-      surname: 'The Bird',
-      social: '@twitter'
-    }]
-  }
-  else{
-     items = [{
-      id :1,
-      name: 'Lary2',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :2,
-      name: 'Lary3',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :2,
-      name: 'Lary3',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :2,
-      name: 'Lary3',
-      surname: 'The Bird',
-      social: '@twitter'
-    },
-    {
-      id :2,
-      name: 'Lary3',
-      surname: 'The Bird',
-      social: '@twitter'
-    }]
-  }
-    return Observable.of(items);
+  constructor(private http: HttpClient) { }
+  getFirstPurchaseIncomeItems(params,api){
+   // let items = [];
+  //   if(page == 1){
+  //    items = [{
+  //     id :1,
+  //     name: 'Lary',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :2,
+  //     name: 'Lary',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :3,
+  //     name: 'Lary',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :4,
+  //     name: 'Lary',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :5,
+  //     name: 'Lary',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :6,
+  //     name: 'Lary',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :7,
+  //     name: 'Lary',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   }]
+  // }
+  // else{
+  //    items = [{
+  //     id :1,
+  //     name: 'Lary2',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :2,
+  //     name: 'Lary3',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :2,
+  //     name: 'Lary3',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :2,
+  //     name: 'Lary3',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   },
+  //   {
+  //     id :2,
+  //     name: 'Lary3',
+  //     surname: 'The Bird',
+  //     social: '@twitter'
+  //   }]
+  // }
+    //return Observable.of(items);
+    return this.http.post("https://myshpl.com/api/member/"+api, params)
     
   }
   getColums(type){
