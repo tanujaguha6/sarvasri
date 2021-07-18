@@ -17,6 +17,7 @@ export class ConsistencyIncomeComponent implements OnInit {
   public title: string ="Consistency Income";
   public incometype: boolean = true;
   public date: boolean = true;
+  public perpage: number = 50;
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }

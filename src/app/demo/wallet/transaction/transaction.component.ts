@@ -16,6 +16,7 @@ export class TransactionComponent implements OnInit {
   public keys: any;
   public params: any;
   public api: string;
+  public perpage: number;
   userData = JSON.parse(localStorage.getItem('userData'));
 
   constructor(private comission: ComissionService, private route: ActivatedRoute) { 
@@ -50,6 +51,7 @@ export class TransactionComponent implements OnInit {
       this.keys = Object.keys(data.result[0]);
       this.columns =  Object.keys(data.result[0]);
       this.total = data.total_count;
+      this.perpage = data.per_page;
     });
   }
   onPageChange(e){

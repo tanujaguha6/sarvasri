@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-xl-12">
-      <app-card   cardTitle="Retail Wallet Transaction Statement" blockClass="table-border-style" >
+      <!-- <app-card   cardTitle="Retail Wallet Transaction Statement" blockClass="table-border-style" > -->
         <div class="table-responsive">
-          <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
-          <ngb-pagination [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+          <app-listing  [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
+          <ngb-pagination [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
         </div>
-      </app-card>
+      <!-- </app-card> -->
     </div>
   </div>

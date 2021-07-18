@@ -12,6 +12,7 @@ export class BalanceComponent implements OnInit {
   public items:any;
   public columns: any;
   public total: number;
+  public perpage: number = 50;
   
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;

@@ -17,6 +17,7 @@ export class FirstIncomeDeductionComponent implements OnInit {
   public date: boolean = true;
   public keys: any;
   public params: any;
+  public perpage: number;
   userData = JSON.parse(localStorage.getItem('userData'));
 
   constructor(private comission: ComissionService) { 
@@ -42,6 +43,7 @@ export class FirstIncomeDeductionComponent implements OnInit {
         this.keys = Object.keys(data.result[0]);
         this.columns =  Object.keys(data.result[0]);
         this.total = data.total_count;
+        this.perpage = data.per_page;
       }
     });
   }

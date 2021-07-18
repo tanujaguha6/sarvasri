@@ -3,7 +3,7 @@
       <app-card cardTitle="Re-Purchase Matching Report" forModal="modal"  blockClass="table-border-style" (openModal)="showModal()">
         <div class="table-responsive">
           <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
-          <ngb-pagination [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+          <ngb-pagination  [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 
                   (sendSearchData)="getSearchData($event)"

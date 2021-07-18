@@ -15,6 +15,7 @@ export class PayoutReportComponent implements OnInit {
   public total: number;
   public title: string ="Payout Report";
   public date: boolean = true;
+  public perpage: number = 50;
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }

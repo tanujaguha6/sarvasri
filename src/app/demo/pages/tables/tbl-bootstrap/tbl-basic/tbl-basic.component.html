@@ -39,7 +39,7 @@
           </tr>
           </tbody>
         </table>
-      <ngb-pagination [collectionSize]="items.length" [(page)]="defaultPage" [(pageSize)]="itemsPerPage" aria-label="Default pagination"></ngb-pagination>
+      <ngb-pagination [maxSize]="5" [boundaryLinks]="true" [collectionSize]="items.length" [(page)]="defaultPage" [(pageSize)]="itemsPerPage" aria-label="Default pagination"></ngb-pagination>
 
       </div>
     </app-card>
