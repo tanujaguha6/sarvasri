@@ -58,8 +58,9 @@ export class FirstPurchaseComponent implements OnInit {
   }
   getSearchData(event){
     console.log(event);
-    this.params.starte_date = '';
-    this.params.end_date = '';
+    this.params.starte_date = event.date.split('/')[0];
+    this.params.end_date = event.date.split('/')[1];
+    
     this.loadData();
   }
 

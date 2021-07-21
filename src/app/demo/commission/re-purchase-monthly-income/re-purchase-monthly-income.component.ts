@@ -70,11 +70,10 @@ export class RePurchaseMonthlyIncomeComponent implements OnInit {
     this.showModals =  false;
   }
   getSearchData(event){
-    console.log(event);
-    this.params.starte_date = '';
-    this.params.end_date = '';
-    this.params.income_type = '';
-    this.params.status = '';
+    this.params.starte_date = event.date.split('/')[0];
+    this.params.end_date = event.date.split('/')[1];
+    this.params.income_type = event.income_type;
+    this.params.status = event.status;
     this.loadData();
   }
 

@@ -2,7 +2,8 @@ import { Component, Input, OnInit, Output, ViewChild, EventEmitter, AfterViewIni
 import { UiModalComponent } from '../../theme/shared/components/modal/ui-modal/ui-modal.component';
 import {ChangeDetectorRef } from '@angular/core';
 import {NgModel} from "@angular/forms";
-
+import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormBuilder } from '@angular/forms'
 import {Subscription} from 'rxjs';
 import {
   NgbDatepicker, 
@@ -59,14 +60,31 @@ export class SearchModalComponent implements OnInit  {
     @ViewChild("d") input: NgbInputDatepicker;
     @ViewChild(NgModel) datePick: NgModel;
     @ViewChild('myRangeInput') myRangeInput: ElementRef;
-
+    searchForm;
     isHovered = date => 
     this.fromDate && !this.toDate && this.hoveredDate && after(date, this.fromDate) && before(date, this.hoveredDate)
     isInside = date => after(date, this.fromDate) && before(date, this.toDate);
     isFrom = date => equals(date, this.fromDate);
     isTo = date => equals(date, this.toDate);
 
-  constructor(private cdref: ChangeDetectorRef,element: ElementRef, private renderer: Renderer2, private _parserFormatter: NgbDateParserFormatter) { 
+  constructor(private cdref: ChangeDetectorRef,
+              element: ElementRef, 
+              private renderer: Renderer2, 
+              private _parserFormatter: NgbDateParserFormatter,
+              private formBuilder: FormBuilder) { 
+
+                this.searchForm = this.formBuilder.group({
+                  income_type: [''],
+                  date: [''],
+                  status: [''],
+                  mem_code: [''],
+                  upliner_code: [''],
+                  upliner_side: [''],
+                  intro_code: [''],
+                  invoice_no: [''],
+                  amount: [''],
+                  pdt_code: [''],
+                });
     
   }
 
@@ -96,7 +114,7 @@ export class SearchModalComponent implements OnInit  {
       parsed += this._parserFormatter.format(this.fromDate);
     }
     if(this.toDate) {
-      parsed += ' - ' + this._parserFormatter.format(this.toDate);
+      parsed += ' / ' + this._parserFormatter.format(this.toDate);
     }
    
     this.renderer.setProperty(this.myRangeInput.nativeElement, 'value', parsed);
@@ -105,7 +123,8 @@ closeModals(){
     this.closeModal.emit('false');
   }
   search(){
-    this.sendSearchData.emit("here send the form builder value");
+    this.searchForm.controls['date'].setValue(this.myRangeInput.nativeElement.value);
+    this.sendSearchData.emit(this.searchForm.value);
     this.closeModals();
   }
   
