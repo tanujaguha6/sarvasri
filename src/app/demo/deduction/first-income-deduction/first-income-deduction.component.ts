@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ComissionService } from '../../../core/services/comission.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComissionService } from '../../../core/services/comission.service';
   templateUrl: './first-income-deduction.component.html',
   styleUrls: ['./first-income-deduction.component.scss']
 })
-export class FirstIncomeDeductionComponent implements OnInit {
+export class FirstIncomeDeductionComponent implements OnInit,OnDestroy {
 
   public defaultPage: number;
   public showModals: boolean;
@@ -64,5 +64,7 @@ export class FirstIncomeDeductionComponent implements OnInit {
     this.params.end_date = event.date.split('/')[1];
     this.loadData();
   }
-
+  ngOnDestroy(){
+    localStorage.removeItem('searchFilter')
+  }
 }

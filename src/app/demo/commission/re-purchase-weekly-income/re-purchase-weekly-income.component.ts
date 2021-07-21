@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ComissionService } from '../../../core/services/comission.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComissionService } from '../../../core/services/comission.service';
   templateUrl: './re-purchase-weekly-income.component.html',
   styleUrls: ['./re-purchase-weekly-income.component.scss']
 })
-export class RePurchaseWeeklyIncomeComponent implements OnInit {
+export class RePurchaseWeeklyIncomeComponent implements OnInit, OnDestroy {
 
   public defaultPage: number;
   public showModals: boolean;
@@ -77,5 +77,8 @@ export class RePurchaseWeeklyIncomeComponent implements OnInit {
     this.params.income_type = event.income_type;
     this.params.status = event.status;
     this.loadData();
+  }
+  ngOnDestroy(){
+    localStorage.removeItem('searchFilter')
   }
 }

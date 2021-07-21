@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ComissionService } from '../../../core/services/comission.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComissionService } from '../../../core/services/comission.service';
   templateUrl: './member-view.component.html',
   styleUrls: ['./member-view.component.scss']
 })
-export class MemberViewComponent implements OnInit {
+export class MemberViewComponent implements OnInit, OnDestroy {
 
   public defaultPage: number;
   public showModals: boolean;
@@ -59,5 +59,8 @@ export class MemberViewComponent implements OnInit {
     // this.params.starte_date = '';
     // this.params.end_date = '';
     // this.loadData();
+  }
+  ngOnDestroy(){
+    localStorage.removeItem('searchFilter')
   }
 }

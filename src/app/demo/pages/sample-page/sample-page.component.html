@@ -47,18 +47,18 @@
               <div class="active tab-pane">
                   <form class="form-horizontal" [formGroup]="userProfileFrm">
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">Name
+                          <label for="inputName" class="col-lg-3 control-label">Name
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <input type="text" formControlName="name_" name="member_name" class="form-control"
                                   placeholder="Enter Member Name" required="" readonly="readonly">
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="gender" class="col-sm-3 control-label">Gender
+                          <label for="gender" class="col-lg-3 control-label">Gender
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <div style="display: flex;align-items: center;">
                               <div style="margin-right: 10px;">
                                   <input id="male" type="radio" value="M" name="gender" [(ngModel)]="userData.gender" formControlName="gender">
@@ -73,25 +73,25 @@
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">Mobile
+                          <label for="inputName" class="col-lg-3 control-label">Mobile
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <input type="text" formControlName="mobileNo_" name="mobile" class="form-control"
                                   placeholder="Enter Mobile No" required="">
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">E-Mail</label>
+                          <label for="inputName" class="col-lg-3 control-label">E-Mail</label>
   
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <input type="email" formControlName="email_" name="email" class="form-control"
                                   placeholder="Enter E-Mail ID">
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <div class="col-sm-offset-5 col-sm-7">
+                          <div class="col-sm-offset-5 col-lg-7">
                               <button type="submit" class="btn btn-success"
                                   (click)="submit(userProfileFrm.value)">Submit</button>
                           </div>
@@ -105,9 +105,9 @@
               <div class="active tab-pane">
                   <form class="form-horizontal" [formGroup]="userAddressFrm">
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">State
+                          <label for="inputName" class="col-lg-3 control-label">State
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                             <select class="form-control" formControlName="state_" (change)="selectState($event)">
                             <option value="">Please choose State</option>
                              <option [value]="state?.state_id" *ngFor="let state of states">{{state?.state_name}}</option>
@@ -116,9 +116,9 @@
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">District
+                          <label for="inputName" class="col-lg-3 control-label">District
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                             <select class="form-control" formControlName="district_">
                             <option value=""></option>
                              <option [value]="dist?.dist_id" *ngFor="let dist of district">{{dist?.dist_name}}</option>
@@ -127,25 +127,25 @@
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">Pin Code
+                          <label for="inputName" class="col-lg-3 control-label">Pin Code
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <input type="number" formControlName="pinCode_" name="Pin Code" class="form-control"
                                   placeholder="Enter Pin Code" required="">
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">Address</label>
+                          <label for="inputName" class="col-lg-3 control-label">Address</label>
   
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <textarea type="text" formControlName="address_" name="Address" class="form-control"
                                   placeholder="Enter Address"></textarea>
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <div class="col-sm-offset-5 col-sm-7">
+                          <div class="col-sm-offset-5 col-lg-7">
                               <button type="submit" class="btn btn-success"
                                  (click)="submit(userAddressFrm.value)">Submit</button>
                           </div>
@@ -159,43 +159,43 @@
               <div class="active tab-pane">
                   <form class="form-horizontal" [formGroup]="userNomineeFrm">
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">Nominee Name
+                          <label for="inputName" class="col-lg-3 control-label">Nominee Name
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <input type="text" formControlName="nomineeName_" name="Nominee Name" class="form-control"
                                   placeholder="Enter Nominee Name" required="">
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">Nominee Relation
+                          <label for="inputName" class="col-lg-3 control-label">Nominee Relation
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <input type="text" formControlName="nomineeRelation_" name="Nominee Relation" class="form-control"
                                   placeholder="Enter Nominee Relation" required="">
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">Nominee Mobile
+                          <label for="inputName" class="col-lg-3 control-label">Nominee Mobile
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <input type="text" formControlName="nomineeMobile_" name="Nominee Mobile" class="form-control"
                                   placeholder="Enter Nominee Mobile No" required="">
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-sm-3 control-label">Nominee Address
+                          <label for="inputName" class="col-lg-3 control-label">Nominee Address
                               <span class="red">*</span></label>
-                          <div class="col-sm-9">
+                          <div class="col-lg-9">
                               <textarea type="text" formControlName="nomineeAddress_" name="Nominee Address" class="form-control"
                                   placeholder="Enter Nominee Address" required=""></textarea>
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <div class="col-sm-offset-5 col-sm-7">
+                          <div class="col-sm-offset-5 col-lg-7">
                               <button type="submit" class="btn btn-success"
                                   >Submit</button>
                           </div>
@@ -210,64 +210,64 @@
                   <div class="tab-pane">
                       <form [formGroup]="userBankDetailsFrm" class="form-horizontal">
                           <div class="row align-items-center form-group">
-                              <label for="pan_no" class="col-sm-4 control-label">Pan No
+                              <label for="pan_no" class="col-lg-4 control-label">Pan No
                                   <span class="red">*</span></label>
-                              <div class="col-sm-8">
+                              <div class="col-lg-8">
                                   <input type="text" name="pan_no" class="form-control" id="pan_no" placeholder="Enter PAN No"
                                       formControlName="panNo_" required="">
                               </div>
                           </div>
       
                           <div class="row align-items-center form-group">
-                              <label for="acc_name" class="col-sm-4 control-label">Account Name
+                              <label for="acc_name" class="col-lg-4 control-label">Account Name
                                   <span class="red">*</span></label>
-                              <div class="col-sm-8">
+                              <div class="col-lg-8">
                                   <input type="text" name="acc_name" class="form-control" id="acc_name"
                                       placeholder="Enter Account Holder Name" formControlName="acctName_" required="">
                               </div>
                           </div>
       
                           <div class="row align-items-center form-group">
-                              <label for="account_no" class="col-sm-4 control-label">Account No
+                              <label for="account_no" class="col-lg-4 control-label">Account No
                                   <span class="red">*</span></label>
       
-                              <div class="col-sm-8">
+                              <div class="col-lg-8">
                                   <input type="text" name="account_no" class="form-control" id="account_no"
                                       placeholder="Enter Account No" formControlName="acctNo_" required="">
                               </div>
                           </div>
       
                           <div class="row align-items-center form-group">
-                              <label for="ifsc_code" class="col-sm-4 control-label">IFSC Code
+                              <label for="ifsc_code" class="col-lg-4 control-label">IFSC Code
                                   <span class="red">*</span></label>
       
-                              <div class="col-sm-8">
+                              <div class="col-lg-8">
                                   <input type="text" name="ifsc_code" class="form-control" id="bank_ifsc"
                                       placeholder="Enter IFSC Code" (keyup)="ifscCode()" formControlName="ifscCode_" required="">
                               </div>
                           </div>
       
                           <div class="row align-items-center form-group">
-                              <label for="bank_name" class="col-sm-4 control-label">Bank Name
+                              <label for="bank_name" class="col-lg-4 control-label">Bank Name
                                   <span class="red">*</span></label>
       
-                              <div class="col-sm-8">
+                              <div class="col-lg-8">
                                   <input type="text" name="bank_name" [(ngModel)]="bankName" class="form-control" id="bank_name"
                                       placeholder="Enter Bank Name" formControlName="bankName_" required="">
                               </div>
                           </div>
       
                           <div class="row align-items-center form-group">
-                              <label for="branch_name" class="col-sm-4 control-label">Branch Name
+                              <label for="branch_name" class="col-lg-4 control-label">Branch Name
                                   <span class="red">*</span></label>
       
-                              <div class="col-sm-8">
+                              <div class="col-lg-8">
                                   <input type="text" name="branch_name" [(ngModel)]="branchName" class="form-control" id="bank_branch"
                                       placeholder="Enter Branch Name" formControlName="branchName_" required="">
                               </div>
                           </div>
                           <div class="row align-items-center form-group">
-                              <div class="col-sm-offset-5 col-sm-7">
+                              <div class="col-sm-offset-5 col-lg-7">
                                   <button type="submit" class="btn btn-success">Submit</button>
                               </div>
                           </div>

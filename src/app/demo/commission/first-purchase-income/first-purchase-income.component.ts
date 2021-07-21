@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ComissionService } from '../../../core/services/comission.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComissionService } from '../../../core/services/comission.service';
   templateUrl: './first-purchase-income.component.html',
   styleUrls: ['./first-purchase-income.component.scss']
 })
-export class FirstPurchaseIncomeComponent implements OnInit {
+export class FirstPurchaseIncomeComponent implements OnInit, OnDestroy {
   public defaultPage: number;
   public showModals: boolean;
   public items:any;
@@ -75,5 +75,8 @@ export class FirstPurchaseIncomeComponent implements OnInit {
     this.params.income_type = event.income_type;
     this.params.status = event.status;
     this.loadData();
+  }
+  ngOnDestroy(){
+    localStorage.removeItem('searchFilter')
   }
 }

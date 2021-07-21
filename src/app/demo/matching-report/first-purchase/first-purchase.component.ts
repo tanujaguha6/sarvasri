@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ComissionService } from '../../../core/services/comission.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComissionService } from '../../../core/services/comission.service';
   templateUrl: './first-purchase.component.html',
   styleUrls: ['./first-purchase.component.scss']
 })
-export class FirstPurchaseComponent implements OnInit {
+export class FirstPurchaseComponent implements OnInit, OnDestroy {
 
   public defaultPage: number;
   public showModals: boolean;
@@ -62,6 +62,9 @@ export class FirstPurchaseComponent implements OnInit {
     this.params.end_date = event.date.split('/')[1];
     
     this.loadData();
+  }
+  ngOnDestroy(){
+    localStorage.removeItem('searchFilter')
   }
 
 }

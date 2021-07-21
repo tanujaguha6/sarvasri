@@ -8,9 +8,9 @@
       <div class="modal-body">
             <div class="box-body" [formGroup]="searchForm">
               <div class="form-group row" *ngIf="incometype">
-                <label for="income_type" class="col-sm-3 control-label">Income Type</label>
-                <div class="col-sm-5">
-                  <select name="income_type" formControlName="income_type" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
+                <label for="income_type" class="col-lg-4 control-label">Income Type</label>
+                <div class="col-lg-8">
+                  <select name="income_type"  formControlName="income_type" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
                       <option value="" selected="">ALL</option>
                       <option *ngFor="let incomeTypeItem of incomeTypeItems" [value]="incomeTypeItem.value">
                       {{incomeTypeItem.name}}</option>
@@ -20,8 +20,8 @@
              </div>
                 
               <div class="form-group row" *ngIf="date">
-                    <label for="date_range" class="col-sm-3 control-label">Date</label>
-                    <div class="col-sm-8">
+                    <label for="date_range" class="col-lg-4 control-label">Date</label>
+                    <div class="col-lg-8">
                         <div class="input-group">
                             <input
                                #myRangeInput
@@ -63,31 +63,31 @@
                 
                 
                 <div class="form-group row" *ngIf="status">
-                    <label for="date_range" class="col-sm-3 control-label">Status</label>
-                    <div class="col-sm-5">
-                        <select name="status" formControlName="status" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
+                    <label for="date_range" class="col-lg-4 control-label">Status</label>
+                    <div class="col-lg-8">
+                        <select name="status"  formControlName="status" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
                             <option *ngFor="let statusItem of statusItems" [value]="statusItem.value">
                                 {{statusItem.name}}</option>
                         </select>
                       </div>
                 </div>
                 <div class="form-group row" *ngIf="member">
-                    <label for="mem_code" class="col-sm-3 control-label">Member</label>
-                    <div class="col-sm-5">
+                    <label for="mem_code" class="col-lg-4 control-label">Member</label>
+                    <div class="col-lg-8">
                         <input type="text" formControlName="mem_code" name="mem_code" class="form-control" id="introducer" placeholder="Enter Member Code" maxlength="10" onkeyup="this.value=this.value.toUpperCase();" value="">
                     </div>
                 </div>
                 
                 <div class="form-group row" *ngIf="upliner">
-                    <label for="upliner_code" class="col-sm-3 control-label">Upliner</label>
-                    <div class="col-sm-5">
+                    <label for="upliner_code" class="col-lg-4 control-label">Upliner</label>
+                    <div class="col-lg-8">
                         <input type="text" formControlName="upliner_code" name="upliner_code" class="form-control" id="upliner_code" placeholder="Enter Upliner Code" maxlength="10" onkeyup="this.value=this.value.toUpperCase();" value="">
                     </div>
                 </div>
                 <div class="form-group row" *ngIf="side">
                     
-                    <div class="col-sm-3"><strong>Side</strong></div>
-                    <div class="col-sm-5">
+                    <div class="col-lg-4"><strong>Side</strong></div>
+                    <div class="col-lg-8">
                         <select name="upliner_side" formControlName="upliner_side" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
                             <option *ngFor="let sideItem of sidesItem" [value]="sideItem.value">
                             {{sideItem.name}}</option>
@@ -97,26 +97,26 @@
                 </div>
                 
                 <div class="form-group row" *ngIf="introducer">
-                    <label for="intro_code" class="col-sm-3 control-label">Introducer</label>
-                    <div class="col-sm-5">
-                        <input type="text" formControlName="intro_code" name="intro_code" class="form-control" id="intro_code" placeholder="Enter Introducer Code" maxlength="10" onkeyup="this.value=this.value.toUpperCase();" value="">
+                    <label for="intro_code" class="col-lg-4 control-label">Introducer</label>
+                    <div class="col-lg-8">
+                        <input type="text" name="intro_code" formControlName="intro_code" class="form-control" id="intro_code" placeholder="Enter Introducer Code" maxlength="10" onkeyup="this.value=this.value.toUpperCase();" value="">
                     </div>
                 </div>
                 <div class="form-group row" *ngIf="invoiceno">
-                    <label for="invoice_no" class="col-sm-3 control-label">Invoice No</label>
-                    <div class="col-sm-5">
-                        <input type="text" formControlName="invoice_no" name="invoice_no" class="form-control" id="invoice_no" placeholder="Enter Invoice No" value="">
+                    <label for="invoice_no" class="col-lg-4 control-label">Invoice No</label>
+                    <div class="col-lg-8">
+                        <input type="text" name="invoice_no" formControlName="invoice_no" class="form-control" id="invoice_no" placeholder="Enter Invoice No" value="">
                     </div>
                 </div>
                     <div class="form-group row" *ngIf="amount">
-                    <div class="col-sm-3"><strong>Amount</strong></div>
-                    <div class="col-sm-5">
-                        <input type="text" formControlName="amount" name="amount" class="form-control" id="amount" placeholder="Minimum Amount" value="">
+                    <div class="col-lg-4"><strong>Amount</strong></div>
+                    <div class="col-lg-8">
+                        <input type="text" name="amount" formControlName="amount" class="form-control" id="amount" placeholder="Minimum Amount" value="">
                     </div>
                 </div>
                 <div class="form-group row"  *ngIf="productcode">
-                    <label for="inputEmail3" class="col-sm-3 control-label">Product Code</label>
-                    <div class="col-sm-5">
+                    <label for="inputEmail3" class="col-lg-4 control-label">Product Code</label>
+                    <div class="col-lg-8">
                         <select name="pdt_code" formControlName="pdt_code" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
                                                             <option value="" selected="">ALL</option>
                                                                 <option value="SHPL-115">

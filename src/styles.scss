@@ -261,6 +261,21 @@ left:0
 
 .mob-box {display:none;}
 
+.drp-user .pro-body {background: #3e5871; color:#fff;}
+.drp-user .pro-body li a {color:#fff !important;}
+.pagination {float: right;}
+.pagination .page-link, .page-item.disabled .page-link {background-color: #2d3e50;}
+
+.modal-content {    background: #1e2a36;}
+.modal-content h5.modal-title {color: #1abc9c;}
+.modal-header {border-bottom: 1px solid #3d4c56;}
+.modal-footer {border-top: 1px solid #3d4c56; padding:15px 10px;}
+.modal-content .form-group label {color:#fff;}
+.modal-content .btn.btn-default {background:#666; color:#fff; margin-right:10px;}
+.table td, .table th {font-size:12px; line-height:6px;     color: #b5b5b5;}
+.table.table-dark thead th {background-color: #2d3e50;}
+
+
 @media screen and (min-width:768px) and (max-width:1024px){
 .latest-update-card .timeline-slider .latest-update-box .update-meta {
   min-width:100%;  position:relative; text-align:center !important; margin-top:10px;}

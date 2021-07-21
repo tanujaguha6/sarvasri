@@ -32,6 +32,7 @@ import {
 export class SearchModalComponent implements OnInit  {
   @ViewChild(UiModalComponent) uimoadal : UiModalComponent;
   @Input() incometype: any;
+  @Input() selected_incometype: any;
   @Input() date: any;
   @Input() status: any;
   @Input() title: any;
@@ -72,18 +73,19 @@ export class SearchModalComponent implements OnInit  {
               private renderer: Renderer2, 
               private _parserFormatter: NgbDateParserFormatter,
               private formBuilder: FormBuilder) { 
-
+                let srchForm = JSON.parse(localStorage.getItem('searchFilter'));
+               
                 this.searchForm = this.formBuilder.group({
-                  income_type: [''],
-                  date: [''],
-                  status: [''],
-                  mem_code: [''],
-                  upliner_code: [''],
-                  upliner_side: [''],
-                  intro_code: [''],
-                  invoice_no: [''],
-                  amount: [''],
-                  pdt_code: [''],
+                  income_type: [srchForm.income_type],
+                  date: [srchForm.date],
+                  status: [srchForm.status],
+                  mem_code: [srchForm.mem_code],
+                  upliner_code: [srchForm.upliner_code],
+                  upliner_side: [srchForm.upliner_side],
+                  intro_code: [srchForm.intro_code],
+                  invoice_no: [srchForm.invoice_no],
+                  amount: [srchForm.amount],
+                  pdt_code: [srchForm.pdt_code],
                 });
     
   }
@@ -124,6 +126,7 @@ closeModals(){
   }
   search(){
     this.searchForm.controls['date'].setValue(this.myRangeInput.nativeElement.value);
+    localStorage.setItem('searchFilter',JSON.stringify(this.searchForm.value))
     this.sendSearchData.emit(this.searchForm.value);
     this.closeModals();
   }
