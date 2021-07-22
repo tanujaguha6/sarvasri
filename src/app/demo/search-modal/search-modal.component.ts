@@ -76,16 +76,16 @@ export class SearchModalComponent implements OnInit  {
                 let srchForm = JSON.parse(localStorage.getItem('searchFilter'));
                
                 this.searchForm = this.formBuilder.group({
-                  income_type: [srchForm.income_type],
-                  date: [srchForm.date],
-                  status: [srchForm.status],
-                  mem_code: [srchForm.mem_code],
-                  upliner_code: [srchForm.upliner_code],
-                  upliner_side: [srchForm.upliner_side],
-                  intro_code: [srchForm.intro_code],
-                  invoice_no: [srchForm.invoice_no],
-                  amount: [srchForm.amount],
-                  pdt_code: [srchForm.pdt_code],
+                  income_type: [srchForm?srchForm.income_type:''],
+                  date: [srchForm?srchForm.date:''],
+                  status: [srchForm?srchForm.status:''],
+                  mem_code: [srchForm?srchForm.mem_code:''],
+                  upliner_code: [srchForm?srchForm.upliner_code:''],
+                  upliner_side: [srchForm?srchForm.upliner_side:''],
+                  intro_code: [srchForm?srchForm.intro_code:''],
+                  invoice_no: [srchForm?srchForm.invoice_no:''],
+                  amount: [srchForm?srchForm.amount:''],
+                  pdt_code: [srchForm?srchForm.pdt_code:''],
                 });
     
   }
