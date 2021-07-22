@@ -86,7 +86,7 @@
                 </div>
                 <div class="form-group row" *ngIf="side">
                     
-                    <div class="col-lg-4"><strong>Side</strong></div>
+                    <label class="col-lg-4 control-label">Side</label>
                     <div class="col-lg-8">
                         <select name="upliner_side" formControlName="upliner_side" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
                             <option *ngFor="let sideItem of sidesItem" [value]="sideItem.value">
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                     <div class="form-group row" *ngIf="amount">
-                    <div class="col-lg-4"><strong>Amount</strong></div>
+                    <label class="col-lg-4 control-label">Amount</label>
                     <div class="col-lg-8">
                         <input type="text" name="amount" formControlName="amount" class="form-control" id="amount" placeholder="Minimum Amount" value="">
                     </div>

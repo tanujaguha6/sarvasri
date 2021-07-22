@@ -23,6 +23,8 @@ export class BinaryTreeComponent implements OnInit {
     this.id = id;
     this.auth.getData(this.id).subscribe((modal) => {
       this.modalData = modal['result'][0];
+      console.log(this.modalData);
+      
     });
     this.uimoadal.show();
   }
@@ -38,7 +40,8 @@ export class BinaryTreeComponent implements OnInit {
     this.auth.binaryTree(user).subscribe((res) => {
       this.binarytree = res['result'];
       this.binarytree.map(each=>{
-        this.treeData[each.position-1] = [each.name,each.mem_code];
+        this.treeData[each.position-1] = [each.name,each.mem_code,each.profile_image];
+        console.log(this.treeData)
       })
     });
   }

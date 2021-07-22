@@ -266,26 +266,37 @@ left:0
 .pagination {float: right;}
 .pagination .page-link, .page-item.disabled .page-link {background-color: #2d3e50;}
 
-.modal-content {    background: #1e2a36;}
+.modal-content {   /* background: #1e2a36;*/ background: #3e5871;}
 .modal-content h5.modal-title {color: #1abc9c;}
-.modal-header {border-bottom: 1px solid #3d4c56;}
-.modal-footer {border-top: 1px solid #3d4c56; padding:15px 10px;}
+.modal-header {border-bottom: 1px solid #487390;}
+.modal-footer {border-top: 1px solid #487390; padding:15px 10px;}
 .modal-content .form-group label {color:#fff;}
 .modal-content .btn.btn-default {background:#666; color:#fff; margin-right:10px;}
 .table td, .table th {font-size:12px; line-height:6px;     color: #b5b5b5;}
 .table.table-dark thead th {background-color: #2d3e50;}
+.modal-content .btn-outline-secondary {color: #b6c7d6; border-color: #b6c7d6;}
 
+.modal-content .close {color: #fff; text-shadow:none; opacity: 1;}
 
+@media screen and (max-width:1199px){ 
+.modal-body {padding:20px 5px;}
+.ngb-dp-months {width: 100%; overflow-y: scroll;}
+ngb-datepicker.dropdown-menu {width:100% !important;}
+.card-tab .form-group label {font-size:12px;}
+
+}
 @media screen and (min-width:768px) and (max-width:1024px){
 .latest-update-card .timeline-slider .latest-update-box .update-meta {
   min-width:100%;  position:relative; text-align:center !important; margin-top:10px;}
   .latest-update-box .wid-95 {width:100% !important;}
   .latest-update-card .timeline-slider .latest-update-box .income-month {margin:auto;}
-  
-
-
-
+ 
 }
+
+
+
+
+
 @media screen and (max-width:991px){ 
   .pcoded-content {padding:15px 10px;}
   .apexcharts-legend {position: relative !important;     top: 0 !important;}
@@ -299,8 +310,13 @@ left:0
   .mob-box  .top-user .fa {color:#fff;}
   .mob-box ul li {padding-right:0 !important;}
   .mob-box .top-user .img-radius {width:35px; height:35px; margin-right:0;}
-  .logo-lg {font-size:18px  !important;}
+  .logo-lg {font-size:16px  !important;}
   .b-brand.logo {    margin-left: auto !important;}
+  .page-header:not(.breadcumb-sticky) .page-header-title + .breadcrumb > .breadcrumb-item a {
+    font-size: 11px;}
+   .page-header-title h5 {font-size:14px;} 
+   .table td, .table th {font-size: 11px;}
+   .table thead th {font-size:11px; font-weight:400; letter-spacing:0.4px;}
 }
 @media screen and (max-width:767px){
 .col-md-8 .chart-graph .card-body, .card-body.ng-star-inserted {padding:10px 0  0 0;}
@@ -324,6 +340,15 @@ left:0
     .timeline-slider .slick-prev {top:-19px;}
     .profile-card-2 .card-img-block img {height:150px; object-fit:cover; width:100%;}
 
+}
+
+@media screen and (max-width:575px){
+.pcoded-header .dropdown .dropdown-menu {
+  min-width:169px;
+  width:39%;
+  left: inherit;
+  right:6px;
+  }
 }
 @media screen and (max-width: 425px){
   

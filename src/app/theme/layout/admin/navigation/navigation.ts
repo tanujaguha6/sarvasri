@@ -44,49 +44,19 @@ const NavigationItems = [{
           icon: 'fa fa-money',
           children: [
             {
-              id: 'retail_wallet',
-              title: 'Retail Wallet',
-              type: 'collapse',
-              icon: 'fa fa-circle-o',
-              children: [
-                  {
-                    id: 'balance',
-                    title: 'Balance',
-                    type: 'item',
-                    url: '/wallet/balance/retail',
-                    icon: 'fa fa-circle-o'
-                  },
-                  {
-                    id: 'transaction',
-                    title: 'Transacton',
-                    type: 'item',
-                    url: '/wallet/transaction/retail',
-                    icon: 'fa fa-circle-o'
-                  }
-                ]
+              id: 'Retail transaction',
+              title: 'Retail Transacton',
+              type: 'item',
+              url: '/wallet/transaction/retail',
+              icon: 'fa fa-circle-o'
             },
-            {
-              id: 'first_wallet',
-              title: 'First Wallet',
-              type: 'collapse',
-              icon: 'fa fa-circle-o',
-              children: [
                   {
-                    id: 'balance',
-                    title: 'Balance',
-                    type: 'item',
-                    url: '/wallet/balance/first_wallet',
-                    icon: 'fa fa-circle-o'
-                  },
-                  {
-                    id: 'transaction',
-                    title: 'Transacton',
+                    id: 'First transaction',
+                    title: 'First Transacton',
                     type: 'item',
                     url: '/wallet/transaction/first_wallet',
                     icon: 'fa fa-circle-o'
                   }
-                ]
-            }
           ]
         },
         {
