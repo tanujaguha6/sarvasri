@@ -27,6 +27,8 @@
               <a href="javascript:void(0);"><i class="fa fa-facebook bg-facebook text-white"></i></a>
               <a href="javascript:void(0);"><i class="fa fa-twitter bg-twitter text-white"></i></a>
               <a href="javascript:void(0);"><i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+              <button type="button" class="btn btn-primary" (click)="showIdCard(idcard)">Card</button>
+              <button type="button" class="btn btn-primary" (click)="welcomeLetter(letter)">Letter</button>
             </div>
           </div>
           <!-- <div class="card-body border-top border-light">
@@ -278,4 +280,16 @@
         </ngb-tabset>
       </app-card>
     </div>
+
+    <ng-template #idcard let-modal>
+        <div class="modal-header" style="margin:0px auto">
+          <h5 class="modal-title" id="modal-basic-title">ID CARD</h5>
+        </div>
+      </ng-template>
+
+      <ng-template #letter let-modal>
+        <div class="modal-header" style="margin:0px auto">
+          <h5 class="modal-title" id="modal-basic-title">WELCOME LETTER</h5>
+        </div>
+      </ng-template>
   

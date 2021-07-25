@@ -20,6 +20,7 @@ export class BinaryTreeComponent implements OnInit {
     this.binaryTreeGraph();
   }
   fetchdata(id: string){
+    debugger
     this.id = id;
     this.auth.getData(this.id).subscribe((modal) => {
       this.modalData = modal['result'][0];

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthServicesService } from 'src/app/core/services/auth-services.service';
+let closeResult = '';
 @Component({
   selector: 'app-sample-page',
   templateUrl: './sample-page.component.html',
@@ -9,16 +11,18 @@ import { AuthServicesService } from 'src/app/core/services/auth-services.service
 export class SamplePageComponent implements OnInit {
   userProfileFrm: FormGroup;
   userBankDetailsFrm: FormGroup;
-  userAddressFrm:FormGroup;
-  userNomineeFrm:FormGroup;
+  userAddressFrm: FormGroup;
+  userNomineeFrm: FormGroup;
   memberData: any;
-  states:any;
-  stateId:any;
-  district:any;
-  branchName:any;
-  bankName:any;
-  userData:any;
-  constructor(private fb: FormBuilder,private auth: AuthServicesService) { 
+  states: any;
+  stateId: any;
+  district: any;
+  branchName: any;
+  bankName: any;
+  userData: any;
+  showModals: boolean;
+  constructor(private fb: FormBuilder, private modalService: NgbModal,
+    private auth: AuthServicesService) {
     this.userProfileFrm = this.fb.group({
       name_: [null, Validators.compose([Validators.required])],
       mobileNo_: ['', Validators.compose([Validators.required])],
@@ -34,7 +38,7 @@ export class SamplePageComponent implements OnInit {
       bankName_: [null, Validators.compose([Validators.required])],
       branchName_: [null, Validators.compose([Validators.required])],
     });
-     this.userAddressFrm = this.fb.group({
+    this.userAddressFrm = this.fb.group({
       state_: [null, Validators.compose([Validators.required])],
       district_: ['', Validators.compose([Validators.required])],
       pinCode_: [null, Validators.compose([Validators.required])],
@@ -99,46 +103,46 @@ export class SamplePageComponent implements OnInit {
       this.loadUserNomineeData();
       this.loadUserBankData();
       this.stateName();
-      
+
     });
   }
 
-  stateName(){
+  stateName() {
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token
     };
-    this.auth.stateApi(user).subscribe((res)=>{
+    this.auth.stateApi(user).subscribe((res) => {
       this.states = res['result'];
     })
   }
 
-  selectState(event){
+  selectState(event) {
     this.stateId = event.target.value;
     this.districtName();
   }
 
-  districtName(){
+  districtName() {
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      state_id :this.stateId,
+      state_id: this.stateId,
     };
-    this.auth.districtApi(user).subscribe((res)=>{
+    this.auth.districtApi(user).subscribe((res) => {
       this.district = res['result'];
     })
   }
 
-  ifscCode(){
+  ifscCode() {
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      ifsc_code:this.userBankDetailsFrm.value.ifscCode_,
+      ifsc_code: this.userBankDetailsFrm.value.ifscCode_,
     };
-    this.auth.bankIfscCodeApi(user).subscribe((res)=>{
+    this.auth.bankIfscCodeApi(user).subscribe((res) => {
       this.bankName = res['result'].bank_name;
       this.branchName = res['result'].branch_name;
     })
@@ -152,6 +156,24 @@ export class SamplePageComponent implements OnInit {
       emailId: Obj.email_,
       mobileNo: Obj.mobileNo_,
     };
+  }
+
+  showIdCard(idcard) {
+    this.modalService.open(idcard, { ariaLabelledBy: 'modal-basic-title', centered: true }).result.then((result) => {
+      closeResult = `Closed with: ${result}`;
+      console.log(result);
+    }, (reason) => {
+      return reason;
+    });
+  }
+
+  welcomeLetter(letter){
+    this.modalService.open(letter, { ariaLabelledBy: 'modal-basic-title', centered: true }).result.then((result) => {
+      closeResult = `Closed with: ${result}`;
+      console.log(result);
+    }, (reason) => {
+      return reason;
+    });
   }
 
 
