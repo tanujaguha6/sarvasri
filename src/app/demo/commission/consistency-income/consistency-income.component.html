@@ -4,7 +4,7 @@
         <button style="padding: 3px 14px;float: right;margin-top: -42px;" type="button" class="btn btn-primary" (click)="showModal()">Search</button>
         <div class="table-responsive">
           <app-listing [items] = "items" [columns]="columns"></app-listing>
-          <ngb-pagination [pageSize]="perpage" [pageSize]="data.per_page" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+          <ngb-pagination [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 
                   [title]="title" [incometype]="incometype" 

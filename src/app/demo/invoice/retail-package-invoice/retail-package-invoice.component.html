@@ -5,7 +5,7 @@
         
         <div class="table-responsive">
           <app-listing [items] = "items" [columns]="columns"></app-listing>
-          <ngb-pagination [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+          <ngb-pagination [maxSize]="5" [pageSize]="perpage" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 
                   title="Retail Package Invoice" [date]="date" [member]="member" [upliner]="upliner"

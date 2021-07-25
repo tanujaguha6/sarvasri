@@ -23,6 +23,7 @@ export class FirstPackageInvoiceComponent implements OnInit {
   public amount: boolean = true;
   public productcode:boolean = true;
   public sides:any;
+  public perpage: number = 50;
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }
