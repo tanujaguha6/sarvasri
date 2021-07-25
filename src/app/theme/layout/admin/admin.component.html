@@ -4,6 +4,9 @@
     <div class="pcoded-content" [ngClass]="{'container': this.flatConfig.layout === 'horizontal' && this.flatConfig.subLayout === 'horizontal-2'}">
       <app-breadcrumb></app-breadcrumb>
       <router-outlet></router-outlet>
+      <footer class="main-footer">
+        <strong>Copyright © 2020-2021 <a href="https://saarvasri.com" target="_blank">Saarvasri Herbs</a>.</strong> All rights Reserved.
+      </footer>
     </div>
 </div>
 <app-configuration></app-configuration>
