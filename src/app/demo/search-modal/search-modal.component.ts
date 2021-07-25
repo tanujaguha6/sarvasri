@@ -122,6 +122,7 @@ export class SearchModalComponent implements OnInit  {
     this.renderer.setProperty(this.myRangeInput.nativeElement, 'value', parsed);
 }
 closeModals(){
+    this.uimoadal.hide();
     this.closeModal.emit('false');
   }
   search(){

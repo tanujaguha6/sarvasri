@@ -5,7 +5,6 @@
 
         <div class="table-responsive">
           <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
-          <ngb-pagination [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 
                   (sendSearchData)="getSearchData($event)"
@@ -13,6 +12,8 @@
                   [date]="date" [status]="status"
                   [incomeTypeItems]="incomeTypeItems" [statusItems]="statusItems"></app-search-modal>
         </div>
+        <ngb-pagination [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+
       <!-- </app-card> -->
     </div>
   </div>
