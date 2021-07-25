@@ -5,6 +5,7 @@ export interface NavigationItem {
   type: 'item' | 'collapse' | 'group';
   translate?: string;
   icon?: string;
+  faicon?: string;
   hidden?: boolean;
   url?: string;
   classes?: string;
@@ -48,14 +49,14 @@ const NavigationItems = [{
               title: 'Retail Transacton',
               type: 'item',
               url: '/wallet/transaction/retail',
-              icon: 'fa fa-circle-o'
+              faicon: 'fa fa-circle-o'
             },
                   {
                     id: 'First transaction',
                     title: 'First Transacton',
                     type: 'item',
                     url: '/wallet/transaction/first_wallet',
-                    icon: 'fa fa-circle-o'
+                    faicon: 'fa fa-circle-o'
                   }
           ]
         },
@@ -69,35 +70,35 @@ const NavigationItems = [{
               id: 'First_Purchase_Income',
               title: 'First Purchase Income',
               type: 'item',
-              icon: 'fa fa-circle-o',
+              faicon: 'fa fa-circle-o',
               url: '/commission/first-purchase-income'
             },
             {
               id: 're_prchase_weekly_income',
               title: 'Re purchase weekly Income',
               type: 'item',
-              icon: 'fa fa-circle-o',
+              faicon: 'fa fa-circle-o',
               url: '/commission/re-purchase-weekly-income'
             },
             {
               id: 're_prchase_monthly_income',
               title: 'Re purchase monthly Income',
               type: 'item',
-              icon: 'fa fa-circle-o',
+              faicon: 'fa fa-circle-o',
               url: '/commission/re-purchase-monthly-income'
             },
             {
               id: 'consistency_income',
               title: 'Consistency Income',
               type: 'item',
-              icon: 'fa fa-circle-o',
+              faicon: 'fa fa-circle-o',
               url: '/commission/consistency-income'
             },
             {
               id: 'payout_report',
               title: 'Payout Report',
               type: 'item',
-              icon: 'fa fa-circle-o',
+              faicon: 'fa fa-circle-o',
               url: '/commission/payout-report'
             }
           ]
@@ -112,7 +113,7 @@ const NavigationItems = [{
                 id: 'First_income_deduction',
                 title: 'First Income Deduction',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/deduction/first-income-deduction'
               }
             ]
@@ -127,14 +128,14 @@ const NavigationItems = [{
                 id: 'First_purchase',
                 title: 'First Purchase',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/matching-report/first-purchase'
               },
               {
                 id: 're_purchase',
                 title: 'Re Purchase',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/matching-report/re-purchase'
               }
             ]
@@ -149,7 +150,7 @@ const NavigationItems = [{
                 id: 'recognition_view',
                 title: 'Recognition View',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/recognition/recognition-view'
               }
             ]
@@ -164,28 +165,28 @@ const NavigationItems = [{
                 id: 'member_add',
                 title: 'Member Add',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/member/member-add'
               },
               {
                 id: 'member_view',
                 title: 'Member View',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/member/member-view'
               },
               {
                 id: 'direct_downline',
                 title: 'Direct Downline',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/member/direct-downline'
               },
               {
                 id: 'binary_tree',
                 title: 'Binary Tree',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/member/binary-tree'
               }
             ]
@@ -200,28 +201,28 @@ const NavigationItems = [{
                 id: 'retail_invoice',
                 title: 'Retail Invoice',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/invoice/retail'
               },
               {
                 id: 'retail_package_invoice',
                 title: 'Retail Package Invoice',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/invoice/retail-package'
               },
               {
                 id: 'first_invoice',
                 title: 'First Invoice',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/invoice/first'
               },
               {
                 id: 'first_package_invoice',
                 title: 'First Package Invoice',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/invoice/first-package'
               }
             ]
@@ -236,7 +237,7 @@ const NavigationItems = [{
                 id: 'product_view',
                 title: 'Product View',
                 type: 'item',
-                icon: 'fa fa-circle-o',
+                faicon: 'fa fa-circle-o',
                 url: '/product/view'
               }
             ]
