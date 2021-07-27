@@ -27,6 +27,8 @@
               <a href="javascript:void(0);"><i class="fa fa-facebook bg-facebook text-white"></i></a>
               <a href="javascript:void(0);"><i class="fa fa-twitter bg-twitter text-white"></i></a>
               <a href="javascript:void(0);"><i class="fa fa-google-plus bg-google-plus text-white"></i></a>
+              <button type="button" class="btn btn-primary" (click)="showIdCard(idcard)">Card</button>
+              <button type="button" class="btn btn-primary" (click)="welcomeLetter(letter)">Letter</button>
             </div>
           </div>
           <!-- <div class="card-body border-top border-light">
@@ -278,4 +280,69 @@
         </ngb-tabset>
       </app-card>
     </div>
+
+    <ng-template #idcard let-modal>
+        <div class="modal-header icard-modal" style="margin:0px auto">
+          <h5 class="modal-title" id="modal-basic-title">ID CARD</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal();">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="i-wrapper d-flex justify-content-center">
+            <div class="c-box">
+                <img src="../../../../assets/images/id-card.jpeg" alt="" class="b-img"/>
+
+                <div class="i-inner">
+                    <img src="{{userData?.profile_image}}" alt=""/>
+                    <h4>{{userData?.name}}</h4>
+                    <h5>Employee Designation</h5>
+
+                    <div class="i-btt">
+                        <span>{{userData?.username}}</span>
+                        <span>{{userData?.mobile}}</span>
+                        <span>AB+</span>
+                    </div>
+                </div>
+
+
+
+            </div>   
+            <div class="c-box">
+                <img src="../../../../assets/images/welcome-letter.jpeg" alt=""  class="b-img" />  
+            </div>          
+        </div>
+          </div>
+      </ng-template>
+
+      <ng-template #letter let-modal>
+        <div class="modal-header l-head" style="margin:0px auto">
+          <!-- <h5 class="modal-title" id="modal-basic-title">WELCOME LETTER</h5> -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal();">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="welcome-area">
+                <img src="../../../../assets/images/welcome-frame.jpeg" alt="" />
+                <div class="w-inner">
+                   <h3>Welcome letter</h3> 
+
+                   <h4>Hi {{userData?.name}},</h4>
+
+                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                       when an unknown printer took a galley of type and scrambled it to make a type 
+                       specimen book. It has survived not only five centuries, but also the leap into 
+                       electronic typesetting, remaining essentially unchanged. It was popularised in 
+                       the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                     </p>
+
+                       <h5>Thank you</h5>
+
+                </div>
+            </div>          
+        </div>
+      </ng-template>
   

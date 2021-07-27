@@ -13,21 +13,21 @@ export class AuthSigninComponent implements OnInit {
   loggedOut = false;
   errormessage: string;
   ipAddress: string;
-  constructor(private router : Router,
-     private auth: AuthServicesService,
-     private fb: FormBuilder) { 
-      this.loginForm = this.fb.group({
-        userName: ['', [Validators.required, Validators.minLength(3)]],
-        password: ['', [Validators.required, Validators.minLength(3)]],
-      });
-     }
+  constructor(private router: Router,
+    private auth: AuthServicesService,
+    private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      userName: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
+    });
+  }
 
   ngOnInit() {
     // this.auth.getIpAddress().subscribe((res: any) => {
     //   this.ipAddress = res.ip;
     //   console.log(this.ipAddress)
     // })
-    if(localStorage.getItem("logout")){
+    if (localStorage.getItem("logout")) {
       this.loggedOut = true;
       localStorage.clear();
     }
@@ -41,7 +41,7 @@ export class AuthSigninComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  onSubmit(){
+  onSubmit() {
 
     this.submitted = true;
     if (this.loginForm.invalid) {
@@ -62,13 +62,12 @@ export class AuthSigninComponent implements OnInit {
         this.errormessage = res.message;
       }
       else{
-        localStorage.setItem('userData', JSON.stringify(res));
-        this.router.navigate(['dashboard/default'])
+        let authToken = res['auth_token'];
+      localStorage.setItem('userData', JSON.stringify(res));
+      localStorage.setItem('token', authToken);
+      this.router.navigate(['dashboard/default'])
       }
-      //this.router.navigate(['/myshpl/dashboard']);
-      // this.submitted = false;
-      // this.loginForm.reset();
-    });
-  }
+  })
+}
 
 }
