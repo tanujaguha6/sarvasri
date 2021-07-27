@@ -40,8 +40,10 @@ export class FirstIncomeDeductionComponent implements OnInit,OnDestroy {
     this.comission.getFirstPurchaseIncomeItems(this.params,'deduction_first_purchase_income.php').subscribe((data: any) => {
       if(data.result && data.result.length){
         this.items = data.result;
-        this.keys = Object.keys(data.result[0]);
-        this.columns =  Object.keys(data.result[0]);
+        if(this.items.length){
+          this.keys = Object.keys(data.result[0]);
+          this.columns =  Object.keys(data.result[0]);
+        }
         this.total = data.total_count;
         this.perpage = data.per_page;
       }

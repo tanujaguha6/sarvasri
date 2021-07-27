@@ -11,6 +11,7 @@ export class AuthSigninComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   loggedOut = false;
+  errormessage: string;
   ipAddress: string;
   constructor(private router : Router,
      private auth: AuthServicesService,
@@ -28,6 +29,10 @@ export class AuthSigninComponent implements OnInit {
     // })
     if(localStorage.getItem("logout")){
       this.loggedOut = true;
+      localStorage.clear();
+    }
+    if(localStorage.getItem("errormessage")){
+      this.errormessage = localStorage.getItem("errormessage");
       localStorage.clear();
     }
   }
@@ -52,9 +57,14 @@ export class AuthSigninComponent implements OnInit {
       //logintype: 'member',
     };
 
-    this.auth.login(user).subscribe((res) => {
-      localStorage.setItem('userData', JSON.stringify(res));
-      this.router.navigate(['dashboard/default'])
+    this.auth.login(user).subscribe((res: any) => {
+      if(res.status === 0){
+        this.errormessage = res.message;
+      }
+      else{
+        localStorage.setItem('userData', JSON.stringify(res));
+        this.router.navigate(['dashboard/default'])
+      }
       //this.router.navigate(['/myshpl/dashboard']);
       // this.submitted = false;
       // this.loginForm.reset();

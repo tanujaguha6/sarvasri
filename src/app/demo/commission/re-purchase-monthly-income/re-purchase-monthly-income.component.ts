@@ -52,8 +52,11 @@ export class RePurchaseMonthlyIncomeComponent implements OnInit, OnDestroy {
   loadData(){
     this.comission.getFirstPurchaseIncomeItems(this.params,'income_repurchase_monthly.php').subscribe((data:any) => {
       this.items = data.result;
-      this.keys = Object.keys(data.result[0]);
-      this.columns =  Object.keys(data.result[0]);
+      if(this.items.length){
+        this.keys = Object.keys(data.result[0]);
+        this.columns =  Object.keys(data.result[0]);
+      }
+      console.log(data.total_count)
       this.total = data.total_count;
       this.perpage = data.per_page;
     });

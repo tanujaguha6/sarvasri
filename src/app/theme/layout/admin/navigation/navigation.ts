@@ -242,7 +242,12 @@ const NavigationItems = [{
               }
             ]
         }
-      ]}];
+      ]},{
+        id: 'test',
+        title: '',
+        type: 'group',
+       // icon: 'feather icon-monitor'
+      }];
 
 /****************new section *******************/
 // const NavigationItems = [

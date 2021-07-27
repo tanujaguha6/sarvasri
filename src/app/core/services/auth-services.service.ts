@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
+import 'rxjs/add/observable/of';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,12 +15,15 @@ export class AuthServicesService {
 
   logout() {
     let userData = JSON.parse(localStorage.getItem('userData'));
+    if(userData){
     const user = {
       username: userData.username,
       login_type: userData.login_type,
       auth_token: userData.auth_token
     };
     return this.http.post("https://myshpl.com/api/logout.php", user)
+    }
+    return Observable.of([]);
   }
 
   memberIncomeApi(memberIncome: any) {

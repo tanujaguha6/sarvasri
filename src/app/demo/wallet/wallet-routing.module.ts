@@ -5,6 +5,9 @@ import { TransactionComponent } from './transaction/transaction.component';
 
 const routes: Routes = [
   {
+    path: '',
+    children: [
+  {
     path: 'balance/:type', 
     component: BalanceComponent,
   },
@@ -12,6 +15,7 @@ const routes: Routes = [
     path: 'transaction/:type', 
     component: TransactionComponent,
   }
+]}
 ];
 
 @NgModule({
