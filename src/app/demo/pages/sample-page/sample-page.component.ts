@@ -176,5 +176,9 @@ export class SamplePageComponent implements OnInit {
     });
   }
 
+  closeModal(){
+    this.modalService.dismissAll();
+  }
+
 
 }
