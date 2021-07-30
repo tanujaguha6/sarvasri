@@ -204,7 +204,7 @@ left:0
 .apexcharts-canvas {
   width:100% !important;
 }
-.card-tab {height: 553px;}
+.card-tab {height: 544px;}
 .card-tab .form-group label {
   color:#fff;
 }
@@ -433,6 +433,10 @@ ngb-datepicker.dropdown-menu {width:100% !important;}
       .welcome-area .w-inner p {line-height: 19px;}
       .i-wrapper.d-flex {display:block !important;}
       .i-wrapper .c-box {display:block; margin: auto; margin-bottom:10px; text-align: center;}
+
+      .auth-wrapper {width:100%; height:100vh;}
+      .auth-wrapper .auth-content {width:100% !important;}
+
 }
 
 @media screen and (max-width:575px){

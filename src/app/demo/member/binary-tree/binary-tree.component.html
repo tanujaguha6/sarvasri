@@ -1,34 +1,34 @@
 <ul class="tree">
     <li *ngIf="treeData.length"> 
-        <div class="tree-item" (click)="fetchdata('SH2276143')" >
+        <div class="tree-item" (click)="fetchdata(treeData[0][1])" >
             <img src="{{treeData[0][2]}}">
             <span class="tree-box">{{treeData[0][0]}}<br/>
               {{treeData[0][1]}}</span>
         </div>
       <ul>
         <li> 
-            <div class="tree-item" (click)="fetchdata('SH8718412')" >
+            <div class="tree-item" (click)="fetchdata(treeData[1][1])" >
                 <img src="{{treeData[1][2]}}">
                 <span class="tree-box">{{treeData[1][0]}}<br/>
                   {{treeData[1][1]}}</span>
             </div>
           <ul>
             <li> 
-                <div class="tree-item" (click)="fetchdata('SH4525899')" >
+                <div class="tree-item" (click)="fetchdata(treeData[3][1])" >
                     <img src="{{treeData[3][2]}}">
                     <span class="tree-box">{{treeData[3][0]}}<br/>
                       {{treeData[3][1]}}</span>
                 </div>
               <ul>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH7299676')" >
+                    <div class="tree-item" (click)="fetchdata(treeData[7][1])" >
                         <img src="{{treeData[7][2]}}">
                         <span class="tree-box">{{treeData[7][0]}}<br/>
                           {{treeData[7][1]}}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH1507600')" >
+                    <div class="tree-item" (click)="fetchdata(treeData[8][1])" >
                         <img src="{{treeData[8][2]}}">
                         <span class="tree-box">{{treeData[8][0]}}<br/>
                           {{treeData[8][1]}}</span>
@@ -37,21 +37,21 @@
               </ul>
             </li>
             <li> 
-                <div class="tree-item" (click)="fetchdata('SH9548636')" >
+                <div class="tree-item" (click)="fetchdata(treeData[4][1])" >
                     <img src="{{treeData[4][2]}}">
                     <span class="tree-box">{{treeData[4][0]}}<br/>
                       {{treeData[4][1]}}</span>
                 </div>
               <ul>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH8720358')">
+                    <div class="tree-item" (click)="fetchdata(treeData[9][1])">
                         <img src="{{treeData[9][2]}}">
                         <span class="tree-box">{{treeData[9][0]}}<br/>
                           {{treeData[9][1]}}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH4603547')" >
+                    <div class="tree-item" (click)="fetchdata(treeData[10][1])" >
                         <img src="{{treeData[10][2]}}">
                         <span class="tree-box">{{treeData[10][0]}}<br/>
                           {{treeData[10][1]}}</span>
@@ -62,28 +62,28 @@
           </ul>
         </li>
         <li> 
-            <div class="tree-item" (click)="fetchdata('SH5867417')" > 
+            <div class="tree-item" (click)="fetchdata(treeData[2][1])" > 
                 <img src="{{treeData[2][2]}}">
                 <span class="tree-box">{{treeData[2][0]}}<br/>
                   {{treeData[2][1]}}</span>
             </div>
           <ul>
             <li> 
-                <div class="tree-item" (click)="fetchdata('SH3258248')" >
+                <div class="tree-item" (click)="fetchdata(treeData[5][1])" >
                     <img src="{{treeData[5][2]}}">
                     <span class="tree-box">{{treeData[5][0]}}<br/>
                       {{treeData[5][1]}}</span>
                 </div>
               <ul>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH1584287')">
+                    <div class="tree-item" (click)="fetchdata(treeData[11][1])">
                         <img src="{{treeData[11][2]}}">
                         <span class="tree-box">{{treeData[11][0]}}<br/>
                           {{treeData[11][1]}}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH8287977')" >
+                    <div class="tree-item" (click)="fetchdata(treeData[12][1])" >
                         <img src="{{treeData[12][2]}}">
                         <span class="tree-box">{{treeData[12][0]}}<br/>
                           {{treeData[12][1]}}</span>
@@ -92,21 +92,21 @@
               </ul>
             </li>
             <li> 
-                <div class="tree-item" (click)="fetchdata('SH2939663')" >
+                <div class="tree-item" (click)="fetchdata(treeData[6][1])" >
                     <img src="{{treeData[6][2]}}">
                     <span class="tree-box">{{treeData[6][0]}}<br/>
                       {{treeData[6][1]}}</span>
                 </div>
               <ul>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH6295429')" >
+                    <div class="tree-item" (click)="fetchdata(treeData[13][1])" >
                         <img src="{{treeData[13][2]}}">
                         <span class="tree-box">{{treeData[13][0]}}<br/>
                           {{treeData[13][1]}}</span>
                     </div>
                 </li>
                 <li>
-                    <div class="tree-item" (click)="fetchdata('SH5531234')" >
+                    <div class="tree-item" (click)="fetchdata(treeData[14][1])" >
                         <img src="{{treeData[14][2]}}">
                         <span class="tree-box">{{treeData[14][0]}}<br/>
                           {{treeData[14][1]}}</span>
@@ -119,7 +119,8 @@
        
       </ul>
     </li>
-    <app-ui-modal #modalDefault >
+    <app-ui-modal #modalDefault class="binary-modal">
+      
         <div class="app-modal-header">
           <h5 class="modal-title">{{modalData.Member_Name}}</h5>
           <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
@@ -207,7 +208,7 @@
             </tbody>
           </table>
         </div>
-        
+      
       </app-ui-modal>
   </ul>
   
