@@ -1,7 +1,7 @@
-<app-ui-modal #modalDefault (hideModal)="closeModals()">
+<app-ui-modal #modalDefault >
 <div class="app-modal-header">
     <h5 class="modal-title">{{title}}</h5>
-    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="closeModals()"><span aria-hidden="true">&times;</span></button>
   </div>
   <!-- <form class="form-horizontal" action="income-first-purchase-view.php" method="POST"> -->
   <div class="app-modal-body">
