@@ -27,6 +27,7 @@ import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule,
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { BnNgIdleService } from 'bn-ng-idle';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
   ],
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
-    NavigationItem],
+    NavigationItem,
+    BnNgIdleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
