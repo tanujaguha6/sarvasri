@@ -56,7 +56,6 @@ export class RePurchaseMonthlyIncomeComponent implements OnInit, OnDestroy {
         this.keys = Object.keys(data.result[0]);
         this.columns =  Object.keys(data.result[0]);
       }
-      console.log(data.total_count)
       this.total = data.total_count;
       this.perpage = data.per_page;
     });

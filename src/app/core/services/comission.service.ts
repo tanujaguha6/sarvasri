@@ -99,16 +99,138 @@ export class ComissionService {
     return Observable.of(50);
   }
   getIncomeType(type){
-    let incomeType = [{
-      name : 'FIRST PURCHASE BINARY',
-      value: 'FIRST_PURCHASE_BINARY'
-    },{
-      name : 'DAILY SPONSOR BP BINARY',
-      value: 'DAILY_SPONSOR_BP_BINARY'
-    },{
-      name : 'FLASHOUT INCOME',
-      value: 'FLASHOUT_INCOME'
-    }]
+    let incomeType = [];
+    switch(type){
+      case('firstpurchase'):{
+        incomeType = [{
+          name : 'FIRST PURCHASE BINARY',
+          value: 'FIRST_PURCHASE_BINARY'
+        },{
+          name : 'DAILY SPONSOR BP BINARY',
+          value: 'DAILY_SPONSOR_BP_BINARY'
+        },{
+          name : 'FLASHOUT INCOME',
+          value: 'FLASHOUT_INCOME'
+        }]
+        break;
+      }
+      case('repurchaseweekly'):{
+        incomeType = [{
+          name : 'TEAM BONUS',
+          value: 'TEAM_BONUS'
+        },{
+          name : 'TEAM BUILDING BONUS',
+          value: 'TEAM_BUILDING_BONUS'
+        }]
+        break;
+      }
+      case('repurchasemonthly'):{
+        incomeType = [{
+          name : 'COMPANYS BV',
+          value: 'COMPANYS_BV'
+        },{
+          name : 'BUSINESS DEVELOPMENT FUND',
+          value: 'BUSINESS_DEVELOPMENT_FUND'
+        },{
+          name : 'CHILD EDUCATION FUND',
+          value: 'CHILD_EDUCATION_FUND'
+        },{
+          name : 'TRAVEL FUN',
+          value: 'TRAVEL_FUN'
+        },{
+          name : 'CAR FUND',
+          value: 'CAR_FUND'
+        },{
+          name : 'HOUSE FUND',
+          value: 'HOUSE_FUND'
+        },{
+          name : 'TEAM CONSULTANCY BONUS',
+          value: 'TEAM_CONSULTANCY_BONUS'
+        },{
+          name : 'ROYALTY CLUB BONUS',
+          value: 'ROYALTY_CLUB_BONUS'
+        }]
+        break;
+      }
+      case('consistencyincome'):{
+        incomeType = [{
+          name : 'TYPE 1',
+          value: 'TYPE_1'
+        },{
+          name : 'TYPE 2',
+          value: 'TYPE_2'
+        },{
+          name : 'TYPE 3',
+          value: 'TYPE_3'
+        }]
+        break;
+      }
+      case('firstinvoice'):{
+        incomeType = [{
+          name : 'FIRST PURCHASE BINARY',
+          value: 'FIRST_PURCHASE_BINARY'
+        },{
+          name : 'DAILY SPONSOR BP BINARY',
+          value: 'DAILY_SPONSOR_BP_BINARY'
+        },{
+          name : 'FLASHOUT INCOME',
+          value: 'FLASHOUT_INCOME'
+        }]
+        break;
+      }
+      case('directdownline'):{
+        incomeType = [{
+          name : 'FIRST PURCHASE BINARY',
+          value: 'FIRST_PURCHASE_BINARY'
+        },{
+          name : 'DAILY SPONSOR BP BINARY',
+          value: 'DAILY_SPONSOR_BP_BINARY'
+        },{
+          name : 'FLASHOUT INCOME',
+          value: 'FLASHOUT_INCOME'
+        }]
+        break;
+      }
+      case('memberview'):{
+        incomeType = [{
+          name : 'FIRST PURCHASE BINARY',
+          value: 'FIRST_PURCHASE_BINARY'
+        },{
+          name : 'DAILY SPONSOR BP BINARY',
+          value: 'DAILY_SPONSOR_BP_BINARY'
+        },{
+          name : 'FLASHOUT INCOME',
+          value: 'FLASHOUT_INCOME'
+        }]
+        break;
+      }
+      case('firstincomededuction'):{
+        incomeType = [{
+          name : 'FIRST PURCHASE BINARY',
+          value: 'FIRST_PURCHASE_BINARY'
+        },{
+          name : 'DAILY SPONSOR BP BINARY',
+          value: 'DAILY_SPONSOR_BP_BINARY'
+        },{
+          name : 'FLASHOUT INCOME',
+          value: 'FLASHOUT_INCOME'
+        }]
+        break;
+      }
+      case('firstincomededuction'):{
+        incomeType = [{
+          name : 'FIRST PURCHASE BINARY',
+          value: 'FIRST_PURCHASE_BINARY'
+        },{
+          name : 'DAILY SPONSOR BP BINARY',
+          value: 'DAILY_SPONSOR_BP_BINARY'
+        },{
+          name : 'FLASHOUT INCOME',
+          value: 'FLASHOUT_INCOME'
+        }]
+        break;
+      }
+    }
     return Observable.of(incomeType);
   }
   getStatus(type){

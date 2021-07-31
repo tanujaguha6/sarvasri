@@ -32,7 +32,7 @@ export class FirstInvoiceComponent implements OnInit {
     // this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
     //   this.items = data;
     // });
-    this.comission.getColums('firstincomededuction').subscribe((data) => {
+    this.comission.getColums('firstinvoice').subscribe((data) => {
       this.columns = data;
     });
     this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
