@@ -31,7 +31,7 @@ export class FirstPurchaseIncomeComponent implements OnInit, OnDestroy {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      starte_date:'',
+      start_date:'',
       end_date:'',
       income_type:'',
       status:'',
@@ -72,7 +72,7 @@ export class FirstPurchaseIncomeComponent implements OnInit, OnDestroy {
     this.showModals =  false;
   }
   getSearchData(event){
-    this.params.starte_date = event.date.split('/')[0];
+    this.params.start_date = event.date.split('/')[0];
     this.params.end_date = event.date.split('/')[1];
     this.params.income_type = event.income_type;
     this.params.status = event.status;

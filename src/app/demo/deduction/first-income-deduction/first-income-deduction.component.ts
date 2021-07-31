@@ -29,7 +29,7 @@ export class FirstIncomeDeductionComponent implements OnInit,OnDestroy {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      starte_date:'',
+      start_date:'',
       end_date:'',
       page: 1
     }
@@ -62,7 +62,7 @@ export class FirstIncomeDeductionComponent implements OnInit,OnDestroy {
   }
   getSearchData(event){
     console.log(event);
-    this.params.starte_date = event.date.split('/')[0];
+    this.params.start_date = event.date.split('/')[0];
     this.params.end_date = event.date.split('/')[1];
     this.loadData();
   }
