@@ -87,13 +87,13 @@ const NavigationItems = [{
               faicon: 'fa fa-circle-o',
               url: '/commission/re-purchase-monthly-income'
             },
-            {
-              id: 'consistency_income',
-              title: 'Consistency Income',
-              type: 'item',
-              faicon: 'fa fa-circle-o',
-              url: '/commission/consistency-income'
-            },
+            // {
+            //   id: 'consistency_income',
+            //   title: 'Consistency Income',
+            //   type: 'item',
+            //   faicon: 'fa fa-circle-o',
+            //   url: '/commission/consistency-income'
+            // },
             {
               id: 'payout_report',
               title: 'Payout Report',

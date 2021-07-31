@@ -32,7 +32,7 @@ export class TransactionComponent implements OnInit {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      starte_date:'',
+      start_date:'',
       end_date:'',
       income_type:'',
       status:'',

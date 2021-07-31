@@ -57,7 +57,7 @@ export class MemberViewComponent implements OnInit, OnDestroy {
   }
   getSearchData(event){
     console.log(event);
-    // this.params.starte_date = '';
+    // this.params.start_date = '';
     // this.params.end_date = '';
     // this.loadData();
   }

@@ -12,6 +12,13 @@ export class GraphService {
   binaryTree(user:any) {
     return this.http.post("https://myshpl.com/api/binary_tree.php", user)
   }
+  memberDirectDownline(user:any){
+    return this.http.post("https://myshpl.com/api/member/member_direct.php", user)
+  }
+  recognizationView(user:any){
+    return this.http.post("https://myshpl.com/api/rank_member.php", user)
+  }
+  
   getData(mem_code:any) {
     let user = {
       username: this.userData.username,
