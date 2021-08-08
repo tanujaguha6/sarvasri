@@ -1,15 +1,10 @@
-<!-- <div class="row">
+<div class="row">
     <div class="col-xl-12">
-        <button style="padding: 3px 14px;float: right;margin-top: -42px;" type="button" class="btn btn-primary" (click)="showModal()">Search</button>
         
         <div class="table-responsive">
           <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
           <ngb-pagination [maxSize]="5" [pageSize]="perpage" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
-          <app-search-modal *ngIf="showModals" 
-                  (closeModal)="hideModals($event)"
-                  (sendSearchData)="getSearchData($event)" 
-                  title="Member View Direct" [date]="date" 
-                  [sidesItem]="sides"></app-search-modal>
+          
         </div>
     </div>
-  </div> -->
+  </div>

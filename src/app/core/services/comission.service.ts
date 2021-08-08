@@ -9,85 +9,10 @@ import 'rxjs/add/observable/of';
 export class ComissionService {
 
   constructor(private http: HttpClient) { }
-  getFirstPurchaseIncomeItems(params,api){
-   // let items = [];
-  //   if(page == 1){
-  //    items = [{
-  //     id :1,
-  //     name: 'Lary',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :2,
-  //     name: 'Lary',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :3,
-  //     name: 'Lary',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :4,
-  //     name: 'Lary',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :5,
-  //     name: 'Lary',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :6,
-  //     name: 'Lary',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :7,
-  //     name: 'Lary',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   }]
-  // }
-  // else{
-  //    items = [{
-  //     id :1,
-  //     name: 'Lary2',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :2,
-  //     name: 'Lary3',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :2,
-  //     name: 'Lary3',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :2,
-  //     name: 'Lary3',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   },
-  //   {
-  //     id :2,
-  //     name: 'Lary3',
-  //     surname: 'The Bird',
-  //     social: '@twitter'
-  //   }]
-  // }
-    //return Observable.of(items);
+  getFirstPurchaseIncomeItems(params,api, type = false){
+    if(type == true)
+    return this.http.post("https://myshpl.com/api/"+api, params)
+    else
     return this.http.post("https://myshpl.com/api/member/"+api, params)
     
   }

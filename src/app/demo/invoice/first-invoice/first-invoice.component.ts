@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ComissionService } from '../../../core/services/comission.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ComissionService } from '../../../core/services/comission.service';
   templateUrl: './first-invoice.component.html',
   styleUrls: ['./first-invoice.component.scss']
 })
-export class FirstInvoiceComponent implements OnInit {
+export class FirstInvoiceComponent implements OnInit, OnDestroy {
 
   public defaultPage: number;
   public showModals: boolean;
@@ -23,31 +23,70 @@ export class FirstInvoiceComponent implements OnInit {
   public amount: boolean = true;
   public productcode:boolean = true;
   public sides: any;
-  public perpage: number = 50;
+  public params: any;
+  public perpage: number;
+  public keys: any;
+  userData = JSON.parse(localStorage.getItem('userData'));
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }
 
   ngOnInit(): void {
-    // this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
-    //   this.items = data;
-    // });
-    this.comission.getColums('firstinvoice').subscribe((data) => {
-      this.columns = data;
+    this.params = {
+      username: this.userData.username,
+      login_type: this.userData.login_type,
+      auth_token: this.userData.auth_token,
+      start_date:'',
+      end_date:'',
+      mem_code :'',
+      upliner_code :'',
+      intro_code :'',
+      upliner_side : '',
+      invoice_no :'',
+      amount:'',
+      product_code:'',
+      page: 1
+    }
+    this.loadData();
+    this.sides  = [{
+      name:'ALL',
+      value:''
+    },{
+      name:'LEFT',
+      value:'LEFT'
+    },{
+      name:'RIGHT',
+      value:'RIGHT'
+    }]
+   
+  }
+  loadData(){
+    this.comission.getFirstPurchaseIncomeItems(this.params,'invoice_first_purchase.php').subscribe((data:any) => {
+      this.items = data.result;
+      if(this.items.length){
+        this.keys = Object.keys(data.result[0]);
+        this.columns =  Object.keys(data.result[0]);
+      }
+      this.total = data.total_count;
+      this.perpage = data.per_page;
     });
-    this.comission.getTotalItems('firstincomededuction').subscribe((data) => {
-      this.total  = data;
-    });
-    this.comission.getSides('retailinvoice').subscribe((data) => {
-      this.sides  = data;
-    });
-    
+  }
+  getSearchData(event){
+    this.params.start_date = event.date.split('/')[0];
+    this.params.end_date = event.date.split('/')[1];
+    this.params.mem_code = event.mem_code;
+    this.params.upliner_code = event.upliner_code;
+    this.params.intro_code = event.intro_code;
+    this.params.upliner_side = event.upliner_side;
+    this.params.invoice_no = event.invoice_no;
+    this.params.amount = event.amount;
+    this.params.product_code = event.pdt_code;
+    this.loadData();
   }
   onPageChange(e){
     this.defaultPage = e;
-    // this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
-    //   this.items = data;
-    // });
+    this.params.page = e;
+    this.loadData();
   }
   showModal(){
     this.showModals = true;
@@ -55,6 +94,7 @@ export class FirstInvoiceComponent implements OnInit {
   hideModals(e){
     this.showModals =  false;
   }
-
-
+  ngOnDestroy(){
+    localStorage.removeItem('searchFilter')
+  }
 }

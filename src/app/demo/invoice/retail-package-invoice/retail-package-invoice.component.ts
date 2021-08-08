@@ -23,31 +23,69 @@ export class RetailPackageInvoiceComponent implements OnInit {
   public amount: boolean = true;
   public productcode:boolean = true;
   public sides:any;
-  public perpage: number = 50;
+  public perpage: number;
+  public params: any;
+  public keys: any;
+  userData = JSON.parse(localStorage.getItem('userData'));
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
   }
 
   ngOnInit(): void {
-    // this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
-    //   this.items = data;
-    // });
-    this.comission.getColums('retailpackageinvoice').subscribe((data) => {
-      this.columns = data;
-    });
-    this.comission.getTotalItems('retailpackageinvoice').subscribe((data) => {
-      this.total  = data;
-    });
-    this.comission.getSides('retailpackageinvoice').subscribe((data) => {
-      this.sides  = data;
-    });
+    this.params = {
+      username: this.userData.username,
+      login_type: this.userData.login_type,
+      auth_token: this.userData.auth_token,
+      start_date:'',
+      end_date:'',
+      mem_code :'',
+      upliner_code :'',
+      intro_code :'',
+      upliner_side : '',
+      invoice_no :'',
+      amount:'',
+      page: 1
+    }
+    this.loadData();
+    this.sides  = [{
+      name:'ALL',
+      value:''
+    },{
+      name:'LEFT',
+      value:'LEFT'
+    },{
+      name:'RIGHT',
+      value:'RIGHT'
+    }]
+   
     
+  }
+  loadData(){
+    this.comission.getFirstPurchaseIncomeItems(this.params,'invoice_package_retail.php').subscribe((data:any) => {
+      this.items = data.result;
+      if(this.items.length){
+        this.keys = Object.keys(data.result[0]);
+        this.columns =  Object.keys(data.result[0]);
+      }
+      this.total = data.total_count;
+      this.perpage = data.per_page;
+    });
+  }
+  getSearchData(event){
+    this.params.start_date = event.date.split('/')[0];
+    this.params.end_date = event.date.split('/')[1];
+    this.params.mem_code = event.mem_code;
+    this.params.upliner_code = event.upliner_code;
+    this.params.intro_code = event.intro_code;
+    this.params.upliner_side = event.upliner_side;
+    this.params.invoice_no = event.invoice_no;
+    this.params.amount = event.amount;
+    this.loadData();
   }
   onPageChange(e){
     this.defaultPage = e;
-    // this.comission.getFirstPurchaseIncomeItems(e).subscribe((data) => {
-    //   this.items = data;
-    // });
+    this.params.page = e;
+    this.loadData();
   }
   showModal(){
     this.showModals = true;
@@ -55,7 +93,9 @@ export class RetailPackageInvoiceComponent implements OnInit {
   hideModals(e){
     this.showModals =  false;
   }
-
+  ngOnDestroy(){
+    localStorage.removeItem('searchFilter')
+  }
 
 
 }
