@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import ApexCharts from 'apexcharts/dist/apexcharts.common.js';
 import {ApexChartService} from './apex-chart.service';
+import { GraphDataService } from '../../../../../core/services/graph-data.service';
+
 import * as $ from 'jquery';
 
 @Component({
@@ -16,16 +18,25 @@ export class ApexChartComponent implements OnChanges {
   @Input()  dropdownchange: any; 
   @Input()  dropdownchangeMonthly: any;
   @Input() type: any;
+  @Input() dropdownData: any;
   @Output() changedData:EventEmitter<string> =   new EventEmitter();
   @Output() changedDataMonthly:EventEmitter<string> =   new EventEmitter();
   public chart: any;
   public selectDate:string = '1';
   public selectDateMonthly:string='30';
-  constructor(private apexEvent: ApexChartService) { }
+  constructor(private apexEvent: ApexChartService, private graph: GraphDataService) { }
 
   ngOnChanges() {
     //console.log('coming',this.dropdownchange,this.dropdownchangeMonthly);
     this.updateData();
+    this.getDropdown();
+    console.log(this.dropdownData)
+  }
+  getDropdown(){
+    let userData = JSON.parse(localStorage.getItem('userData'));
+    this.graph.graphDropdown(userData).subscribe(res => {
+      this.dropdownData = res['result'];
+    })
   }
   updateData(){
     // let chartId = $('#chartIDs').val();

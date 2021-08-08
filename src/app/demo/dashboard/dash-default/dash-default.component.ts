@@ -126,7 +126,8 @@ export class DashDefaultComponent implements OnInit {
   //public graphData = new Subject<object>();
   public dataGraph: any;
   monthlyGraph: any;
-  yearlyGraph; any;
+  yearlyGraph: any;
+  dropdownData: any;
   // @ViewChild(ApexChartComponent, { static: false }) apexChart: ApexChartComponent;
   constructor(
     private auth: AuthServicesService,
@@ -134,78 +135,12 @@ export class DashDefaultComponent implements OnInit {
     private graph: GraphDataService,
     public toastEvent: ToastService) {
 
-    // this.supportChartData1 = SupportChartData1.supportChartData;
-    // this.supportChartData2 = SupportChartData2.supportChartData;
-    // this.seoChartData1 = SeoChart1.seoChartData;
-    // this.seoChartData2 = SeoChart2.seoChartData;
-    // this.seoChartData3 = SeoChart3.seoChartData;
-    // this.powerCardChartData1 = PowerCardChart1.powerCardChartData;
-    // this.powerCardChartData2 = PowerCardChart2.powerCardChartData;
-
     this.chartDB = ChartDB;
 
     this.lastDate = 0;
     this.data = [];
 
     this.getDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 10, { min: 10, max: 90 });
-
-    // this.bar1CAC  = {
-    //   chart: {
-    //     height: 350,
-    //     width: 850,
-    //     type: 'bar',
-    //     stacked: true,
-    //     toolbar: {
-    //       show: true
-    //     },
-    //     zoom: {
-    //       enabled: true
-    //     }
-    //   },
-    //   dataLabels: {
-    //     enabled: false
-    //   },
-    //   colors: ['#1abc9c', '#0e9e4a', '#ffa21d', '#ff5252'],
-    //   responsive: [{
-    //     breakpoint: 480,
-    //     options: {
-    //       legend: {
-    //         position: 'bottom',
-    //         // offsetX: -10,
-    //         // offsetY: 0
-    //       }
-    //     }
-    //   }],
-    //   plotOptions: {
-    //     bar: {
-    //       horizontal: false,
-    //     },
-    //   },
-    //   series: [{
-    //     name: 'Retail Income',
-    //     data: this.retail_income
-    //   }, {
-    //     name: 'Retail Binary',
-    //     data: this.retail_binary
-    //   }, {
-    //     name: 'First Purchase',
-    //     data: this.first_purchase
-    //   }, {
-    //     name: 'Consistancy',
-    //     data: this.consistancy
-    //   }],
-    //   xaxis: {
-    //     categories: this.xAxis,
-    //   },
-
-    //   legend: {
-    //     position: 'right',
-    //     offsetY: 20
-    //   },
-    //   fill: {
-    //     opacity: 1
-    //   },
-    // };
 
     this.bar2CAC = {
       chart: {
@@ -305,6 +240,7 @@ export class DashDefaultComponent implements OnInit {
     this.graph.getGraph().subscribe(res => {
       this.dataGraph = res;
     })
+    
     this.userData = JSON.parse(localStorage.getItem('userData'));
     if (this.userData === null) {
       this.router.navigate(['/auth/signin']);
@@ -318,7 +254,7 @@ export class DashDefaultComponent implements OnInit {
       this.graph.creategraph(this.retail_income, this.retail_binary, this.first_purchase, this.xAxis);
     }
   }
-
+ 
   getOwlOptions() {
 
   }
@@ -333,7 +269,9 @@ export class DashDefaultComponent implements OnInit {
       this.memberIncomeData = res['result'];
     });
   }
-
+  redirect(href){
+    this.router.navigate([href])
+  }
   loadMemberWallet() {
     const user = {
       username: this.userData.username,

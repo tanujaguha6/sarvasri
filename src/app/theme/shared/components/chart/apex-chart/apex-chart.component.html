@@ -48,11 +48,7 @@
 </div>
 <div id="selectBox" *ngIf="type === 'yearly'">
     <select id="yearselect" (change)="changeData('yearly')"[(ngModel)]="selectDate">
-        <option value="1">2020-2021</option>
-        <option value="2">2019-2020</option>
-        <option value="3">2018-2019</option>
-        <option value="4">2017-2018</option>
-        <option value="5">2016-2017</option>
+        <option [value]="dd.income_month_key" *ngFor="let dd of dropdownData">{{dd.income_month_value}}</option>
     </select>
 </div>
 <div id="selectBox" *ngIf="type === 'monthly'">

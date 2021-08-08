@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComissionService } from '../../../core/services/comission.service';
+import { GraphDataService } from '../../../core/services/graph-data.service';
 
 @Component({
   selector: 'app-payout-report',
@@ -18,8 +19,9 @@ export class PayoutReportComponent implements OnInit {
   public perpage: number;
   public params: any;
   public keys: any;
+  public dropdownData: any;
   userData = JSON.parse(localStorage.getItem('userData'));
-  constructor(private comission: ComissionService) { 
+  constructor(private comission: ComissionService, private graph: GraphDataService) { 
     this.defaultPage = 1;
   }
 
@@ -28,12 +30,11 @@ export class PayoutReportComponent implements OnInit {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      start_date:'',
-      end_date:'',
+      income_date:'',
       page: 1
     }
     this.loadData();
-    
+    this.getDropdown();
   }
   loadData(){
     this.comission.getFirstPurchaseIncomeItems(this.params,'payout_report.php').subscribe((data:any) => {
@@ -46,10 +47,14 @@ export class PayoutReportComponent implements OnInit {
       this.perpage = data.per_page;
     });
   }
-  
+  getDropdown(){
+    this.graph.graphDropdown(this.userData).subscribe(res => {
+      this.dropdownData = res['result'];
+      console.log( this.dropdownData)
+    })
+  }
   getSearchData(event){
-    this.params.start_date = event.date.split('/')[0];
-    this.params.end_date = event.date.split('/')[1];
+    this.params.income_date = event.date_custom
     this.loadData();
   }
   onPageChange(e){

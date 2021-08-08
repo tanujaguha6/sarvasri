@@ -1,6 +1,6 @@
 <app-alert type="success" *ngIf="!loggedin" dismiss="true">{{userData.message}}</app-alert>
-<div class="row c-row">
-  <div class="col-lg-4 c-pad">
+<div class="row c-row" >
+  <div class="col-lg-4 c-pad" (click)="redirect('/Commission/monthly income')">
     <div class="card text-white c-bg ">
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-4 c-pad">
+  <div class="col-lg-4 c-pad" (click)="redirect('/Commission/Weekly Income')">
     <div class="card text-white c-bg ">      
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-4 c-pad">
+  <div class="col-lg-4 c-pad" (click)="redirect('/commission/first-purchase-income')">
     <div class="card text-white c-bg ">      
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
@@ -62,15 +62,15 @@
   </div> -->
   </div>
   <div class="row c-row">
-    <div class="col-lg-8 c-pad">
+    <div class="col-lg-8 c-pad" >
       <div class="chart-graph" style="height: 100%;">
-      <app-card cardTitle="Bar chart stacked" [options]="false" >
+      <app-card cardTitle="Monthly Commission Comparison" [options]="false" >
         
-        <app-apex-chart  *ngIf="dataGraph" chartID="bar-chart-2-cac" (changedData)="changeData($event)" [dropdownchange]="dropdownchange" [chartConfig]="dataGraph" [type]="yearly"></app-apex-chart>
+        <app-apex-chart  *ngIf="dataGraph"  chartID="bar-chart-2-cac" (changedData)="changeData($event)" [dropdownchange]="dropdownchange" [chartConfig]="dataGraph" [type]="yearly"></app-apex-chart>
       </app-card>
     </div>
     </div>
-    <div class="col-lg-4 c-pad">
+    <div class="col-lg-4 c-pad" (click)="redirect('/wallet/transaction/retail')">
       <div class="box-alighnment">
       <div class="card text-white box-1 c-bg">
         <div class="card-body">
@@ -86,7 +86,7 @@
             </div>
         </div>
       </div>
-    <div class="card text-white box-1 c-bg">
+    <div class="card text-white box-1 c-bg" (click)="redirect('/wallet/transaction/first_wallet')">
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
           <div class="card-icon">
@@ -100,7 +100,7 @@
           </div>
       </div>
     </div>
-    <div class="card bg-light box-1 c-bg">
+    <div class="card bg-light box-1 c-bg" (click)="redirect('/Commission/Weekly Income')">
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
           <div class="card-icon">
@@ -141,7 +141,7 @@
 
 <div class="row c-row">
 <div class=" b-chart chart-graph col-sm-8 col-lg-8 c-pad">
-  <app-card cardTitle="Bar Chart" [options]="false" class="update-chart">
+  <app-card cardTitle="First Purchase Commission Comparison" [options]="false" class="update-chart">
     <app-apex-chart chartID="pie-chart-1-cac" [chartConfig]="bar2CAC" (changedDataMonthly)="changeDataMonthly($event)" [dropdownchangeMonthly]="dropdownchangeMonthly" [type]="monthly"></app-apex-chart>
   </app-card>
 </div>

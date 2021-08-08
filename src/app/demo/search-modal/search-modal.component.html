@@ -18,7 +18,16 @@
                   </select>
                 </div>
              </div>
-                
+             <div class="form-group row" *ngIf="dropdownData && dropdownData.length">
+                <label for="date_custom" class="col-lg-4 control-label">Date</label>
+                <div class="col-lg-8">
+                  <select name="date_custom"  formControlName="date_custom" class="form-control select2 select2-hidden-accessible" style="width:100%" tabindex="-1" aria-hidden="true">
+                    <option value="" selected="">ALL</option>  
+                    <option *ngFor="let drop of dropdownData" [value]="drop.income_month_key">
+                      {{drop.income_month_value}}</option>
+                  </select>
+                </div>
+             </div>
               <div class="form-group row" *ngIf="date">
                     <label for="date_range" class="col-lg-4 control-label">Date</label>
                     <div class="col-lg-8">

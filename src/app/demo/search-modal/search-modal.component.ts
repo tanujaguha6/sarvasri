@@ -46,6 +46,7 @@ export class SearchModalComponent implements OnInit  {
   @Input() statusItems: any;
   @Input() incomeTypeItems: any;
   @Input() sidesItem:any;
+  @Input() dropdownData: any;
   @Output() closeModal = new EventEmitter();
   @Output() sendSearchData = new EventEmitter();
   
@@ -86,6 +87,7 @@ export class SearchModalComponent implements OnInit  {
                   invoice_no: [srchForm?srchForm.invoice_no:''],
                   amount: [srchForm?srchForm.amount:''],
                   pdt_code: [srchForm?srchForm.pdt_code:''],
+                  date_custom: [srchForm?srchForm.date_custom:'']
                 });
     
   }
@@ -126,7 +128,9 @@ closeModals(){
     this.closeModal.emit('false');
   }
   search(){
+    if(this.myRangeInput){
     this.searchForm.controls['date'].setValue(this.myRangeInput.nativeElement.value);
+    }
     localStorage.setItem('searchFilter',JSON.stringify(this.searchForm.value))
     this.sendSearchData.emit(this.searchForm.value);
     this.closeModals();

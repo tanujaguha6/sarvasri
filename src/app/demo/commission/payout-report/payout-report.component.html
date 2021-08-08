@@ -9,7 +9,7 @@
                   (closeModal)="hideModals($event)" 
                   (sendSearchData)="getSearchData($event)"
                   [title]="title"  
-                  [date]="date" 
+                  [dropdownData]="dropdownData"
                    ></app-search-modal>
         </div>
         <ngb-pagination [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
