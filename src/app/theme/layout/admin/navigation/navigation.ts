@@ -51,13 +51,20 @@ const NavigationItems = [{
               url: '/wallet/transaction/retail',
               faicon: 'fa fa-circle-o'
             },
-                  {
-                    id: 'First transaction',
-                    title: 'First Transacton',
-                    type: 'item',
-                    url: '/wallet/transaction/first_wallet',
-                    faicon: 'fa fa-circle-o'
-                  }
+            {
+              id: 'First transaction',
+              title: 'First Transacton',
+              type: 'item',
+              url: '/wallet/transaction/first_wallet',
+              faicon: 'fa fa-circle-o'
+            },
+            {
+              id: 'Credit transaction',
+              title: 'Credit Transacton',
+              type: 'item',
+              url: '/wallet/credit',
+              faicon: 'fa fa-circle-o'
+            }
           ]
         },
         {

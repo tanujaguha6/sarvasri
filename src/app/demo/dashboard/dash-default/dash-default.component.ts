@@ -13,9 +13,11 @@ import { ChartDB } from 'src/app/fack-db/chart-data';
 import { AuthServicesService } from '../../../core/services/auth-services.service';
 import { GraphDataService } from '../../../core/services/graph-data.service';
 import {ToastService} from '../../../theme/shared/components/toast/toast.service';
+import { UiModalComponent } from '../../../theme/shared/components/modal/ui-modal/ui-modal.component';
 
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { Router } from '@angular/router';
+import { GraphService } from '../../../core/services/graph.service';
 
 @Component({
   selector: 'app-dash-default',
@@ -24,6 +26,9 @@ import { Router } from '@angular/router';
 })
 
 export class DashDefaultComponent implements OnInit {
+  @ViewChild(UiModalComponent) uimoadal : UiModalComponent;
+  public id : string;
+  modalData: any = [];
   slideConfig = {
     "slidesToShow": 6, "slidesToScroll": 1, 'autoplay': false, 'infinite': false,
     responsive: [
@@ -133,6 +138,7 @@ export class DashDefaultComponent implements OnInit {
     private auth: AuthServicesService,
     private router: Router,
     private graph: GraphDataService,
+    private graphService: GraphService,
     public toastEvent: ToastService) {
 
     this.chartDB = ChartDB;
@@ -250,13 +256,19 @@ export class DashDefaultComponent implements OnInit {
       this.directMemberSlider();
       this.raankMemberSlider();
       this.getMonthlyWiseGraphdata();
-      this.getYearlyWiseGraphdata();
+      this.loadYearlyDropdown();
+      
       this.graph.creategraph(this.retail_income, this.retail_binary, this.first_purchase, this.xAxis);
     }
   }
  
-  getOwlOptions() {
-
+  loadYearlyDropdown() {
+    let userData = JSON.parse(localStorage.getItem('userData'));
+    this.graph.graphDropdown(userData).subscribe(res => {
+      this.dropdownData = res['result'];
+      this.date_range = this.dropdownData[0].income_month_key;
+      this.getYearlyWiseGraphdata();
+    })
   }
 
   loadMemberIncome() {
@@ -268,6 +280,13 @@ export class DashDefaultComponent implements OnInit {
     this.auth.memberIncomeApi(user).subscribe((res) => {
       this.memberIncomeData = res['result'];
     });
+  }
+  fetchdata(id: string){
+    this.id = id;
+    this.graphService.getData(id).subscribe((modal) => {
+      this.modalData = modal['result'][0];
+    });
+    this.uimoadal.show();
   }
   redirect(href){
     this.router.navigate([href])
@@ -319,7 +338,6 @@ export class DashDefaultComponent implements OnInit {
   }
 
   getYearlyWiseGraphdata() {
-
     const user = {
       username: this.userData.username,
       login_type: this.userData.login_type,

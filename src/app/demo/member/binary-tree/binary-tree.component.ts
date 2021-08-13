@@ -27,13 +27,17 @@ export class BinaryTreeComponent implements OnInit {
     this.uimoadal.show();
   }
 
-  binaryTreeGraph(){
+  binaryTreeGraph(mem_code=null){
     let userData = JSON.parse(localStorage.getItem('userData'));
+    let member_code = userData.username;
+    if(mem_code){
+      member_code = mem_code;
+    }
     const user = {
       username: userData.username,
       login_type: userData.login_type,
       auth_token: userData.auth_token,
-      mem_code :   userData.username
+      mem_code :   member_code
     };
     this.auth.binaryTree(user).subscribe((res) => {
       this.binarytree = res['result'];
@@ -42,5 +46,4 @@ export class BinaryTreeComponent implements OnInit {
       })
     });
   }
-
 }

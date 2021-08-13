@@ -66,7 +66,9 @@
       <div class="chart-graph" style="height: 100%;">
       <app-card cardTitle="Monthly Commission Comparison" [options]="false" >
         
-        <app-apex-chart  *ngIf="dataGraph"  chartID="bar-chart-2-cac" (changedData)="changeData($event)" [dropdownchange]="dropdownchange" [chartConfig]="dataGraph" [type]="yearly"></app-apex-chart>
+        <app-apex-chart  *ngIf="dataGraph"  chartID="bar-chart-2-cac" 
+        (changedData)="changeData($event)" [dropdownchange]="dropdownchange" 
+        [chartConfig]="dataGraph" [type]="yearly" [dropdownData]="dropdownData"></app-apex-chart>
       </app-card>
     </div>
     </div>
@@ -100,7 +102,7 @@
           </div>
       </div>
     </div>
-    <div class="card bg-light box-1 c-bg" (click)="redirect('/Commission/Weekly Income')">
+    <div class="card bg-light box-1 c-bg" (click)="redirect('/wallet/credit')">
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
           <div class="card-icon">
@@ -128,7 +130,7 @@
   (afterChange)="afterChange($event)"
   (beforeChange)="beforeChange($event)">
 <div ngxSlickItem *ngFor="let member of directMember" class="slide">
-<img src="{{ member.profile_image }}" alt=""  class="img-radius wid-75 m-auto align-top text-center" style="border:1px solid rgb(51, 115, 158)">
+<img src="{{ member.profile_image }}" (click)="fetchdata(member.mem_code)" alt=""  class="img-radius wid-75 m-auto align-top text-center" style="border:1px solid rgb(51, 115, 158)">
 <div>
   <h6 style="text-align: center;">{{member?.name}}</h6>
   <p class="text-muted" style="text-align: center;">{{member?.mem_code}}</p>
@@ -138,7 +140,97 @@
 </ngx-slick-carousel>
 </div>
 </div>
+<app-ui-modal #modalDefault class="binary-modal">
+      
+  <div class="app-modal-header">
+    <h5 class="modal-title">{{modalData.Member_Name}}</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalDefault.hide()"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="app-modal-body" style="overflow: auto">
+    <table class="table table_small" style="margin-bottom: 0px !important;">
+      <tbody>
+        <tr>
+          <td><strong>Member Name</strong></td>
+          <td colspan="3">{{modalData.Member_Name}} </td>
+        </tr>
+        
+        <tr>
+          <td><strong>DOR</strong></td><td>{{modalData.DOR}}</td>
+          <td><strong>DOA</strong></td><td>{{modalData.DOA}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Rank</strong></td><td>{{modalData.Rank}}</td>
+          <td><strong>Current Rank</strong></td><td>{{modalData.Current_Rank}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Total Associate A Team</strong></td><td>{{modalData.Total_Associate_A_Team}}</td>
+          <td><strong>Total Associate B Team</strong></td><td>{{modalData.Total_Associate_B_Team}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Active Associate A Team</strong></td><td>{{modalData.Active_Associate_A_Team}}</td>
+          <td><strong>Active Associate B Team</strong></td><td>{{modalData.Active_Associate_B_Team}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Total Self Purchase BV</strong></td><td>{{modalData.Total_Self_Purchase_BV}}</td>
+          <td><strong>Current Self Purchase BV</strong></td><td>{{modalData.Current_Self_Purchase_BV}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Total Self Purchase Rs</strong></td><td>{{modalData.Total_Self_Purchase_Rs}}</td>
+          <td><strong>Current Self Purchase Rs</strong></td><td>{{modalData.Current_Self_Purchase_Rs}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Total A Team BV</strong></td><td>{{modalData.Total_A_Team_BV}}</td>
+          <td><strong>Total B Team BV</strong></td><td>{{modalData.Total_B_Team_BV}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Current A Team BV</strong></td><td>{{modalData.Current_A_Team_BV}}</td>
+          <td><strong>Current B Team BV</strong></td><td>{{modalData.Current_B_Team_BV}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Current A Team BV (RP)</strong></td><td>{{modalData.Current_A_Team_BV_RP}}</td>
+          <td><strong>Current B Team BV (RP)</strong></td><td>{{modalData.Current_B_Team_BV_RP}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Current A Team BV (FP)</strong></td><td>{{modalData.Current_A_Team_BV_FP}}</td>
+          <td><strong>Current B Team BV (FP)</strong></td><td>{{modalData.Current_B_Team_BV_FP}}</td>
+        </tr>
+        
+        
+        <tr>
+          <td><strong>BP Purchase Status</strong></td><td>{{modalData.BP_Purchase_Status}}</td>
+          <td><strong>Total BP Matching</strong></td><td>{{modalData.Total_BP_Matching}}</td>
+        </tr>
+        
+        <tr>
+          <td><strong>Left Active</strong></td><td>{{modalData.Left_Active}}</td>
+          <td><strong>Right Active</strong></td><td>{{modalData.Right_Active}}</td>
+        </tr>
+        <tr>
+          <td><strong>Total Left BP (P)</strong></td><td>{{modalData.Total_Left_BP_P}}</td>
+          <td><strong>Total Right BP (P)</strong></td><td>{{modalData.Total_Right_BP_P}}</td>
+        </tr>
+        <tr>
+          <td><strong>Current Left BP (P)</strong></td><td>{{modalData.Current_Left_BP_P}}</td>
+          <td><strong>Current Right BP (P)</strong></td><td>{{modalData.Current_Right_BP_P}}</td>
+        </tr>
+        <tr>
+          <td><strong>Carry Forward Left BP (P)</strong></td><td>{{modalData.Carry_Forward_Left_BP_P}}</td>
+          <td><strong>Carry Forward Right BP (P)</strong></td><td>{{modalData.Carry_Forward_Right_BP_P}}</td>
+        </tr>       
+      </tbody>
+    </table>
+  </div>
 
+</app-ui-modal>
 <div class="row c-row">
 <div class=" b-chart chart-graph col-sm-8 col-lg-8 c-pad">
   <app-card cardTitle="First Purchase Commission Comparison" [options]="false" class="update-chart">

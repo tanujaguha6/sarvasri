@@ -46,8 +46,8 @@
     </div> -->
     
 </div>
-<div id="selectBox" *ngIf="type === 'yearly'">
-    <select id="yearselect" (change)="changeData('yearly')"[(ngModel)]="selectDate">
+<div id="selectBox" *ngIf="type === 'yearly' && dropdownData && dropdownData.length">
+    <select  id="yearselect" (change)="changeData('yearly')"[(ngModel)]="selectDate" >
         <option [value]="dd.income_month_key" *ngFor="let dd of dropdownData">{{dd.income_month_value}}</option>
     </select>
 </div>
