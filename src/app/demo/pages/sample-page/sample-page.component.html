@@ -11,15 +11,13 @@
 <div class="row">
     <div class="col-lg-4">
       <div  class="card c-bg profile-card-2">
-        <div  class="card-img-block">
-          <img  src="assets/images/light-box/l1.jpg" alt="Card image cap" class="img-fluid">
-        </div>
+        
         <div class="card-body pt-5">
-          <img src="{{userData?.profile_image}}" alt="profile-image" class="profile">
-          <h5 class="card-title">{{userData?.name}}</h5>
-          <p>{{userData?.username}}</p>
-          <p>{{userData?.dob}}</p>
-          <p>{{userData?.doj}}</p>
+          <img src="{{displayData?.profile_image}}" alt="profile-image" class="profile">
+          <h5 class="card-title">{{displayData?.name}}</h5>
+          <p>{{displayData?.username}}</p>
+          <p class="border-bottom pb-2" *ngIf="displayData.dob">Date Of Birth : {{displayData?.dob}}</p>
+          <p class="border-bottom pb-2" *ngIf="displayData.doj">Date Of Joining: {{displayData?.doj}}</p>
           <hr/>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of 
             the card's content.</p>

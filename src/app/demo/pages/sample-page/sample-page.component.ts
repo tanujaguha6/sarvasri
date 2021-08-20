@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthServicesService } from 'src/app/core/services/auth-services.service';
@@ -20,7 +20,9 @@ export class SamplePageComponent implements OnInit {
   branchName: any;
   bankName: any;
   userData: any;
+  displayData: any;
   showModals: boolean;
+  @Input() userDetail;
   constructor(private fb: FormBuilder, private modalService: NgbModal,
     private auth: AuthServicesService) {
     this.userProfileFrm = this.fb.group({
@@ -55,6 +57,16 @@ export class SamplePageComponent implements OnInit {
 
   ngOnInit() {
     this.userData = JSON.parse(localStorage.getItem('userData'));
+    this.displayData =  JSON.parse(localStorage.getItem('userData'));
+    console.log('tis.',this.userDetail)
+    if(this.userDetail && Object.keys(this.userDetail).length){
+      this.displayData.name = this.userDetail[0];
+      this.displayData.username = this.userDetail[1];
+      this.displayData.profile_image = this.userDetail[2];
+      this.displayData.doj = '';
+      this.displayData.dob = '';
+    }
+    else
     this.dashboardMemberData();
   }
 

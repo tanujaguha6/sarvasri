@@ -28,6 +28,7 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { BnNgIdleService } from 'bn-ng-idle';
+import { LoaderService } from '../app/core/services/loader-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { BnNgIdleService } from 'bn-ng-idle';
   providers: [
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     NavigationItem,
-    BnNgIdleService],
+    BnNgIdleService,
+    LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -221,9 +221,9 @@ left:0
 .nav-tabs {
   border-bottom: 1px solid #3e5871;
 }
-.profile-card-2 .card-body{position:relative}
-.profile-card-2 .profile{border-radius:50%;position:absolute;top:-42px;left:15%;
-  max-width:75px;border:3px solid #fff;transform:translate(-50%)}
+.profile-card-2 .card-body{position:relative; text-align: center;}
+.profile-card-2 .profile{border-radius:50%;
+  max-width:75px;border:3px solid #fff;}
 .profile-card-2 h5{font-weight:600}
 .profile-card-2 .card-text{font-weight:300;font-size:15px}
 .profile-card-2 .icon-block{float:left;width:100%}

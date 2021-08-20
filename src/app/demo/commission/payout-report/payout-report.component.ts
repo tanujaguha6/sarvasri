@@ -38,19 +38,20 @@ export class PayoutReportComponent implements OnInit {
   }
   loadData(){
     this.comission.getFirstPurchaseIncomeItems(this.params,'payout_report.php').subscribe((data:any) => {
-      this.items = data.result;
-      if(this.items.length){
-        this.keys = Object.keys(data.result[0]);
-        this.columns =  Object.keys(data.result[0]);
-      }
-      this.total = data.total_count;
-      this.perpage = data.per_page;
-    });
+      this.items = data.result[0];
+      console.log(this.userData,this.items)
+    //   if(this.items.length){
+    //     this.keys = Object.keys(data.result[0]);
+    //     this.columns =  Object.keys(data.result[0]);
+    //   }
+    //   this.total = data.total_count;
+    //   this.perpage = data.per_page;
+     });
+    
   }
   getDropdown(){
     this.graph.graphDropdown(this.userData).subscribe(res => {
       this.dropdownData = res['result'];
-      console.log( this.dropdownData)
     })
   }
   getSearchData(event){
