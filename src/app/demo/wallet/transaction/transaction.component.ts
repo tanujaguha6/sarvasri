@@ -26,24 +26,26 @@ export class TransactionComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.type =params.get('type')
+      this.params = {
+        username: this.userData.username,
+        login_type: this.userData.login_type,
+        auth_token: this.userData.auth_token,
+        start_date:'',
+        end_date:'',
+        income_type:'',
+        status:'',
+        page: 1
+      }
+      if( this.type === "retail"){
+        this.api = 'wallet_transaction_retail.php';
+      }else if(this.type === "credit"){
+        this.api = 'wallet_transaction_credit.php';
+      }
+      else{
+        this.api = 'wallet_transaction_first.php';
+      }
+      this.loadData();
     })
-    
-    this.params = {
-      username: this.userData.username,
-      login_type: this.userData.login_type,
-      auth_token: this.userData.auth_token,
-      start_date:'',
-      end_date:'',
-      income_type:'',
-      status:'',
-      page: 1
-    }
-    if( this.type === "retail"){
-      this.api = 'wallet_transaction_retail.php';
-    }else{
-      this.api = 'wallet_transaction_first.php';
-    }
-    this.loadData();
   }
   loadData(){
     this.comission.getFirstPurchaseIncomeItems(this.params, this.api).subscribe((data:any) => {

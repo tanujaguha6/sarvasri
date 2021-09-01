@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AlertModule, BreadcrumbModule, CardModule, ModalModule } from './components';
 import { DataFilterPipe } from './components/data-table/data-filter.pipe';
+import { ReplaceUnderscorePipe } from './components/data-table/underscore-filter.pipe';
+
 import { TodoListRemoveDirective } from './components/todo/todo-list-remove.directive';
 import { TodoCardCompleteDirective } from './components/todo/todo-card-complete.directive';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -56,6 +58,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BreadcrumbModule,
     ModalModule,
     DataFilterPipe,
+    ReplaceUnderscorePipe,
     TodoListRemoveDirective,
     TodoCardCompleteDirective,
     ClickOutsideModule,
@@ -69,6 +72,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   declarations: [
     DataFilterPipe,
+    ReplaceUnderscorePipe,
     TodoListRemoveDirective,
     TodoCardCompleteDirective,
     SpinnerComponent,

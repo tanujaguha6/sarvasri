@@ -1,4 +1,31 @@
-<ul class="tree">
+<div class="row">
+  <div class="col-xl-12">
+    <button style="padding: 3px 14px;float: right;margin-top: -42px;" type="button" class="btn btn-primary" (click)="showModal()">Search</button>
+</div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="isLoading">
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  </div>
+  <app-search-modal *ngIf="showModals" 
+  (closeModal)="hideModals($event)" 
+  (sendSearchData)="getSearchData($event)"
+  [title]="title" member="true" ></app-search-modal>
+  <div class="row">
+  <ul class="tree">
     <li *ngIf="treeData.length"> 
         <div class="tree-item" >
             <img src="{{treeData[0][2]}}" (click)="fetchdata(treeData[0][1])" [ngStyle]="{'border': '2px '+ treeData[0][4] + treeData[0][3]}" >
@@ -6,111 +33,207 @@
               {{treeData[0][1]}}</span>
         </div>
       <ul>
-        <li *ngIf="treeData[1]"> 
-            <div class="tree-item" >
+        <li> 
+            <div class="tree-item" *ngIf="treeData[1]; else content_1" >
                 <img src="{{treeData[1][2]}}"  (click)="fetchdata(treeData[1][1])" [ngStyle]="{'border': '2px '+ treeData[1][4] + treeData[1][3]}">
                 <span class="tree-box" (click)="binaryTreeGraph(treeData[1])">{{treeData[1][0]}}<br/>
                   {{treeData[1][1]}}</span>
             </div>
+            <ng-template class="tree-item" #content_1 >
+              <div class="tree-item">
+                <img src="assets/images/blankprofile.jpeg">
+                <span class="tree-box" (click)="binaryTreeGraph(treeData[0],'L')">Add Member<br/></span>
+              </div>
+            </ng-template>
           <ul>
-            <li *ngIf="treeData[3]"> 
-                <div class="tree-item">
+            <li> 
+                <div class="tree-item" *ngIf="treeData[3];else content_2">
                     <img src="{{treeData[3][2]}}" (click)="fetchdata(treeData[3][1])" [ngStyle]="{'border': '2px '+ treeData[3][4] + treeData[3][3]}">
                     <span class="tree-box" (click)="binaryTreeGraph(treeData[3])">{{treeData[3][0]}}<br/>
                       {{treeData[3][1]}}</span>
                 </div>
+                <ng-template class="tree-item" #content_2 >
+                  <div class="tree-item">
+                    <img src="assets/images/blankprofile.jpeg">
+                    <span class="tree-box" *ngIf="treeData[1];" (click)="binaryTreeGraph(treeData[1],'L')">Add Member<br/></span>
+                    <span class="tree-box" *ngIf="!treeData[1];">Empty</span>
+                  </div>
+                </ng-template>
               <ul>
-                <li *ngIf="treeData[7]">
-                    <div class="tree-item" >
+                <li >
+                    <div class="tree-item" *ngIf="treeData[7];else content_3">
                         <img src="{{treeData[7][2]}}"  (click)="fetchdata(treeData[7][1])" [ngStyle]="{'border': '2px '+treeData[7][4] + treeData[7][3]}">
                         <span class="tree-box" (click)="binaryTreeGraph(treeData[7])">{{treeData[7][0]}}<br/>
                           {{treeData[7][1]}}</span>
                     </div>
+                    <ng-template class="tree-item" #content_3 >
+                      <div class="tree-item">
+                        <img src="assets/images/blankprofile.jpeg" >
+                        <span class="tree-box" *ngIf="treeData[3];" (click)="binaryTreeGraph(treeData[3],'L')">Add Member<br/></span>
+                        <span class="tree-box" *ngIf="!treeData[3];">Empty</span>
+                      </div>
+                    </ng-template>
                 </li>
-                <li *ngIf="treeData[8]">
-                    <div class="tree-item">
+                <li>
+                    <div class="tree-item" *ngIf="treeData[8];else content_4">
                         <img src="{{treeData[8][2]}}" (click)="fetchdata(treeData[8][1])" [ngStyle]="{'border': '2px '+treeData[8][4] + treeData[8][3]}">
                         <span class="tree-box" (click)="binaryTreeGraph(treeData[8])">{{treeData[8][0]}}<br/>
                           {{treeData[8][1]}}</span>
                     </div>
+                    <ng-template class="tree-item" #content_4 >
+                      <div class="tree-item">
+                        <img src="assets/images/blankprofile.jpeg" >
+                        <span class="tree-box" *ngIf="treeData[3];" (click)="binaryTreeGraph(treeData[3],'R')">Add Member<br/></span>
+                        <span class="tree-box" *ngIf="!treeData[3];">Empty</span>
+                      </div>
+                    </ng-template>
                 </li>
               </ul>
             </li>
-            <li *ngIf="treeData[4]"> 
-                <div class="tree-item">
+            <li> 
+                <div class="tree-item"  *ngIf="treeData[4];else content_5">
                     <img src="{{treeData[4][2]}}" (click)="fetchdata(treeData[4][1])" [ngStyle]="{'border': '2px '+treeData[4][4] + treeData[4][3]}">
                     <span class="tree-box" (click)="binaryTreeGraph(treeData[4])">{{treeData[4][0]}}<br/>
                       {{treeData[4][1]}}</span>
                 </div>
+                <ng-template class="tree-item" #content_5 >
+                  <div class="tree-item">
+                    <img src="assets/images/blankprofile.jpeg">
+                    <span class="tree-box" *ngIf="treeData[1];" (click)="binaryTreeGraph(treeData[1],'R')">Add Member<br/></span>
+                    <span class="tree-box" *ngIf="!treeData[1];">Empty</span>
+                  </div>
+                </ng-template>
               <ul>
-                <li *ngIf="treeData[9]">
-                    <div class="tree-item">
+                <li>
+                    <div class="tree-item"  *ngIf="treeData[9];else content_6">
                         <img src="{{treeData[9][2]}}" (click)="fetchdata(treeData[9][1])" [ngStyle]="{'border': '2px '+treeData[9][4] + treeData[9][3]}">
                         <span class="tree-box" (click)="binaryTreeGraph(treeData[9])">{{treeData[9][0]}}<br/>
                           {{treeData[9][1]}}</span>
                     </div>
+                    <ng-template class="tree-item" #content_6 >
+                      <div class="tree-item">
+                        <img src="assets/images/blankprofile.jpeg" >
+                        <span class="tree-box" *ngIf="treeData[4];" (click)="binaryTreeGraph(treeData[4],'L')">Add Member<br/></span>
+                        <span class="tree-box" *ngIf="!treeData[4];">Empty</span>
+                  </div>
+                    </ng-template>
                 </li>
-                <li *ngIf="treeData[10]">
-                    <div class="tree-item">
+                <li>
+                    <div class="tree-item" *ngIf="treeData[10];else content_7">
                         <img src="{{treeData[10][2]}}" (click)="fetchdata(treeData[10][1])" [ngStyle]="{'border': '2px '+treeData[10][4] + treeData[10][3]}">
                         <span class="tree-box" (click)="binaryTreeGraph(treeData[10])">{{treeData[10][0]}}<br/>
                           {{treeData[10][1]}}</span>
                     </div>
+                    <ng-template class="tree-item" #content_7 >
+                      <div class="tree-item">
+                        <img src="assets/images/blankprofile.jpeg" >
+                        <span class="tree-box" *ngIf="treeData[4];" (click)="binaryTreeGraph(treeData[4],'R')">Add Member<br/></span>
+                        <span class="tree-box" *ngIf="!treeData[4];">Empty</span>
+                      </div>
+                    </ng-template>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
-        <li *ngIf="treeData[2]"> 
-            <div class="tree-item"> 
+        <li> 
+            <div class="tree-item" *ngIf="treeData[2];else content_8"> 
                 <img src="{{treeData[2][2]}}" (click)="fetchdata(treeData[2][1])" [ngStyle]="{'border': '2px '+treeData[2][4] + treeData[2][3]}">
                 <span class="tree-box" (click)="binaryTreeGraph(treeData[2])">{{treeData[2][0]}}<br/>
                   {{treeData[2][1]}}</span>
             </div>
+            <ng-template class="tree-item" #content_8 >
+              <div class="tree-item">
+                <img src="assets/images/blankprofile.jpeg" >
+                <span class="tree-box" (click)="binaryTreeGraph(treeData[0],'R')">Add Member<br/></span>
+              </div>
+            </ng-template>
           <ul>
-            <li *ngIf="treeData[5]"> 
-                <div class="tree-item">
+            <li> 
+                <div class="tree-item"  *ngIf="treeData[5];else content_9">
                     <img src="{{treeData[5][2]}}" (click)="fetchdata(treeData[5][1])" [ngStyle]="{'border': '2px '+treeData[5][4] + treeData[5][3]}">
                     <span class="tree-box" (click)="binaryTreeGraph(treeData[5])">{{treeData[5][0]}}<br/>
                       {{treeData[5][1]}}</span>
                 </div>
+                <ng-template class="tree-item" #content_9 >
+                  <div class="tree-item">
+                    <img src="assets/images/blankprofile.jpeg" >
+                    <span class="tree-box" *ngIf="treeData[2];" (click)="binaryTreeGraph(treeData[2],'L')">Add Member<br/></span>
+                    <span class="tree-box" *ngIf="!treeData[2];">Empty</span>
+                  </div>
+                </ng-template>
               <ul>
-                <li *ngIf="treeData[11]">
-                    <div class="tree-item">
+                <li>
+                    <div class="tree-item"  *ngIf="treeData[11];else content_10">
                         <img src="{{treeData[11][2]}}" (click)="fetchdata(treeData[11][1])" [ngStyle]="{'border': '2px '+treeData[11][4] + treeData[1][3]}">
                         <span class="tree-box" (click)="binaryTreeGraph(treeData[11])">{{treeData[11][0]}}<br/>
                           {{treeData[11][1]}}</span>
                     </div>
+                    <ng-template class="tree-item" #content_10 >
+                      <div class="tree-item">
+                        <img src="assets/images/blankprofile.jpeg" >
+                        <span class="tree-box" *ngIf="treeData[5];" (click)="binaryTreeGraph(treeData[5],'L')">Add Member<br/></span>
+                        <span class="tree-box" *ngIf="!treeData[5];">Empty</span>
+                      </div>
+                    </ng-template>
                 </li>
-                <li *ngIf="treeData[12]">
-                    <div class="tree-item">
+                <li>
+                    <div class="tree-item"  *ngIf="treeData[12];else content_11">
                         <img src="{{treeData[12][2]}}" (click)="fetchdata(treeData[12][1])" [ngStyle]="{'border': '2px '+treeData[12][4] + treeData[12][3]}">
                         <span class="tree-box"  (click)="binaryTreeGraph(treeData[12])">{{treeData[12][0]}}<br/>
                           {{treeData[12][1]}}</span>
                     </div>
+                    <ng-template class="tree-item" #content_11 >
+                      <div class="tree-item">
+                        <img src="assets/images/blankprofile.jpeg" >
+                        <span class="tree-box" *ngIf="treeData[5];" (click)="binaryTreeGraph(treeData[5],'R')">Add Member<br/></span>
+                        <span class="tree-box" *ngIf="!treeData[5];">Empty</span>
+                      </div>
+                    </ng-template>
                 </li>
               </ul>
             </li>
-            <li *ngIf="treeData[6]"> 
-                <div class="tree-item">
+            <li> 
+                <div class="tree-item" *ngIf="treeData[6];else content_12">
                     <img src="{{treeData[6][2]}}" (click)="fetchdata(treeData[6][1])" [ngStyle]="{'border': '2px '+treeData[6][4] + treeData[6][3]}">
                     <span class="tree-box" (click)="binaryTreeGraph(treeData[6])">{{treeData[6][0]}}<br/>
                       {{treeData[6][1]}}</span>
                 </div>
+                <ng-template class="tree-item" #content_12 >
+                  <div class="tree-item">
+                    <img src="assets/images/blankprofile.jpeg">
+                    <span class="tree-box" *ngIf="treeData[2];" (click)="binaryTreeGraph(treeData[2],'R')">Add Member<br/></span>
+                    <span class="tree-box" *ngIf="!treeData[2];">Empty</span>
+                  </div>
+                </ng-template>
               <ul>
-                <li *ngIf="treeData[13]">
-                    <div class="tree-item">
+                <li>
+                    <div class="tree-item"  *ngIf="treeData[13];else content_13">
                         <img src="{{treeData[13][2]}}" (click)="fetchdata(treeData[13][1])" [ngStyle]="{'border': '2px '+treeData[13][4] + treeData[13][3]}">
                         <span class="tree-box" (click)="binaryTreeGraph(treeData[13])">{{treeData[13][0]}}<br/>
                           {{treeData[13][1]}}</span>
                     </div>
+                    <ng-template class="tree-item" #content_13 >
+                      <div class="tree-item">
+                        <img src="assets/images/blankprofile.jpeg">
+                        <span class="tree-box" *ngIf="treeData[6];" (click)="binaryTreeGraph(treeData[6],'L')">Add Member<br/></span>
+                        <span class="tree-box" *ngIf="!treeData[6];">Empty</span>
+                      </div>
+                    </ng-template>
                 </li>
-                <li *ngIf="treeData[14]">
-                    <div class="tree-item">
+                <li>
+                    <div class="tree-item"  *ngIf="treeData[14];else content_14">
                         <img src="{{treeData[14][2]}}" (click)="fetchdata(treeData[14][1])" [ngStyle]="{'border': '2px '+treeData[14][4] + treeData[14][3]}">
                         <span class="tree-box" (click)="binaryTreeGraph(treeData[14])">{{treeData[14][0]}}<br/>
                           {{treeData[14][1]}}</span>
                     </div>
+                    <ng-template class="tree-item" #content_14 >
+                      <div class="tree-item">
+                        <img src="assets/images/blankprofile.jpeg" >
+                        <span class="tree-box" *ngIf="treeData[6];" (click)="binaryTreeGraph(treeData[6],'R')">Add Member<br/></span>
+                        <span class="tree-box" *ngIf="!treeData[6];">Empty</span>
+                      </div>
+                    </ng-template>
                 </li>
               </ul>
             </li>
@@ -119,6 +242,7 @@
        
       </ul>
     </li>
+    
     <app-ui-modal #modalDefault class="binary-modal">
       
         <div class="app-modal-header">
@@ -128,10 +252,7 @@
         <div class="app-modal-body" style="overflow: auto">
           <table class="table table_small" style="margin-bottom: 0px !important;">
             <tbody>
-              <tr>
-                <td><strong>Member Name</strong></td>
-                <td colspan="3">{{modalData.Member_Name}} </td>
-              </tr>
+             
               
               <tr>
                 <td><strong>DOR</strong></td><td>{{modalData.DOR}}</td>
@@ -209,6 +330,12 @@
           </table>
         </div>
       
-      </app-ui-modal>
+    </app-ui-modal>
   </ul>
+</div>
+  <div style="text-align: center;" *ngIf="back_mem_code">
+    <button  type="button" class="btn btn-secondary" (click)="get_back()" >
+      <i class="fas fa-backward"></i>
+    </button>
+  </div>
   

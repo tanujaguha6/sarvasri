@@ -34,7 +34,7 @@ const NavigationItems = [{
           id: 'dashboard',
           title: 'Dashboard',
           type: 'item',
-          url: '/dashboard/default',
+          url: '/dashboard',
           classes: 'nav-item',
           icon: 'fa fa-dashboard'
         },
@@ -55,14 +55,14 @@ const NavigationItems = [{
               id: 'First transaction',
               title: 'First Transacton',
               type: 'item',
-              url: '/wallet/transaction/first_wallet',
+              url: '/wallet/transaction/first',
               faicon: 'fa fa-circle-o'
             },
             {
               id: 'Credit transaction',
               title: 'Credit Transacton',
               type: 'item',
-              url: '/wallet/credit',
+              url: '/wallet/transaction/credit',
               faicon: 'fa fa-circle-o'
             }
           ]
@@ -234,25 +234,12 @@ const NavigationItems = [{
               }
             ]
         },
-        {
-            id: 'product',
-            title: 'Product',
-            type: 'collapse',
-            icon: 'fa fa-gg',
-            children: [
-              {
-                id: 'product_view',
-                title: 'Product View',
-                type: 'item',
-                faicon: 'fa fa-circle-o',
-                url: '/product/view'
-              }
-            ]
-        }
+        
       ]},{
         id: 'test',
         title: '',
         type: 'group',
+        class: 'custom'
        // icon: 'feather icon-monitor'
       }];
 

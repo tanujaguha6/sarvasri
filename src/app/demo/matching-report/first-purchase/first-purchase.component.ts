@@ -59,7 +59,6 @@ export class FirstPurchaseComponent implements OnInit, OnDestroy {
     this.showModals =  false;
   }
   getSearchData(event){
-    console.log(event);
     this.params.start_date = event.date.split('/')[0];
     this.params.end_date = event.date.split('/')[1];
     

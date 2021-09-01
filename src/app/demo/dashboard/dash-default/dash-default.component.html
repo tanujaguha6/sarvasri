@@ -1,6 +1,6 @@
 <app-alert type="success" *ngIf="!loggedin" dismiss="true">{{userData.message}}</app-alert>
 <div class="row c-row" >
-  <div class="col-lg-4 c-pad" (click)="redirect('/Commission/monthly income')">
+  <div class="col-lg-4 c-pad" (click)="redirect('commission/re-purchase-monthly-income')">
     <div class="card text-white c-bg ">
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
@@ -9,8 +9,8 @@
             </div>
             <div class="card-des">
               <h5 class="card-title text-white">Retail Income</h5>
-        <p class="card-text">Rs {{memberIncomeData?.total_repurchase_income}} /-</p>
-        <div><ngb-progressbar type="success" [value]="55"></ngb-progressbar></div> 
+              <p class="card-text">{{memberIncomeData?.total_repurchase_income}} </p>
+              <div><ngb-progressbar type="success" [value]="55"></ngb-progressbar></div> 
             </div>
 
         </div>
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-4 c-pad" (click)="redirect('/Commission/Weekly Income')">
+  <div class="col-lg-4 c-pad" (click)="redirect('commission/re-purchase-weekly-income')">
     <div class="card text-white c-bg ">      
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
@@ -27,14 +27,14 @@
           </div>
         <div class="card-des">
         <h5 class="card-title text-white"> Team Bonus</h5>
-        <p class="card-text">Rs {{memberIncomeData?.total_repurchase_binary_income}} /-</p>
+        <p class="card-text"> {{memberIncomeData?.total_repurchase_binary_income}} </p>
         <div><ngb-progressbar [value]="40"></ngb-progressbar></div>
        </div>
        </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-4 c-pad" (click)="redirect('/commission/first-purchase-income')">
+  <div class="col-lg-4 c-pad" (click)="redirect('commission/first-purchase-income')">
     <div class="card text-white c-bg ">      
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
@@ -43,7 +43,7 @@
           </div>
         <div class="card-des">
         <h5 class="card-title text-white"> First Purchase Income</h5>
-        <p class="card-text">Rs {{memberIncomeData?.total_first_purchase_income}} /-</p>
+        <p class="card-text"> {{memberIncomeData?.total_first_purchase_income}} </p>
         <div><ngb-progressbar type="danger" [value]="80"></ngb-progressbar></div>
           </div>
           </div>
@@ -72,9 +72,9 @@
       </app-card>
     </div>
     </div>
-    <div class="col-lg-4 c-pad" (click)="redirect('/wallet/transaction/retail')">
+    <div class="col-lg-4 c-pad" >
       <div class="box-alighnment">
-      <div class="card text-white box-1 c-bg">
+      <div class="card text-white box-1 c-bg" (click)="redirect('wallet/transaction/retail')">
         <div class="card-body">
           <div class="card-wrap d-flex align-items-center">
             <div class="card-icon">
@@ -82,13 +82,13 @@
             </div>
           <div class="card-des">
           <h5 class="card-title text-white">Retail Wallet Balance</h5>
-          <p class="card-text">Rs {{memberWalletData?.rp_balance}} /-</p>
+          <p class="card-text"> {{memberWalletData?.rp_balance}} </p>
           <div><ngb-progressbar [value]="40"></ngb-progressbar></div>
             </div>
             </div>
         </div>
       </div>
-    <div class="card text-white box-1 c-bg" (click)="redirect('/wallet/transaction/first_wallet')">
+    <div class="card text-white box-1 c-bg" (click)="redirect('wallet/transaction/first')">
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
           <div class="card-icon">
@@ -96,13 +96,13 @@
           </div>
         <div class="card-des">
         <h5 class="card-title text-white">First Purchase Wallet Balance</h5>
-        <p class="card-text">Rs {{memberWalletData?.fp_balance}} /-</p>
+        <p class="card-text"> {{memberWalletData?.fp_balance}} </p>
         <div><ngb-progressbar type="danger" [value]="80"></ngb-progressbar></div>
           </div>
           </div>
       </div>
     </div>
-    <div class="card bg-light box-1 c-bg" (click)="redirect('/wallet/credit')">
+    <div class="card bg-light box-1 c-bg" (click)="redirect('wallet/transaction/credit')">
       <div class="card-body">
         <div class="card-wrap d-flex align-items-center">
           <div class="card-icon">
@@ -110,7 +110,7 @@
           </div>
         <div class="card-des">
         <h5 class="card-title">Credit Wallet Balance</h5>
-        <p class="card-text">Rs {{memberWalletData?.cr_balance}} /-</p>
+        <p class="card-text"> {{memberWalletData?.cr_balance}}</p>
         <div><ngb-progressbar type="warning" [value]="75"></ngb-progressbar></div>
         </div>
         </div>
@@ -149,10 +149,7 @@
   <div class="app-modal-body" style="overflow: auto">
     <table class="table table_small" style="margin-bottom: 0px !important;">
       <tbody>
-        <tr>
-          <td><strong>Member Name</strong></td>
-          <td colspan="3">{{modalData.Member_Name}} </td>
-        </tr>
+        
         
         <tr>
           <td><strong>DOR</strong></td><td>{{modalData.DOR}}</td>

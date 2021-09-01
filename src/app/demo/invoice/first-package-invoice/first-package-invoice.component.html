@@ -4,7 +4,10 @@
         <button style="padding: 3px 14px;float: right;margin-top: -42px;" type="button" class="btn btn-primary" (click)="showModal()">Search</button>
         
         <div class="table-responsive">
-          <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
+          <app-listing [items] = "items" [keys]="keys" [columns]="columns"
+          [page_total_income] = "page_total_income" [grand_total_income]="grand_total_income"
+          [page_total_bv]="page_total_bv" [grand_total_bv]="grand_total_bv"
+          [page_total_bp]="page_total_bp" [grand_total_bp]="grand_total_bp"></app-listing>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 
                   (sendSearchData)="getSearchData($event)"
@@ -13,7 +16,7 @@
                   [side]="side" [sidesItem]="sides" [invoiceno]="invoiceno" [amount]="amount" 
                    ></app-search-modal>
         </div>
-        <ngb-pagination [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+        <ngb-pagination *ngIf="total>0" [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
 
       <!-- </app-card> -->
     </div>

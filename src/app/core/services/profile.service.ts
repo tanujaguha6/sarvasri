@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  member_add(api: any, memberData: any) {
+    return this.http.post("https://myshpl.com/api/member/"+api, memberData)
+  }
 }

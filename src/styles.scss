@@ -174,6 +174,7 @@ left:0
   }
   .pcoded-content {
     padding: 15px 25px;
+    min-height: 100vh;
   }
   .pcoded-header.headerpos-fixed ~ .pcoded-main-container .page-header h5 {
     margin-bottom: 6px;
@@ -222,8 +223,7 @@ left:0
   border-bottom: 1px solid #3e5871;
 }
 .profile-card-2 .card-body{position:relative; text-align: center;}
-.profile-card-2 .profile{border-radius:50%;
-  max-width:75px;border:3px solid #fff;}
+.profile-card-2 .profile{border-radius:50%; margin-bottom: 46px; border:3px solid #fff;}
 .profile-card-2 h5{font-weight:600}
 .profile-card-2 .card-text{font-weight:300;font-size:15px}
 .profile-card-2 .icon-block{float:left;width:100%}
@@ -270,7 +270,16 @@ left:0
 .drp-user .pro-body li a {color:#fff !important;}
 .pagination {float: right;}
 .pagination .page-link, .page-item.disabled .page-link {background-color: #2d3e50;}
+.modal-dialog{
+  max-width: 600px;
+}
 
+.table{
+  td{
+    vertical-align: middle;
+    padding: 0.75rem;
+  }
+}
 .modal-content {   /* background: #1e2a36;*/ background: #3e5871;}
 .modal-content h5.modal-title {color: #1abc9c;}
 .modal-header {border-bottom: 1px solid #487390;}
@@ -453,6 +462,20 @@ ngb-datepicker.dropdown-menu {width:100% !important;}
   #bar-chart-2-cac{
     .apexcharts-tooltip{
       left:2px!important;
+    }
+  }
+  .modal-content{
+    width: 97%;
+    position: initial;
+    .close{
+      position: relative;
+    }
+  }
+  .w-inner{
+    margin-top: -166px;
+    p{
+      overflow-y: scroll;
+      height: 197px;
     }
   }
 }

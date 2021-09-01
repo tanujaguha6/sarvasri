@@ -21,6 +21,8 @@ export class FirstPurchaseIncomeComponent implements OnInit, OnDestroy {
   public status: boolean = true;
   public params: any;
   public perpage: number;
+  public grand_total_income: number;
+  public page_total_income: number;
   userData = JSON.parse(localStorage.getItem('userData'));
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
@@ -57,6 +59,8 @@ export class FirstPurchaseIncomeComponent implements OnInit, OnDestroy {
       }
       this.total = data.total_count;
       this.perpage = data.per_page;
+      this.page_total_income = data.page_total_income;
+      this.grand_total_income = data.grand_total_income;
     });
   }
   onPageChange(e){

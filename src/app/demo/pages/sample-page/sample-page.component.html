@@ -19,14 +19,9 @@
           <p class="border-bottom pb-2" *ngIf="displayData.dob">Date Of Birth : {{displayData?.dob}}</p>
           <p class="border-bottom pb-2" *ngIf="displayData.doj">Date Of Joining: {{displayData?.doj}}</p>
           <hr/>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of 
-            the card's content.</p>
             <div class="icon-block">
-              <a href="javascript:void(0);"><i class="fa fa-facebook bg-facebook text-white"></i></a>
-              <a href="javascript:void(0);"><i class="fa fa-twitter bg-twitter text-white"></i></a>
-              <a href="javascript:void(0);"><i class="fa fa-google-plus bg-google-plus text-white"></i></a>
-              <button type="button" class="btn btn-primary" (click)="showIdCard(idcard)">Card</button>
-              <button type="button" class="btn btn-primary" (click)="welcomeLetter(letter)">Letter</button>
+              <button type="button" class="btn btn-primary" (click)="showIdCard(idcard)">ID Card</button>
+              <button type="button" class="btn btn-primary" (click)="welcomeLetter(letter)">Welcome Letter</button>
             </div>
           </div>
           <!-- <div class="card-body border-top border-light">
@@ -40,18 +35,18 @@
   
   <div class="col-lg-8 profile-area">
       <app-card [hidHeader]="true" cardClass="tab-card c-bg card-tab">
-        <h5 class="mb-3">User Details</h5>
-        <ngb-tabset>
-          <ngb-tab title="Profile">
+        <h5 class="mb-3">Profile</h5>
+        <ngb-tabset #t="ngbTabset">
+          <ngb-tab title="Profile" id="tab-selectbyid1"> 
             <ng-template ngbTabContent>
               <div class="active tab-pane">
                   <form class="form-horizontal" [formGroup]="userProfileFrm">
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Name
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                              <input type="text" formControlName="name_" name="member_name" class="form-control"
-                                  placeholder="Enter Member Name" required="" readonly="readonly">
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
+                              <input type="text"  formControlName="member_name" name="member_name" class="form-control"
+                                  placeholder="Enter Member Name" required="" >
                           </div>
                       </div>
   
@@ -75,8 +70,8 @@
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Mobile
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                              <input type="text" formControlName="mobileNo_" name="mobile" class="form-control"
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
+                              <input type="text"  formControlName="mobile" name="mobile" class="form-control"
                                   placeholder="Enter Mobile No" required="">
                           </div>
                       </div>
@@ -84,31 +79,31 @@
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">E-Mail</label>
   
-                          <div class="col-lg-9">
-                              <input type="email" formControlName="email_" name="email" class="form-control"
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
+                              <input type="email"  formControlName="email" name="email" class="form-control"
                                   placeholder="Enter E-Mail ID">
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
                           <div class="col-sm-offset-5 col-lg-7">
-                              <button type="submit" class="btn btn-success"
-                                  (click)="submit(userProfileFrm.value)">Submit</button>
+                              <button class="btn btn-success"
+                              (click)="submit('member_profile_edit.php','userProfileFrm', userProfileFrm)">Submit</button>
                           </div>
                       </div>
                   </form>
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="Address">
+          <ngb-tab title="Address" id="tab-selectbyid2">
             <ng-template ngbTabContent>
               <div class="active tab-pane">
                   <form class="form-horizontal" [formGroup]="userAddressFrm">
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">State
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                            <select class="form-control" formControlName="state_" (change)="selectState($event)">
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userAddressFrm}">
+                            <select class="form-control"  formControlName="state_id" (change)="selectState($event)">
                             <option value="">Please choose State</option>
                              <option [value]="state?.state_id" *ngFor="let state of states">{{state?.state_name}}</option>
                           </select>
@@ -116,11 +111,10 @@
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <label for="inputName" class="col-lg-3 control-label">District
+                          <label for="district_id" class="col-lg-3 control-label">District
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                            <select class="form-control" formControlName="district_">
-                            <option value=""></option>
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userAddressFrm}">
+                            <select class="form-control"  formControlName="dist_id">
                              <option [value]="dist?.dist_id" *ngFor="let dist of district">{{dist?.dist_name}}</option>
                           </select>
                           </div>
@@ -129,8 +123,8 @@
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Pin Code
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                              <input type="number" formControlName="pinCode_" name="Pin Code" class="form-control"
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userAddressFrm}">
+                              <input type="number"  formControlName="pin_code" name="Pin Code" class="form-control"
                                   placeholder="Enter Pin Code" required="">
                           </div>
                       </div>
@@ -138,31 +132,31 @@
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Address</label>
   
-                          <div class="col-lg-9">
-                              <textarea type="text" formControlName="address_" name="Address" class="form-control"
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userAddressFrm}">
+                              <textarea type="text"  formControlName="address" name="Address" class="form-control"
                                   placeholder="Enter Address"></textarea>
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <div class="col-sm-offset-5 col-lg-7">
-                              <button type="submit" class="btn btn-success"
-                                 (click)="submit(userAddressFrm.value)">Submit</button>
-                          </div>
-                      </div>
+                        <div class="col-sm-offset-5 col-lg-7">
+                            <button type="submit" class="btn btn-success"
+                            (click)="submit('member_address_edit.php','userAddressFrm', userAddressFrm)">Submit</button>
+                        </div>
+                     </div> 
                   </form>
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="Nominee">
+          <ngb-tab title="Nominee" id="tab-selectbyid3">
             <ng-template ngbTabContent>
               <div class="active tab-pane">
                   <form class="form-horizontal" [formGroup]="userNomineeFrm">
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Nominee Name
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                              <input type="text" formControlName="nomineeName_" name="Nominee Name" class="form-control"
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
+                              <input type="text"  formControlName="nominee_name" name="Nominee Name" class="form-control"
                                   placeholder="Enter Nominee Name" required="">
                           </div>
                       </div>
@@ -170,8 +164,8 @@
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Nominee Relation
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                              <input type="text" formControlName="nomineeRelation_" name="Nominee Relation" class="form-control"
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
+                              <input type="text"  formControlName="nominee_relation" name="Nominee Relation" class="form-control"
                                   placeholder="Enter Nominee Relation" required="">
                           </div>
                       </div>
@@ -179,8 +173,8 @@
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Nominee Mobile
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                              <input type="text" formControlName="nomineeMobile_" name="Nominee Mobile" class="form-control"
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
+                              <input type="text"  formControlName="nominee_mobile" name="Nominee Mobile" class="form-control"
                                   placeholder="Enter Nominee Mobile No" required="">
                           </div>
                       </div>
@@ -188,42 +182,42 @@
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Nominee Address
                               <span class="red">*</span></label>
-                          <div class="col-lg-9">
-                              <textarea type="text" formControlName="nomineeAddress_" name="Nominee Address" class="form-control"
+                          <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
+                              <textarea type="text"  formControlName="nominee_address" name="Nominee Address" class="form-control"
                                   placeholder="Enter Nominee Address" required=""></textarea>
                           </div>
                       </div>
   
                       <div class="row align-items-center form-group">
-                          <div class="col-sm-offset-5 col-lg-7">
-                              <button type="submit" class="btn btn-success"
-                                  >Submit</button>
-                          </div>
-                      </div>
+                        <div class="col-sm-offset-5 col-lg-7">
+                            <button type="submit" class="btn btn-success"
+                            (click)="submit('member_nominee_edit.php','userNomineeFrm', userNomineeFrm)">Submit</button>
+                        </div>
+                    </div>
                   </form>
               </div>
             </ng-template>
           </ngb-tab>
   
-          <ngb-tab title="Bank">
+          <ngb-tab title="Bank" id="tab-selectbyid4">
               <ng-template ngbTabContent>
                   <div class="tab-pane">
                       <form [formGroup]="userBankDetailsFrm" class="form-horizontal">
                           <div class="row align-items-center form-group">
                               <label for="pan_no" class="col-lg-4 control-label">Pan No
                                   <span class="red">*</span></label>
-                              <div class="col-lg-8">
-                                  <input type="text" name="pan_no" class="form-control" id="pan_no" placeholder="Enter PAN No"
-                                      formControlName="panNo_" required="">
+                              <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
+                                  <input type="text"  name="pan_no" class="form-control" id="pan_no" placeholder="Enter PAN No"
+                                      formControlName="pan_no" required="">
                               </div>
                           </div>
       
                           <div class="row align-items-center form-group">
-                              <label for="acc_name" class="col-lg-4 control-label">Account Name
+                              <label for="acct_name" class="col-lg-4 control-label">Account Name
                                   <span class="red">*</span></label>
-                              <div class="col-lg-8">
-                                  <input type="text" name="acc_name" class="form-control" id="acc_name"
-                                      placeholder="Enter Account Holder Name" formControlName="acctName_" required="">
+                              <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
+                                  <input type="text"   name="acct_name" class="form-control" id="acct_name"
+                                      placeholder="Enter Account Holder Name" formControlName="acc_name" required="">
                               </div>
                           </div>
       
@@ -231,9 +225,9 @@
                               <label for="account_no" class="col-lg-4 control-label">Account No
                                   <span class="red">*</span></label>
       
-                              <div class="col-lg-8">
-                                  <input type="text" name="account_no" class="form-control" id="account_no"
-                                      placeholder="Enter Account No" formControlName="acctNo_" required="">
+                              <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
+                                  <input type="text"  name="account_no" class="form-control" id="account_no"
+                                      placeholder="Enter Account No" formControlName="account_no" required="">
                               </div>
                           </div>
       
@@ -241,9 +235,9 @@
                               <label for="ifsc_code" class="col-lg-4 control-label">IFSC Code
                                   <span class="red">*</span></label>
       
-                              <div class="col-lg-8">
-                                  <input type="text" name="ifsc_code" class="form-control" id="bank_ifsc"
-                                      placeholder="Enter IFSC Code" (keyup)="ifscCode()" formControlName="ifscCode_" required="">
+                              <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
+                                  <input type="text"   name="ifsc_code" class="form-control" id="bank_ifsc"
+                                      placeholder="Enter IFSC Code" (keyup)="ifscCode()" formControlName="ifsc_code" required="">
                               </div>
                           </div>
       
@@ -251,9 +245,9 @@
                               <label for="bank_name" class="col-lg-4 control-label">Bank Name
                                   <span class="red">*</span></label>
       
-                              <div class="col-lg-8">
-                                  <input type="text" name="bank_name" [(ngModel)]="bankName" class="form-control" id="bank_name"
-                                      placeholder="Enter Bank Name" formControlName="bankName_" required="">
+                              <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
+                                  <input type="text" name="bank_name" class="form-control" id="bank_name"
+                                      placeholder="Enter Bank Name" formControlName="bank_name" required="">
                               </div>
                           </div>
       
@@ -261,14 +255,14 @@
                               <label for="branch_name" class="col-lg-4 control-label">Branch Name
                                   <span class="red">*</span></label>
       
-                              <div class="col-lg-8">
-                                  <input type="text" name="branch_name" [(ngModel)]="branchName" class="form-control" id="bank_branch"
-                                      placeholder="Enter Branch Name" formControlName="branchName_" required="">
+                              <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
+                                  <input type="text" name="branch_name"  class="form-control" id="bank_branch"
+                                      placeholder="Enter Branch Name" formControlName="branch_name" required="">
                               </div>
                           </div>
                           <div class="row align-items-center form-group">
                               <div class="col-sm-offset-5 col-lg-7">
-                                  <button type="submit" class="btn btn-success">Submit</button>
+                                  <button type="submit" *ngIf="memberData.is_member_updated == 0" class="btn btn-success" (click)= "submit('member_bank_edit.php','userBankDetailsFrm',userBankDetailsFrm)">Submit</button>
                               </div>
                           </div>
                       </form>
@@ -287,7 +281,7 @@
           </button>
         </div>
         
-        <div class="modal-body">
+        <div class="modal-body" id="id-card">
             <div class="i-wrapper d-flex justify-content-center">
             <div class="c-box">
                 <img src="assets/images/id-card.jpeg" alt="" class="b-img"/>
@@ -303,15 +297,17 @@
                         <span>AB+</span>
                     </div>
                 </div>
-
-
-
             </div>   
             <div class="c-box">
                 <img src="assets/images/welcome-letter.jpeg" alt=""  class="b-img" />  
             </div>          
         </div>
           </div>
+          <div style="text-align:center; margin-bottom:20px;">
+            <a class="btn btn-success" (click)="printDiv('id-card')">
+                <span class="fa fa-print"></span>&nbsp;Print
+            </a>
+        </div>   
       </ng-template>
 
       <ng-template #letter let-modal>
@@ -321,8 +317,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-            <div class="welcome-area">
+        <div class="modal-body" id="welcome-area">
+            <div class="welcome-area" >
                 <img src="assets/images/welcome-frame.jpeg" alt="" />
                 <div class="w-inner">
                    <h3>Welcome letter</h3> 
@@ -340,7 +336,12 @@
                        <h5>Thank you</h5>
 
                 </div>
-            </div>          
+            </div>    
+            <div style="text-align:center; margin-top:20px;">
+                <a class="btn btn-success" (click)="printDiv('welcome-area')">
+                    <span class="fa fa-print"></span>&nbsp;Print
+                </a>
+            </div>    
         </div>
       </ng-template>
   

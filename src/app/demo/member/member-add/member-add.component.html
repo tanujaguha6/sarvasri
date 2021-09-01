@@ -1,1 +1,219 @@
-<app-sample-page [userDetail]="userDetails"></app-sample-page>
+<div class="col-lg-12 profile-area">
+    <app-card [hidHeader]="true" cardClass="tab-card c-bg card-tab">
+      <h5 class="mb-3">User Details</h5>
+      <ngb-tabset #t="ngbTabset">
+        <ngb-tab title="Profile" id="tab-selectbyid1"> 
+          <ng-template ngbTabContent>
+            <div class="active tab-pane">
+                <form class="form-horizontal" [formGroup]="userProfileFrm">
+                    <div class="row align-items-center form-group">
+                        <div class = "col-md-6">
+                            <label for="inputName" class="control-label">Sponser Code
+                                <span class="red">*</span></label>
+                            <div [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
+                                <input type="text"  formControlName="sponser_code" name="sponser_code" class="form-control"
+                                    placeholder="Enter Sponser Code" required="" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputName" class="control-label">Member Name
+                                <span class="red">*</span></label>
+                            <div  [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
+                                <input type="text"  formControlName="member_name" name="member_name" class="form-control"
+                                    placeholder="Enter Member Name" required="" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center form-group">
+                        <div class = "col-md-4">
+                            <label for="position" class="control-label">Group
+                                <span class="red">*</span></label>
+                            <div style="display: flex;align-items: center;">
+                                <div style="margin-right: 10px;">
+                                    <input id="agroup" type="radio" value="L" name="position" formControlName="position">
+                                    <label for="agroup">A Group</label>
+                                </div>
+                                <div>
+                                    <input id="bgroup" type="radio" value="R" name="position" formControlName="position">
+                                    <label for="bgroup">B Group</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="distributor_type" class="control-label">Distribution Type
+                                <span class="red">*</span></label>
+                            <div style="display: flex;align-items: center;">
+                                <div style="margin-right: 10px;">
+                                    <input id="individual" type="radio" value="INDIVIDUAL" name="distributor_type"  formControlName="distributor_type">
+                                    <label for="individual">Individual</label>
+                                </div>
+                                <div>
+                                    <input id="company" type="radio" value="COMPANY" name="distributor_type" formControlName="distributor_type">
+                                    <label for="company">Company</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="gender" class="control-label">Gender
+                                <span class="red">*</span></label>
+                            <div style="display: flex;align-items: center;">
+                                <div style="margin-right: 10px;">
+                                    <input id="male" type="radio" value="M" name="gender"  formControlName="gender">
+                                    <label for="male">Male</label>
+                                </div>
+                                <div>
+                                    <input id="female" type="radio" value="F" name="gender"  formControlName="gender">
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                    <div class="row align-items-center form-group">
+                        <div class="col-md-4">
+                            <label for="inputName" class="control-label">Mobile
+                                <span class="red">*</span></label>
+                            <div [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
+                                <input type="text" pattern="[1-9]{1}[0-9]{9}" formControlName="mobile" name="mobile" class="form-control"
+                                    placeholder="Enter Mobile No" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputName" class="control-label">E-Mail</label>
+                            <div [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
+                                <input type="email" formControlName="email" name="email" class="form-control"
+                                    placeholder="Enter E-Mail ID">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputName" class="control-label">Password</label>
+                            <div  [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
+                                <input type="password" formControlName="password" name="password" class="form-control"
+                                    placeholder="Enter Password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center form-group">
+                        <div class="col-sm-offset-5 col-lg-7">
+                            <button class="btn btn-success"
+                            (click)="tabchange('tab-selectbyid2','userProfileFrm')">Next</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Address" id="tab-selectbyid2">
+          <ng-template ngbTabContent>
+            <div class="active tab-pane">
+                <form class="form-horizontal" [formGroup]="userAddressFrm">
+                    <div class="row align-items-center form-group">
+                        <div class="col-md-6">
+                            <label for="inputName" class="control-label">State
+                                <span class="red">*</span></label>
+                            <div [ngClass]="{'submit-trigger' : submitStatus.userAddressFrm}">
+                                <select class="form-control"  formControlName="state_id" (change)="selectState($event)">
+                                <option value="">Please choose State</option>
+                                <option [value]="state?.state_id" *ngFor="let state of states">{{state?.state_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="district_id" class="control-label">District
+                                <span class="red">*</span></label>
+                            <div  [ngClass]="{'submit-trigger' : submitStatus.userAddressFrm}">
+                                <select class="form-control"  formControlName="dist_id">
+                                <option value=""></option>
+                                <option [value]="dist?.dist_id" *ngFor="let dist of district">{{dist?.dist_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <div class="col-md-6">
+                            <label for="inputName" class="control-label">Pin Code
+                                <span class="red">*</span></label>
+                            <div  [ngClass]="{'submit-trigger' : submitStatus.userAddressFrm}">
+                                <input type="number" formControlName="pin_code" name="Pin Code" class="form-control"
+                                    placeholder="Enter Pin Code" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-3">
+                            <label for="inputName" class="control-label">Address</label>
+                            <div [ngClass]="{'submit-trigger' : submitStatus.userAddressFrm}">
+                                <textarea type="text"  formControlName="address" name="Address" class="form-control"
+                                    placeholder="Enter Address"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                      <div class="col-sm-offset-5 col-lg-7">
+                          <button type="submit" class="btn btn-success"
+                          (click)="tabchange('tab-selectbyid3','userAddressFrm')">Next</button>
+                      </div>
+                   </div> 
+                </form>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Nominee" id="tab-selectbyid3">
+          <ng-template ngbTabContent>
+            <div class="active tab-pane">
+                <form class="form-horizontal" [formGroup]="userNomineeFrm">
+                    <div class="row align-items-center form-group">
+                        <div class="col-md-6">
+                            <label for="inputName" class="control-label">Nominee Name
+                                <span class="red">*</span></label>
+                            <div  [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
+                                <input type="text"  formControlName="nominee_name" name="Nominee Name" class="form-control"
+                                    placeholder="Enter Nominee Name" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputName" class="control-label">Nominee Relation
+                                <span class="red">*</span></label>
+                            <div [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
+                                <input type="text"  formControlName="nominee_relation" name="Nominee Relation" class="form-control"
+                                    placeholder="Enter Nominee Relation" required="">
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="row align-items-center form-group">
+                        <div class="col-md-6">
+                            <label for="inputName" class="control-label">Nominee Mobile
+                                <span class="red">*</span></label>
+                            <div  [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
+                                <input type="text" pattern="[1-9]{1}[0-9]{9}" formControlName="nominee_mobile" name="Nominee Mobile" class="form-control"
+                                    placeholder="Enter Nominee Mobile No" required="">
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-3">
+                            <label for="inputName" class="control-label">Nominee Address
+                                <span class="red">*</span></label>
+                            <div  [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
+                                <textarea type="text"  formControlName="nominee_address" name="Nominee Address" class="form-control"
+                                    placeholder="Enter Nominee Address" required=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center form-group">
+                        <div class="col-sm-offset-5 col-lg-7">
+                            <button type="submit" class="btn btn-success" (click)= "submit()">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        
+      </ngb-tabset>
+    </app-card>
+  </div>

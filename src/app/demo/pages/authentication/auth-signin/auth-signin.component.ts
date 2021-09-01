@@ -65,7 +65,7 @@ export class AuthSigninComponent implements OnInit {
         let authToken = res['auth_token'];
       localStorage.setItem('userData', JSON.stringify(res));
       localStorage.setItem('token', authToken);
-      this.router.navigate(['dashboard/default'])
+      this.router.navigate(['dashboard'])
       }
   })
 }

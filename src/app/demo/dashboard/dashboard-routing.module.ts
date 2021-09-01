@@ -4,12 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    children: [
-      {
-        path: 'default',
-        loadChildren: () => import('./dash-default/dash-default.module').then(module => module.DashDefaultModule)
-      }
-    ]
+    loadChildren: () => import('./dash-default/dash-default.module').then(module => module.DashDefaultModule)
   }
 ];
 

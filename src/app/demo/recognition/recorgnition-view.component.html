@@ -3,7 +3,7 @@
         
         <div class="table-responsive">
           <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
-          <ngb-pagination [maxSize]="5" [pageSize]="perpage" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+          <ngb-pagination *ngIf="total>0" [maxSize]="5" [pageSize]="perpage" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           
         </div>
     </div>

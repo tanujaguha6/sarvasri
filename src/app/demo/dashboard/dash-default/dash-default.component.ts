@@ -76,7 +76,6 @@ export class DashDefaultComponent implements OnInit {
     ]
   };
   slickInit(e) {
-    console.log('slick initialized');
   }
 
   breakpoint(e) {
@@ -289,7 +288,7 @@ export class DashDefaultComponent implements OnInit {
     this.uimoadal.show();
   }
   redirect(href){
-    this.router.navigate([href])
+    window.location.href = href;
   }
   loadMemberWallet() {
     const user = {

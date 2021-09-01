@@ -6,11 +6,10 @@ import {SharedModule} from '../../theme/shared/shared.module';
 import { WalletRoutingModule } from './wallet-routing.module';
 import {TransactionComponent} from './transaction/transaction.component';
 import {BalanceComponent} from './balance/balance.component';
-import {CreditComponent} from './credit/credit.component';
 
 
 @NgModule({
-  declarations: [TransactionComponent, BalanceComponent, CreditComponent],
+  declarations: [TransactionComponent, BalanceComponent],
   imports: [
     CommonModule,
     SharedModule,

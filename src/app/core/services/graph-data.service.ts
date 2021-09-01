@@ -94,7 +94,6 @@ export class GraphDataService {
               opacity: 1
             },
           };
-        console.log("created",this.bar1CA)
         this.subject.next(this.bar1CA);
     }
 

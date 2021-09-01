@@ -1,0 +1,23 @@
+.submit-trigger input.ng-invalid { 
+    
+    border: 2px red solid !important;
+}
+.profile-card-2{
+    height: 545px;
+}
+.profile{
+    width: 150px;
+}
+@media print {
+    body * {
+      visibility:hidden;
+    }
+    #welcome-area, #welcome-area * {
+      visibility:visible;
+    }
+    #welcome-area {
+      position:absolute;
+      left:0;
+      top:0;
+    }
+  }

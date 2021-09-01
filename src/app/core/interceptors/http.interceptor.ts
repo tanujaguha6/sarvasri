@@ -31,7 +31,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         request = request.clone({ headers: request.headers.set('Accept', 'application/json') });
         this.loaderService.show();
         return next.handle(request).pipe(
-           // finalize(() => this.loaderService.hide()),
+            finalize(() => this.loaderService.hide()),
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
                     if(event.body.status === 0 && userdata){

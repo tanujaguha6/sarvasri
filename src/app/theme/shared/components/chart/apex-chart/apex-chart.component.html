@@ -1,54 +1,6 @@
-<div class="d-flex" style="justify-content: space-between;">
-    <!-- <div class="color-box">
-    <div class="apexcharts-legend-series" rel="1" data:collapsed="false" style="margin: 0px 5px;">
-        <span class="apexcharts-legend-marker" rel="1" data:collapsed="false" 
-        style="background: rgb(26, 188, 156); color: rgb(26, 188, 156);
-         height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px;
-          border-color: rgb(255, 255, 255); border-radius: 2px;">
-        </span>
-        <span class="apexcharts-legend-text" rel="1" i="0" data:default-text="Retail%20Income" data:collapsed="false" 
-        style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; 
-        font-family: Helvetica, Arial, sans-serif;">Retail Income
-        </span>
-    </div>
-    <div class="apexcharts-legend-series"  *ngIf="type === 'yearly'" rel="2" data:collapsed="false" style="margin: 0px 5px;">
-        <span class="apexcharts-legend-marker" rel="2" data:collapsed="false" 
-        style="background: rgb(14, 158, 74); color: rgb(14, 158, 74); height: 12px; 
-        width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); 
-        border-radius: 2px;">
-        </span>
-        <span class="apexcharts-legend-text" rel="2" i="1" data:default-text="Retail%20Binary" data:collapsed="false" 
-        style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; 
-        font-family: Helvetica, Arial, sans-serif;">Retail Binary
-        </span>
-    </div>
-    <div class="apexcharts-legend-series"  *ngIf="type === 'yearly'" rel="3" data:collapsed="false" style="margin: 0px 5px;">
-        <span class="apexcharts-legend-marker" rel="3" data:collapsed="false" 
-        style="background: rgb(255, 162, 29); color: rgb(255, 162, 29); height: 12px; 
-        width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); 
-        border-radius: 2px;">
-        </span>
-        <span class="apexcharts-legend-text" rel="3" i="2" data:default-text="First%20Purchase" data:collapsed="false" 
-        style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; 
-        font-family: Helvetica, Arial, sans-serif;">First Purchase
-        </span>
-    </div>
-    <div class="apexcharts-legend-series"  *ngIf="type === 'yearly'" rel="4" data:collapsed="false" style="margin: 0px 5px;">
-        <span class="apexcharts-legend-marker" rel="4" data:collapsed="false" 
-        style="background: rgb(255, 82, 82); color: rgb(255, 82, 82); height: 12px; width: 12px; 
-        left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 2px;">
-        </span>
-        <span class="apexcharts-legend-text" rel="4" i="3" data:default-text="Consistancy" data:collapsed="false" 
-        style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; 
-        font-family: Helvetica, Arial, sans-serif;">Consistancy
-        </span>
-    </div>
-    </div> -->
-    
-</div>
 <div id="selectBox" *ngIf="type === 'yearly' && dropdownData && dropdownData.length">
-    <select  id="yearselect" (change)="changeData('yearly')"[(ngModel)]="selectDate" >
-        <option [value]="dd.income_month_key" *ngFor="let dd of dropdownData">{{dd.income_month_value}}</option>
+    <select  (change)="changeData('yearly')" [(ngModel)]="selectDate" >
+        <option [ngValue]="dd.income_month_key" *ngFor="let dd of dropdownData">{{dd.income_month_value}}</option>
     </select>
 </div>
 <div id="selectBox" *ngIf="type === 'monthly'">

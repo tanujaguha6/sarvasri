@@ -68,13 +68,11 @@ export class DirectDownlineComponent implements OnInit,OnDestroy {
    
     this.auth.memberDirectDownline(this.params).subscribe((res:any) => {
       this.items = res.result;
-      console.log(this.items);
       
       if(this.items.length){
         this.keys = Object.keys(res.result[0]);
         this.columns =  Object.keys(res.result[0]);
       }
-      console.log(this.columns);
       
       // this.total = res.total_count;
       // this.perpage = res.per_page;
@@ -96,7 +94,6 @@ export class DirectDownlineComponent implements OnInit,OnDestroy {
     this.showModals =  false;
   }
   getSearchData(event){
-    console.log(event);
     
     this.params.start_date = event.date.split('/')[0];
     this.params.end_date = event.date.split('/')[1];

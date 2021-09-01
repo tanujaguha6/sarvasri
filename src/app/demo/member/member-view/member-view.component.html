@@ -13,7 +13,7 @@
                   [side]="side" [sidesItem]="sides"
                    ></app-search-modal>
         </div>
-        <ngb-pagination [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+        <ngb-pagination *ngIf="total>0" [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
 
       <!-- </app-card> -->
     </div>

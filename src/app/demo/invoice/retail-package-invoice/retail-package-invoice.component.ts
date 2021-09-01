@@ -26,6 +26,10 @@ export class RetailPackageInvoiceComponent implements OnInit {
   public perpage: number;
   public params: any;
   public keys: any;
+  public grand_total_income: number;
+  public page_total_income: number;
+  public grand_total_bv: number;
+  public page_total_bv: number;
   userData = JSON.parse(localStorage.getItem('userData'));
   constructor(private comission: ComissionService) { 
     this.defaultPage = 1;
@@ -69,6 +73,10 @@ export class RetailPackageInvoiceComponent implements OnInit {
       }
       this.total = data.total_count;
       this.perpage = data.per_page;
+      this.page_total_income = data.page_total_amount;
+      this.grand_total_income = data.grand_total_amount;
+      this.page_total_bv = data.page_total_bv;
+      this.grand_total_bv = data.grand_total_bv;
     });
   }
   getSearchData(event){

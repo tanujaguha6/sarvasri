@@ -3,7 +3,7 @@
       <!-- <app-card   cardTitle="Retail Wallet Transaction Statement" blockClass="table-border-style" > -->
         <div class="table-responsive">
           <app-listing  [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
-          <ngb-pagination [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+          <ngb-pagination *ngIf="total>0" [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
         </div>
       <!-- </app-card> -->
     </div>

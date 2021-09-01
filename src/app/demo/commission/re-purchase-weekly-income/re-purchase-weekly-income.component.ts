@@ -22,6 +22,8 @@ export class RePurchaseWeeklyIncomeComponent implements OnInit, OnDestroy {
   public status: boolean = true;
   public params: any;
   public perpage: number;
+  public grand_total_income: number;
+  public page_total_income: number;
   userData = JSON.parse(localStorage.getItem('userData'));
 
   constructor(private comission: ComissionService) { 
@@ -59,6 +61,8 @@ export class RePurchaseWeeklyIncomeComponent implements OnInit, OnDestroy {
       }
       this.total = data.total_count;
       this.perpage = data.per_page;
+      this.page_total_income = data.page_total_income;
+      this.grand_total_income = data.grand_total_income;
     });
   }
   onPageChange(e){
@@ -73,7 +77,6 @@ export class RePurchaseWeeklyIncomeComponent implements OnInit, OnDestroy {
     this.showModals =  false;
   }
   getSearchData(event){
-    console.log(event);
     this.params.start_date = event.date.split('/')[0];
     this.params.end_date = event.date.split('/')[1];
     this.params.income_type = event.income_type;

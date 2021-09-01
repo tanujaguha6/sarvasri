@@ -22,28 +22,26 @@ export class ApexChartComponent implements OnChanges {
   @Output() changedData:EventEmitter<string> =   new EventEmitter();
   @Output() changedDataMonthly:EventEmitter<string> =   new EventEmitter();
   public chart: any;
-  public selectDate:string = '1';
+  public selectDate:string = localStorage.getItem('selected_range');
+  public selectDate1:string ;
   public selectDateMonthly:string='30';
   constructor(private apexEvent: ApexChartService, private graph: GraphDataService) { }
-
+  ngOnInit(){
+    this.getDropdown();
+  }
   ngOnChanges() {
     //console.log('coming',this.dropdownchange,this.dropdownchangeMonthly);
+    this.selectDate = localStorage.getItem('selected_range');
     this.updateData();
-    this.getDropdown();
-    console.log(this.dropdownData)
   }
   getDropdown(){
     let userData = JSON.parse(localStorage.getItem('userData'));
     this.graph.graphDropdown(userData).subscribe(res => {
       this.dropdownData = res['result'];
+      localStorage.setItem('selected_range',this.dropdownData[0].income_month_key);
     })
   }
   updateData(){
-    // let chartId = $('#chartIDs').val();
-    // let chartconfig= $('#chartConfig').val();
-    // this.chartID = this.chartID?this.chartID:chartId;
-    // this.chartConfig = this.chartID?this.chartID:chartconfig;
-    
     setTimeout(() => {
       document.querySelector('#' + this.chartID).innerHTML = '';
       this.chart = new ApexCharts(document.querySelector('#' + this.chartID), this.chartConfig);
@@ -67,6 +65,7 @@ export class ApexChartComponent implements OnChanges {
     });
   }
   changeData(type){
+    localStorage.setItem('selected_range',this.selectDate);
     if(type === 'yearly'){
       this.changedData.emit(this.selectDate);
     }
@@ -74,5 +73,6 @@ export class ApexChartComponent implements OnChanges {
       this.changedDataMonthly.emit(this.selectDateMonthly);
     }
   }
+  
 
 }
