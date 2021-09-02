@@ -29,7 +29,6 @@ export class ListingComponent implements OnInit, OnChanges {
       this.isLoading = res;
     })
     this.loaderService.show();
-   
   }
   ngOnChanges(){
     
@@ -39,6 +38,9 @@ export class ListingComponent implements OnInit, OnChanges {
         this.colspan = this.columns.length - 2;
       }
       if(this.grand_total_bp && this.page_total_bp){
+        this.colspan = this.columns.length - 3;
+      }
+      if(this.grand_deduct_amount){
         this.colspan = this.columns.length - 3;
       }
     }

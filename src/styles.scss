@@ -279,6 +279,9 @@ left:0
     vertical-align: middle;
     padding: 0.75rem;
   }
+  thead th{
+    text-transform: none !important;
+  }
 }
 .modal-content {   /* background: #1e2a36;*/ background: #3e5871;}
 .modal-content h5.modal-title {color: #1abc9c;}

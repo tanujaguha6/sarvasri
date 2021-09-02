@@ -30,8 +30,14 @@ export class BinaryTreeComponent implements OnInit {
     this.loaderService.show();
   }
   fetchdata(id: string){
-    this.id = id;
-    this.auth.getData(this.id).subscribe((modal) => {
+    let userData = JSON.parse(localStorage.getItem('userData'));
+    const user = {
+      username: userData.username,
+      login_type: userData.login_type,
+      auth_token: userData.auth_token,
+      mem_code :   id
+    };
+    this.auth.getData(user).subscribe((modal) => {
       this.modalData = modal['result'][0];
     });
     this.uimoadal.show();

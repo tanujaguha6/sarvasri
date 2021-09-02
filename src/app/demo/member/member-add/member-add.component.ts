@@ -21,6 +21,8 @@ export class MemberAddComponent implements OnInit {
   stateId: any;
   district: any;
   user: any;
+  responseMessage: string;
+  responseStatus: number;
   submitStatus: {
     userProfileFrm: Boolean,
     userAddressFrm: Boolean,
@@ -32,7 +34,7 @@ export class MemberAddComponent implements OnInit {
       this.userProfileFrm = this.fb.group({
         member_name : [null, Validators.compose([Validators.required])],
         mobile : [null, Validators.compose([Validators.required])],
-        email: [null, Validators.compose([Validators.required])],
+        email: [null, Validators.compose([Validators.email])],
         gender: ['M', Validators.compose([Validators.required])],
         position: ['L', Validators.compose([Validators.required])],
         distributor_type: ['INDIVIDUAL', Validators.compose([Validators.required])],
@@ -44,14 +46,14 @@ export class MemberAddComponent implements OnInit {
         state_id : [null, Validators.compose([Validators.required])],
         dist_id : [null, Validators.compose([Validators.required])],
         pin_code : [null, Validators.compose([Validators.required])],
-        address : [null, Validators.compose([Validators.required])],
+        address : [null],
       });
   
       this.userNomineeFrm = this.fb.group({
-        nominee_name : [null, Validators.compose([Validators.required])],
-        nominee_relation : ['', Validators.compose([Validators.required])],
-        nominee_mobile : [null, Validators.compose([Validators.required])],
-        nominee_address : [null, Validators.compose([Validators.required])],
+        nominee_name : [null],
+        nominee_relation : [''],
+        nominee_mobile : [null],
+        nominee_address : [null],
       });
      }
 
@@ -100,14 +102,23 @@ export class MemberAddComponent implements OnInit {
 
   submit() {
     this.submitStatus.userNomineeFrm = true;
+    if(!this.userProfileFrm.valid){
+      this.responseMessage =  "Enter the Profile data";
+      this.responseStatus = 2;
+    }
+    if(!this.userAddressFrm.valid){
+      this.responseMessage =  "Enter the Address";
+      this.responseStatus = 2;
+    }
     if(this.userProfileFrm.valid && this.userAddressFrm.valid && this.userNomineeFrm.valid){
       const Obj = {...this.user, ...this.userProfileFrm.value , ...this.userAddressFrm.value, ...this.userNomineeFrm.value};
      
       this.profile.member_add('member_add.php',Obj).subscribe(res=>{
-        console.log(res);
+        this.responseMessage = res['message'];
+        this.responseStatus = res['status'];
+        window.scroll(0,0);
       })
     }
-
   }
 
 

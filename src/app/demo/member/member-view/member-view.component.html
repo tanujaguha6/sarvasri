@@ -3,7 +3,7 @@
       <!-- <app-card cardTitle="Member View" forModal="modal"  blockClass="table-border-style" (openModal)="showModal()"> -->
         <button style="padding: 3px 14px;float: right;margin-top: -42px;" type="button" class="btn btn-primary" (click)="showModal()">Search</button>
         
-        <div class="table-responsive">
+        <div class="table-responsive mb-3">
           <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 

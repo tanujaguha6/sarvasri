@@ -32,26 +32,23 @@
             <span *ngIf="item[key] !== 'Inactive' && item[key] !== 'Active' && item[key] !== 'Distributed' && item[key] !== 'Calculated'">{{item[key]}}</span>
           </td>
         </tr>
-        <tr *ngIf="grand_total_income">
+        <tr *ngIf="page_total_bv || page_total_bp || page_total_income || grand_deduct_amount">
           <td  [attr.colspan]="colspan" style="text-align: right;color: #fff;text-transform: uppercase;padding: 16px;"><strong>Total : </strong></td>
           <td *ngIf="page_total_bv" style="color: #fff;text-transform: uppercase;padding: 16px;">{{page_total_bv }} </td>
           <td *ngIf="page_total_bp" style="color: #fff;text-transform: uppercase;padding: 16px;">{{page_total_bp }} </td>
-          <td style="color: #fff;text-transform: uppercase;padding: 16px;">{{page_total_income }} </td>
+          <td *ngIf="page_total_income" style="color: #fff;text-transform: uppercase;padding: 16px;">{{page_total_income }} </td>
+          <td *ngIf="grand_deduct_amount && grand_total_income" style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_total_income }} </td>
+          <td *ngIf="grand_deduct_amount" style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_deduct_amount }} </td>
+          <td *ngIf="grand_net_amount" style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_net_amount }} </td>
+          
         </tr>
-        <tr *ngIf="grand_total_income">
+        <tr *ngIf="grand_total_bv ||grand_total_bp||(grand_total_income && !grand_deduct_amount) ">
           <td  [attr.colspan]="colspan" style="text-align: right;color: #fff;text-transform: uppercase;padding: 16px;"><strong>Grand Total : </strong></td>
           <td *ngIf="grand_total_bv" style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_total_bv }} </td>
           <td *ngIf="grand_total_bp" style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_total_bp }} </td>
-          <td style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_total_income }} </td>
+          <td *ngIf="!grand_deduct_amount" style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_total_income }} </td>
         </tr>
-        <tr *ngIf="grand_net_amount">
-          <td  [attr.colspan]="colspan" style="text-align: right;color: #fff;text-transform: uppercase;padding: 16px;"><strong>Grand Net Amount : </strong></td>
-          <td style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_net_amount }} </td>
-        </tr>
-        <tr *ngIf="grand_deduct_amount">
-          <td  [attr.colspan]="colspan" style="text-align: right;color: #fff;text-transform: uppercase;padding: 16px;"><strong>Grand Deduct Amount : </strong></td>
-          <td style="color: #fff;text-transform: uppercase;padding: 16px;">{{grand_deduct_amount }} </td>
-        </tr>
+       
         
       
       <tr *ngIf="!isLoading && !items || !isLoading && items.length == 0">

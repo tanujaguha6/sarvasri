@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BalanceComponent } from './balance/balance.component';
 import { TransactionComponent } from './transaction/transaction.component';
+import { TransactionCreditComponent } from './transactionCredit/transactionCredit.component';
+import { TransactionFirstComponent } from './transactionFirst/transactionFirst.component';
 
 const routes: Routes = [
   {
@@ -12,8 +14,16 @@ const routes: Routes = [
     component: BalanceComponent,
   },
   {
-    path: 'transaction/:type', 
+    path: 'transaction/retail', 
     component: TransactionComponent,
+  },
+  {
+    path: 'transaction/first', 
+    component: TransactionFirstComponent,
+  },
+  {
+    path: 'transaction/credit', 
+    component: TransactionCreditComponent,
   }
 ]}
 ];

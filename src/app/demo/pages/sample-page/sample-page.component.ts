@@ -22,6 +22,8 @@ export class SamplePageComponent implements OnInit {
   user: any;
   displayData: any;
   showModals: boolean;
+  responseMessage: string;
+  responseStatus: number;
   submitStatus: {
     userProfileFrm:Boolean ,
     userBankDetailsFrm:Boolean,
@@ -157,7 +159,9 @@ export class SamplePageComponent implements OnInit {
     this.submitStatus[type] = true;
     if(this[type].valid){
       this.profile.member_add(api,{...this.user,...payload.value}).subscribe(res=>{
-        console.log(res);
+        this.responseMessage = res['message'];
+        this.responseStatus = res['status'];
+        window.scroll(0,0);
       })
     }
 
