@@ -285,7 +285,7 @@ export class DashDefaultComponent implements OnInit {
       username: this.userData.username,
       login_type: this.userData.login_type,
       auth_token: this.userData.auth_token,
-      mem_code: id
+      mem_code: id 
     };
     this.graphService.getData(user).subscribe((modal) => {
       this.modalData = modal['result'][0];
