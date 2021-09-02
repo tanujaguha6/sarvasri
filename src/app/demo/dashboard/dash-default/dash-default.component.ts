@@ -281,8 +281,13 @@ export class DashDefaultComponent implements OnInit {
     });
   }
   fetchdata(id: string){
-    this.id = id;
-    this.graphService.getData(id).subscribe((modal) => {
+    const user = {
+      username: this.userData.username,
+      login_type: this.userData.login_type,
+      auth_token: this.userData.auth_token,
+      mem_code: id
+    };
+    this.graphService.getData(user).subscribe((modal) => {
       this.modalData = modal['result'][0];
     });
     this.uimoadal.show();
