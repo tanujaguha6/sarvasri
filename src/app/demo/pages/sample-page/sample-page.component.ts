@@ -24,6 +24,7 @@ export class SamplePageComponent implements OnInit {
   showModals: boolean;
   responseMessage: string;
   responseStatus: number;
+  showAlert: Boolean = true;
   submitStatus: {
     userProfileFrm:Boolean ,
     userBankDetailsFrm:Boolean,
@@ -59,7 +60,7 @@ export class SamplePageComponent implements OnInit {
       nominee_name : [null, Validators.compose([Validators.required])],
       nominee_relation : ['', Validators.compose([Validators.required])],
       nominee_mobile : [null, Validators.compose([Validators.required])],
-      nominee_address : [null, Validators.compose([Validators.required])],
+      nominee_address : [null],
     });
   }
 
@@ -78,6 +79,9 @@ export class SamplePageComponent implements OnInit {
     };
     this.displayData =  JSON.parse(localStorage.getItem('userData'));
     this.dashboardMemberData();
+  }
+  dismissAlert(){
+    this.showAlert = false;
   }
   tabchange(id,type){
     this.submitStatus[type] = true;
@@ -157,6 +161,7 @@ export class SamplePageComponent implements OnInit {
 
   submit(api, type, payload) {
     this.submitStatus[type] = true;
+    this.showAlert = true;
     if(this[type].valid){
       this.profile.member_add(api,{...this.user,...payload.value}).subscribe(res=>{
         this.responseMessage = res['message'];

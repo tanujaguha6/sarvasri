@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthServicesService } from 'src/app/core/services/auth-services.service';
+import {  
+  CookieService  
+} from 'ngx-cookie-service'; 
+
 @Component({
   selector: 'app-auth-signin',
   templateUrl: './auth-signin.component.html',
@@ -15,11 +19,18 @@ export class AuthSigninComponent implements OnInit {
   ipAddress: string;
   constructor(private router: Router,
     private auth: AuthServicesService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private cookieService: CookieService) {
+      
     this.loginForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
+      userName: [this.cookieService.get('username'), [Validators.required, Validators.minLength(3)]],
+      password: [this.cookieService.get('password'), [Validators.required, Validators.minLength(3)]],
+      rememberMe: [this.cookieService.get('rememberCurrentUser')]
     });
+      
+    if (this.auth.currentUserValue) { 
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   ngOnInit() {
@@ -27,6 +38,7 @@ export class AuthSigninComponent implements OnInit {
     //   this.ipAddress = res.ip;
     //   console.log(this.ipAddress)
     // })
+    
     if (localStorage.getItem("logout")) {
       this.loggedOut = true;
       localStorage.clear();
@@ -47,10 +59,11 @@ export class AuthSigninComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    const { userName, password } = this.loginForm.value;
+    const { userName, password, rememberMe } = this.loginForm.value;
     const user = {
       username: userName,
       password,
+      rememberMe,
       //logintime: '2021-04-15 00:01:00',
       ip_address: "12345",
       device_id: '485asas55asas',

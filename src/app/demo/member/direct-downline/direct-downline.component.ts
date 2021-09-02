@@ -49,12 +49,7 @@ export class DirectDownlineComponent implements OnInit,OnDestroy {
       upliner_side:'',
     };
     this.memberDownLine();
-    // this.comission.getFirstPurchaseIncomeItems(1).subscribe((data) => {
-    //   this.items = data;
-    // });
-    this.comission.getColums('directdownline').subscribe((data) => {
-      this.columns = data;
-    });
+   
     this.comission.getTotalItems('directdownline').subscribe((data) => {
       this.total  = data;
     });

@@ -1,6 +1,13 @@
-<app-alert type="success" *ngIf="responseMessage && responseStatus == 1" dismiss="true">{{responseMessage}}</app-alert>
-<app-alert type="danger" *ngIf="responseMessage && responseStatus == 2" dismiss="true">{{responseMessage}}</app-alert>
-
+<!-- <app-alert type="success" *ngIf="responseMessage && responseStatus == 1" >{{responseMessage}}</app-alert>
+<app-alert type="danger" *ngIf="responseMessage && responseStatus == 2" >{{responseMessage}}</app-alert> -->
+<div  class="alert alert-success"  *ngIf="this.showAlert && responseMessage && responseStatus === 1" >
+    {{responseMessage}}
+    <button  (click)="dismissAlert()" type="button" class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<div  class="alert alert-danger"  *ngIf="this.showAlert && responseMessage && responseStatus === 2" >
+    {{responseMessage}}
+    <button  (click)="dismissAlert()" type="button" class="close"  aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
 <div class="row">
     <div class="col-lg-4">
       <div  class="card c-bg profile-card-2">
@@ -174,10 +181,10 @@
   
                       <div class="row align-items-center form-group">
                           <label for="inputName" class="col-lg-3 control-label">Nominee Address
-                              <span class="red">*</span></label>
+                            </label>
                           <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
                               <textarea type="text"  formControlName="nominee_address" name="Nominee Address" class="form-control"
-                                  placeholder="Enter Nominee Address" required=""></textarea>
+                                  placeholder="Enter Nominee Address"></textarea>
                           </div>
                       </div>
   

@@ -2,15 +2,16 @@
     <div class="col-xl-12">
       <button style="padding: 3px 14px;float: right;margin-top: -42px;" type="button" class="btn btn-primary" (click)="showModal()">Search</button>
       <!-- <app-card cardTitle="First Purchase Matching Report" forModal="modal"  blockClass="table-border-style" (openModal)="showModal()"> -->
-        <div class="table-responsive">
+        <div class="table-responsive mb-3">
           <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
-          <ngb-pagination *ngIf="total>0" [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           <app-search-modal *ngIf="showModals" 
                   (closeModal)="hideModals($event)" 
                   (sendSearchData)="getSearchData($event)"
                   title="First Purchase Matching Report"
                   [date]="date"></app-search-modal>
         </div>
+        <ngb-pagination *ngIf="total>0" [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+
       <!-- </app-card> -->
     </div>
   </div>

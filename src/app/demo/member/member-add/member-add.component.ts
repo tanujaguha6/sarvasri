@@ -21,6 +21,7 @@ export class MemberAddComponent implements OnInit {
   stateId: any;
   district: any;
   user: any;
+  showAlert: Boolean = true;
   responseMessage: string;
   responseStatus: number;
   submitStatus: {
@@ -77,8 +78,13 @@ export class MemberAddComponent implements OnInit {
     );
     this.stateName();
   }
+
+  dismissAlert(){
+    this.showAlert = false;
+  }
   tabchange(id,type){
     this.submitStatus[type] = true;
+    this.showAlert = true;
     if(this[type].valid)
     this.tabs.select(id);
   }
@@ -102,6 +108,7 @@ export class MemberAddComponent implements OnInit {
 
   submit() {
     this.submitStatus.userNomineeFrm = true;
+    this.showAlert = true;
     if(!this.userProfileFrm.valid){
       this.responseMessage =  "Enter the Profile data";
       this.responseStatus = 2;

@@ -1,10 +1,11 @@
 <div class="row">
     <div class="col-xl-12">
         
-        <div class="table-responsive">
+        <div class="table-responsive mb-3">
           <app-listing [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
-          <ngb-pagination *ngIf="total>0" [maxSize]="5" [pageSize]="perpage" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
           
         </div>
+        <ngb-pagination *ngIf="total>0" [maxSize]="5" [pageSize]="perpage" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
+
     </div>
   </div>
