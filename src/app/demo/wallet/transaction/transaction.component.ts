@@ -36,14 +36,7 @@ export class TransactionComponent implements OnInit {
         status:'',
         page: 1
       }
-      if( this.type === "retail"){
-        this.api = 'wallet_transaction_retail.php';
-      }else if(this.type === "credit"){
-        this.api = 'wallet_transaction_credit.php';
-      }
-      else{
-        this.api = 'wallet_transaction_first.php';
-      }
+      this.api = 'wallet_transaction_retail.php';
       this.loadData();
     })
   }

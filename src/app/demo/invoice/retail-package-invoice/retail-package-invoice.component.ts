@@ -13,7 +13,7 @@ export class RetailPackageInvoiceComponent implements OnInit {
   public items:any;
   public columns: any;
   public total: number;
-  public title: string ="First Income Deduction";
+  public title: string ="Retail Package Invoice";
   public date: boolean = true;
   public member:boolean = true;
   public upliner: boolean = true;

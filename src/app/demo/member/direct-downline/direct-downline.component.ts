@@ -49,10 +49,6 @@ export class DirectDownlineComponent implements OnInit,OnDestroy {
       upliner_side:'',
     };
     this.memberDownLine();
-   
-    this.comission.getTotalItems('directdownline').subscribe((data) => {
-      this.total  = data;
-    });
     this.comission.getSides('directdownline').subscribe((data) => {
       this.sides  = data;
     });
@@ -68,8 +64,7 @@ export class DirectDownlineComponent implements OnInit,OnDestroy {
         this.keys = Object.keys(res.result[0]);
         this.columns =  Object.keys(res.result[0]);
       }
-      
-      // this.total = res.total_count;
+      this.total = res.total_count;
       // this.perpage = res.per_page;
     });
   }

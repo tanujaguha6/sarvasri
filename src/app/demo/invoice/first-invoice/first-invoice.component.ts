@@ -13,7 +13,7 @@ export class FirstInvoiceComponent implements OnInit, OnDestroy {
   public items:any;
   public columns: any;
   public total: number;
-  public title: string ="First Income Deduction";
+  public title: string ="First Invoice";
   public date: boolean = true;
   public member:boolean = true;
   public upliner: boolean = true;
@@ -50,7 +50,6 @@ export class FirstInvoiceComponent implements OnInit, OnDestroy {
       upliner_side : '',
       invoice_no :'',
       amount:'',
-      product_code:'',
       page: 1
     }
     this.loadData();
@@ -92,7 +91,6 @@ export class FirstInvoiceComponent implements OnInit, OnDestroy {
     this.params.upliner_side = event.upliner_side;
     this.params.invoice_no = event.invoice_no;
     this.params.amount = event.amount;
-    this.params.product_code = event.pdt_code;
     this.loadData();
   }
   onPageChange(e){

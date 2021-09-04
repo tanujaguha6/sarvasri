@@ -14,6 +14,9 @@
         
         <div class="card-body pt-5">
           <img src="{{displayData?.profile_image}}" alt="profile-image" class="profile">
+          <label for="profile_img" class="upload_profile_icon"><i class="fas fa-camera"></i></label>
+          <input id="profile_img" name='upload_profile' type="file" (change)="handleFileInput($event.target.files,'profile_img')" style="display:none;">
+
           <h5 class="card-title">{{displayData?.name}}</h5>
           <p>{{displayData?.username}}</p>
           <p class="border-bottom pb-2" *ngIf="displayData.dob">Date Of Birth : {{displayData?.dob}}</p>
@@ -268,7 +271,53 @@
                       </form>
                   </div>
               </ng-template>
-            </ngb-tab>
+          </ngb-tab>
+          <ngb-tab title="KYC" id="tab-selectbyid5">
+            <ng-template ngbTabContent>
+                <div class="tab-pane">
+                    <form [formGroup]="kycDetails" class="form-horizontal">
+                        <div class="row align-items-center form-group">
+                            <label for="pan_no" class="col-lg-4 control-label">Adhaar Card/Voter Card</label>
+                            <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.kycDetails}">
+                                    <label for="file-upload" class="custom-file-upload">
+                                        <i class="fa fa-cloud-upload"></i> Upload Image
+                                      </label>
+                                    <input id="file-upload" name='upload_cont_img' type="file" (change)="handleFileInput($event.target.files,'adhaar_voter','IDENTITY')" style="display:none;">
+                                    <button type="submit" [disabled]="!showButton.adhaar_voter" class="btn btn-success ml-2 kyc_btn" (click)= "submit('kyc_image_upload.php','kycDetails','adhaar_voter')">Submit</button>
+                                    <img *ngIf="kycDetails.get('adhaar_voter').value" src="{{kycDetails.get('adhaar_voter').value}}" alt="profile-image" class="kyc ml-5">
+                                    
+                            </div>
+                        </div>
+                        <div class="row align-items-center form-group">
+                            <label for="pan_no" class="col-lg-4 control-label">Bank Details/Cancelled Cheque</label>
+                            <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.kycDetails}">
+                                    <label for="file-upload2" class="custom-file-upload">
+                                        <i class="fa fa-cloud-upload"></i> Upload Image
+                                      </label>
+                                    <input id="file-upload2" name='upload_cont_img' type="file" (change)="handleFileInput($event.target.files,'bank_details','BANK')" style="display:none;">
+                                    <button type="submit" [disabled]="!showButton.bank_details" class="btn btn-success ml-2 kyc_btn" (click)= "submit('kyc_image_upload.php','kycDetails','bank_details')">Submit</button>
+                                    <img *ngIf="kycDetails.get('bank_details').value" src="{{kycDetails.get('bank_details').value}}" alt="profile-image" class="kyc ml-5">
+                                    
+                            </div>
+                        </div>
+                        <div class="row align-items-center form-group">
+                            <label for="pan_no" class="col-lg-4 control-label">Pan Card</label>
+                            <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.kycDetails}">
+                                    <label for="file-upload3" class="custom-file-upload">
+                                        <i class="fa fa-cloud-upload"></i> Upload Image
+                                      </label>
+                                    <input id="file-upload3" name='upload_cont_img' type="file" (change)="handleFileInput($event.target.files,'pan','PAN')" style="display:none;">
+                                    <button type="submit" [disabled]="!showButton.pan"  class="btn btn-success ml-2 kyc_btn" (click)= "submit('kyc_image_upload.php','kycDetails','pan')">Submit</button>
+                                    <img *ngIf="kycDetails.get('pan').value" src="{{kycDetails.get('pan').value}}" alt="profile-image" class="kyc ml-5">
+                                    
+                            </div>
+                        </div>
+                        
+                        
+                    </form>
+                </div>
+            </ng-template>
+        </ngb-tab>
         </ngb-tabset>
       </app-card>
     </div>

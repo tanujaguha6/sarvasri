@@ -14,6 +14,7 @@ export class SamplePageComponent implements OnInit {
   userBankDetailsFrm: FormGroup;
   userAddressFrm: FormGroup;
   userNomineeFrm: FormGroup;
+  kycDetails: FormGroup;
   memberData: any;
   states: any;
   stateId: any;
@@ -25,11 +26,20 @@ export class SamplePageComponent implements OnInit {
   responseMessage: string;
   responseStatus: number;
   showAlert: Boolean = true;
+  image: any;
+  formdata: any;
+  fileToUpload: File | null = null;
   submitStatus: {
     userProfileFrm:Boolean ,
     userBankDetailsFrm:Boolean,
     userAddressFrm: Boolean,
-    userNomineeFrm:Boolean 
+    userNomineeFrm:Boolean,
+    kycDetails: Boolean 
+  }
+  showButton: {
+    bank_details: Boolean,
+    pan: Boolean,
+    adhaar_voter: Boolean
   }
   @ViewChild('t') tabs;
   constructor(private fb: FormBuilder, private modalService: NgbModal,
@@ -62,6 +72,14 @@ export class SamplePageComponent implements OnInit {
       nominee_mobile : [null, Validators.compose([Validators.required])],
       nominee_address : [null],
     });
+
+    this.kycDetails = this.fb.group({
+      adhaar_voter : [null, Validators.compose([Validators.required])],
+      pan : ['', Validators.compose([Validators.required])],
+      bank_details : [null, Validators.compose([Validators.required])]
+    });
+
+    
   }
 
   ngOnInit() {
@@ -75,10 +93,77 @@ export class SamplePageComponent implements OnInit {
       userProfileFrm: false,
       userAddressFrm: false,
       userNomineeFrm: false,
-      userBankDetailsFrm: false
+      userBankDetailsFrm: false,
+      kycDetails: false
     };
+    this.showButton= {
+      bank_details: false,
+      pan: false,
+      adhaar_voter: false
+    }
     this.displayData =  JSON.parse(localStorage.getItem('userData'));
     this.dashboardMemberData();
+  }
+  handleFileInput(files: FileList, type, doc_type= null) {
+    this.fileToUpload = files.item(0);
+    this.showAlert = false;
+    this.responseStatus = 0;
+    this.responseMessage = "";
+    if(this.fileToUpload.type.indexOf('image') === -1){
+      this.showAlert = true;
+      this.responseStatus = 2;
+      this.responseMessage = "Image file should be uploaded";
+      window.scroll(0,0);
+      return false;
+    }
+    const formData = new FormData();
+    formData.append('username', this.user.username);
+    formData.append('login_type', this.user.login_type);
+    formData.append('auth_token', this.user.auth_token);
+    this.uploadFileToActivity(formData, type);
+    
+      const reader = new FileReader();
+      reader.onload = () => {
+        if(type === 'profile_img'){
+        formData.append(type, this.fileToUpload);
+        this.displayData.profile_image = reader.result as string;
+        }
+        else{
+        this.showButton[type] = true;
+        formData.append('kyc_img', this.fileToUpload);
+        formData.append('doc_type', doc_type);
+        this.kycDetails.get(type).setValue(reader.result as string);
+        }
+      }
+      reader.readAsDataURL(files[0])
+    
+      }
+  uploadFileToActivity(formData, type) {
+    
+    this.formdata = formData;
+    if(type === "profile_img"){
+    this.profile.postFile(this.formdata).subscribe(data => {
+      this.showAlert = true;
+      if(data['status'] === 1){
+        this.responseStatus = data['status'];
+        this.responseMessage = "Page will be auto refreshed to update the image!";
+        window.scroll(0,0);
+        this.dashboardMemberData();
+        setTimeout(function(){
+          location.reload();
+        },4000);
+      }
+      else{
+        this.responseStatus = data['status'];
+        this.responseMessage = data['message'];
+      }
+    }, error => {
+          console.log(error);
+      });
+    }
+    else{
+      console.log(this.formdata)
+    }
   }
   dismissAlert(){
     this.showAlert = false;
@@ -89,6 +174,8 @@ export class SamplePageComponent implements OnInit {
     this.tabs.select(id);
   }
   loadUserProfileFromData() {
+    this.displayData.profile_image =  this.memberData.profile_image
+    localStorage.setItem('userData',JSON.stringify(this.displayData));
     this.userProfileFrm.get('member_name').setValue(this.memberData.name);
     this.userProfileFrm.get('mobile').setValue(this.memberData.mobile);
     this.userProfileFrm.get('email').setValue(this.memberData.email_id);
@@ -118,6 +205,11 @@ export class SamplePageComponent implements OnInit {
     this.userBankDetailsFrm.get('ifsc_code').setValue(this.memberData.ifsc_code);
     this.ifscCode();
   }
+  loadKYC() {
+    this.kycDetails.get('adhaar_voter').setValue(this.memberData.identity_image);
+    this.kycDetails.get('pan').setValue(this.memberData.pan_image);
+    this.kycDetails.get('bank_details').setValue(this.memberData.bank_image);
+  }
 
   dashboardMemberData() {
     
@@ -127,6 +219,7 @@ export class SamplePageComponent implements OnInit {
       this.loadUserAddressData();
       this.loadUserNomineeData();
       this.loadUserBankData();
+      this.loadKYC();
       this.stateName();
 
     });
@@ -159,10 +252,28 @@ export class SamplePageComponent implements OnInit {
   }
 
 
-  submit(api, type, payload) {
+  submit(api, type, payload) { 
     this.submitStatus[type] = true;
     this.showAlert = true;
-    if(this[type].valid){
+    if(type === "kycDetails"){
+      this.showButton[payload] = false;
+      this.profile.postKyc(api,this.formdata).subscribe(data => {
+        this.showAlert = true;
+        if(data['status'] === 1){
+          
+          this.responseStatus = data['status'];
+          this.responseMessage = "Image file uploaded successfully!";
+          window.scroll(0,0);
+        }else{
+          this.responseStatus = data['status'];
+          this.responseMessage = data['message'];
+          window.scroll(0,0);
+        }
+        }, error => {
+          console.log(error);
+        });
+    }
+    else if(this[type].valid){
       this.profile.member_add(api,{...this.user,...payload.value}).subscribe(res=>{
         this.responseMessage = res['message'];
         this.responseStatus = res['status'];

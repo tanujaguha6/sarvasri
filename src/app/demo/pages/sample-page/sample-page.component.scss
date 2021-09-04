@@ -5,8 +5,27 @@
 .profile-card-2{
     height: 545px;
 }
+.kyc{
+  width: 100px;
+  height: 100px;
+}
+.kyc_btn{
+  padding: 4px;
+}
 .profile{
     width: 150px;
+    height: 150px;
+}
+.upload_profile_icon{
+    color: white;
+    /* background: black; */
+    /* opacity: 0.1; */
+    width: 54px;
+    display: block;
+    position: relative;
+    top: -73px;
+    left: 40%;
+    border-radius: 40%;
 }
 @media print {
     body * {
