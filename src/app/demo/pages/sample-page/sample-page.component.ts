@@ -46,8 +46,8 @@ export class SamplePageComponent implements OnInit {
     private auth: AuthServicesService, private profile: ProfileService) {
     this.userProfileFrm = this.fb.group({
       member_name : [null, Validators.compose([Validators.required])],
-      mobile : ['', Validators.compose([Validators.required])],
-      email: [null, Validators.compose([Validators.required])],
+      mobile : ['', Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10)])],
+      email: [null, Validators.compose([Validators.required,Validators.email])],
       gender: ['M', Validators.compose([Validators.required])],
     });
 
@@ -69,7 +69,7 @@ export class SamplePageComponent implements OnInit {
     this.userNomineeFrm = this.fb.group({
       nominee_name : [null, Validators.compose([Validators.required])],
       nominee_relation : ['', Validators.compose([Validators.required])],
-      nominee_mobile : [null, Validators.compose([Validators.required])],
+      nominee_mobile : [null, Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10)])],
       nominee_address : [null],
     });
 

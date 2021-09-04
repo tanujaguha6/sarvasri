@@ -75,7 +75,7 @@
                               <span class="red">*</span></label>
                           <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userProfileFrm}">
                               <input type="text"  formControlName="mobile" name="mobile" class="form-control"
-                                  placeholder="Enter Mobile No" required="">
+                                  placeholder="Enter Mobile No" pattern="[1-9]{1}[0-9]{9}" required="">
                           </div>
                       </div>
   
@@ -178,7 +178,7 @@
                               <span class="red">*</span></label>
                           <div class="col-lg-9" [ngClass]="{'submit-trigger' : submitStatus.userNomineeFrm}">
                               <input type="text"  formControlName="nominee_mobile" name="Nominee Mobile" class="form-control"
-                                  placeholder="Enter Nominee Mobile No" required="">
+                                  placeholder="Enter Nominee Mobile No" required="" pattern="[1-9]{1}[0-9]{9}">
                           </div>
                       </div>
   
