@@ -48,7 +48,8 @@ export class PayoutReportComponent implements OnInit {
     })
   }
   getSearchData(event){
-    this.params.income_date = event.date_custom
+    this.params.income_date = event.date_custom;
+    this.total = 0;
     this.loadData();
   }
   onPageChange(e){

@@ -94,6 +94,7 @@ export class DirectDownlineComponent implements OnInit,OnDestroy {
     this.params.mem_code = event.mem_code;
     this.params.upliner_code = event.upliner_code;
     this.params.upliner_side = event.upliner_side;
+    this.total=0;
     this.memberDownLine();
   }
   ngOnDestroy(){
