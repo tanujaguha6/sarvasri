@@ -1,10 +1,11 @@
 <div class="row">
     <div class="col-xl-12">
-      <!-- <app-card   cardTitle="Retail Wallet Transaction Statement" blockClass="table-border-style" > -->
-        <div class="table-responsive">
+      <!-- <app-card   cardTitle="First Wallet Transaction Statement" blockClass="table-border-style" > -->
+        <div class="table-responsive mb-2">
           <app-listing  [items] = "items" [keys]="keys" [columns]="columns"></app-listing>
-          <ngb-pagination *ngIf="total>0" [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
         </div>
+		
+		<ngb-pagination *ngIf="total>0" [pageSize]="perpage" [maxSize]="5" [boundaryLinks]="true" [collectionSize]="total" [(page)]="defaultPage" (pageChange)="onPageChange($event)" aria-label="Default pagination"></ngb-pagination>
       <!-- </app-card> -->
     </div>
   </div>

@@ -13,8 +13,7 @@
       <div  class="card c-bg profile-card-2">
         
         <div class="card-body pt-5">
-          <img src="{{displayData?.profile_image}}" alt="profile-image" class="profile">
-          <label for="profile_img" class="upload_profile_icon"><i class="fas fa-camera"></i></label>
+          <label for="profile_img"><img src="{{displayData?.profile_image}}" alt="profile-image" class="profile"></label>
           <input id="profile_img" name='upload_profile' type="file" (change)="handleFileInput($event.target.files,'profile_img')" style="display:none;">
 
           <h5 class="card-title">{{displayData?.name}}</h5>
@@ -91,7 +90,7 @@
                       <div class="row align-items-center form-group">
                           <div class="col-sm-offset-5 col-lg-7">
                               <button class="btn btn-success"
-                              (click)="submit('member_profile_edit.php','userProfileFrm', userProfileFrm)">Submit</button>
+                              (click)="submit('member_profile_edit.php','userProfileFrm', userProfileFrm)">Save</button>
                           </div>
                       </div>
                   </form>
@@ -144,7 +143,7 @@
                       <div class="row align-items-center form-group">
                         <div class="col-sm-offset-5 col-lg-7">
                             <button type="submit" class="btn btn-success"
-                            (click)="submit('member_address_edit.php','userAddressFrm', userAddressFrm)">Submit</button>
+                            (click)="submit('member_address_edit.php','userAddressFrm', userAddressFrm)">Save</button>
                         </div>
                      </div> 
                   </form>
@@ -194,7 +193,7 @@
                       <div class="row align-items-center form-group">
                         <div class="col-sm-offset-5 col-lg-7">
                             <button type="submit" class="btn btn-success"
-                            (click)="submit('member_nominee_edit.php','userNomineeFrm', userNomineeFrm)">Submit</button>
+                            (click)="submit('member_nominee_edit.php','userNomineeFrm', userNomineeFrm)">Save</button>
                         </div>
                     </div>
                   </form>
@@ -211,7 +210,7 @@
                                   <span class="red">*</span></label>
                               <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
                                   <input type="text"  name="pan_no" class="form-control" id="pan_no" placeholder="Enter PAN No"
-                                      formControlName="pan_no" required="">
+                                      formControlName="pan_no" >
                               </div>
                           </div>
       
@@ -220,7 +219,7 @@
                                   <span class="red">*</span></label>
                               <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
                                   <input type="text"   name="acct_name" class="form-control" id="acct_name"
-                                      placeholder="Enter Account Holder Name" formControlName="acc_name" required="">
+                                      placeholder="Enter Account Holder Name" formControlName="acc_name" >
                               </div>
                           </div>
       
@@ -230,7 +229,7 @@
       
                               <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
                                   <input type="text"  name="account_no" class="form-control" id="account_no"
-                                      placeholder="Enter Account No" formControlName="account_no" required="">
+                                      placeholder="Enter Account No" formControlName="account_no" >
                               </div>
                           </div>
       
@@ -240,7 +239,7 @@
       
                               <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
                                   <input type="text"   name="ifsc_code" class="form-control" id="bank_ifsc"
-                                      placeholder="Enter IFSC Code" (keyup)="ifscCode()" formControlName="ifsc_code" required="">
+                                      placeholder="Enter IFSC Code" (keyup)="ifscCode()" formControlName="ifsc_code" >
                               </div>
                           </div>
       
@@ -250,7 +249,7 @@
       
                               <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
                                   <input type="text" name="bank_name" class="form-control" id="bank_name"
-                                      placeholder="Enter Bank Name" formControlName="bank_name" required="">
+                                      placeholder="Enter Bank Name" formControlName="bank_name" >
                               </div>
                           </div>
       
@@ -260,12 +259,12 @@
       
                               <div class="col-lg-8" [ngClass]="{'submit-trigger' : submitStatus.userBankDetailsFrm}">
                                   <input type="text" name="branch_name"  class="form-control" id="bank_branch"
-                                      placeholder="Enter Branch Name" formControlName="branch_name" required="">
+                                      placeholder="Enter Branch Name" formControlName="branch_name" >
                               </div>
                           </div>
                           <div class="row align-items-center form-group">
                               <div class="col-sm-offset-5 col-lg-7">
-                                  <button type="submit" *ngIf="memberData.is_member_updated == 0" class="btn btn-success" (click)= "submit('member_bank_edit.php','userBankDetailsFrm',userBankDetailsFrm)">Submit</button>
+                                  <button type="submit" *ngIf="memberData.is_member_updated == 0" class="btn btn-success" (click)= "submit('member_bank_edit.php','userBankDetailsFrm',userBankDetailsFrm)">Save</button>
                               </div>
                           </div>
                       </form>

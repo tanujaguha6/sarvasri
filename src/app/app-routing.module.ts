@@ -42,23 +42,27 @@ const routes: Routes = [
       {
         path: 'basic',
         loadChildren: () => import('./demo/ui-elements/ui-basic/ui-basic.module').then(module => module.UiBasicModule),
-
+		canActivate: [AuthguardService]
       },
       {
         path: 'forms',
-        loadChildren: () => import('./demo/pages/form-elements/form-elements.module').then(module => module.FormElementsModule)
+        loadChildren: () => import('./demo/pages/form-elements/form-elements.module').then(module => module.FormElementsModule),
+		canActivate: [AuthguardService]
       },
       {
         path: 'tbl-bootstrap',
-        loadChildren: () => import('./demo/pages/tables/tbl-bootstrap/tbl-bootstrap.module').then(module => module.TblBootstrapModule)
+        loadChildren: () => import('./demo/pages/tables/tbl-bootstrap/tbl-bootstrap.module').then(module => module.TblBootstrapModule),
+		canActivate: [AuthguardService]
       },
       {
         path: 'charts',
-        loadChildren: () => import('./demo/pages/core-chart/core-chart.module').then(module => module.CoreChartModule)
+        loadChildren: () => import('./demo/pages/core-chart/core-chart.module').then(module => module.CoreChartModule),
+		canActivate: [AuthguardService]
       },
       {
         path: 'maps',
-        loadChildren: () => import('./demo/pages/core-maps/core-maps.module').then(module => module.CoreMapsModule)
+        loadChildren: () => import('./demo/pages/core-maps/core-maps.module').then(module => module.CoreMapsModule),
+		canActivate: [AuthguardService]
       },
       {
         path: 'profile-page',

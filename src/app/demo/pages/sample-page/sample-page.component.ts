@@ -63,7 +63,7 @@ export class SamplePageComponent implements OnInit {
       state_id : [null, Validators.compose([Validators.required])],
       dist_id : ['', Validators.compose([Validators.required])],
       pin_code : [null, Validators.compose([Validators.required])],
-      address : [null, Validators.compose([Validators.required])],
+      address : [null],
     });
 
     this.userNomineeFrm = this.fb.group({
@@ -120,19 +120,20 @@ export class SamplePageComponent implements OnInit {
     formData.append('username', this.user.username);
     formData.append('login_type', this.user.login_type);
     formData.append('auth_token', this.user.auth_token);
-    this.uploadFileToActivity(formData, type);
     
       const reader = new FileReader();
       reader.onload = () => {
         if(type === 'profile_img'){
         formData.append(type, this.fileToUpload);
         this.displayData.profile_image = reader.result as string;
+		this.uploadFileToActivity(formData, type);
         }
         else{
         this.showButton[type] = true;
         formData.append('kyc_img', this.fileToUpload);
         formData.append('doc_type', doc_type);
         this.kycDetails.get(type).setValue(reader.result as string);
+		this.uploadFileToActivity(formData, type);
         }
       }
       reader.readAsDataURL(files[0])
@@ -146,7 +147,7 @@ export class SamplePageComponent implements OnInit {
       this.showAlert = true;
       if(data['status'] === 1){
         this.responseStatus = data['status'];
-        this.responseMessage = "Page will be auto refreshed to update the image!";
+        this.responseMessage = data['message'];
         window.scroll(0,0);
         this.dashboardMemberData();
         setTimeout(function(){
@@ -262,7 +263,7 @@ export class SamplePageComponent implements OnInit {
         if(data['status'] === 1){
           
           this.responseStatus = data['status'];
-          this.responseMessage = "Image file uploaded successfully!";
+          this.responseMessage = data['message'];
           window.scroll(0,0);
         }else{
           this.responseStatus = data['status'];

@@ -50,8 +50,8 @@
 						</tr>
 						<tr>
 							<td>{{items.self_bv}}</td>
-							<td>88,210</td>
-							<td>{{items.left_bv}}</td>
+							<td>{{items.current_team_bonus_matching_bv}}</td>
+							<td>{{items.current_leadership_matching_bv}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -88,13 +88,7 @@
 							<td *ngIf="items.bp_income>0">Y</td>
 							<td *ngIf="items.bp_income == 0">N</td>
 							<td>Rs.{{items.bp_income}}/-</td>
-						</tr>  
-						<tr>
-							<td>Extra Performance Bonus</td>
-							<td *ngIf="items.extra_bonus>0">Y</td>
-							<td *ngIf="items.extra_bonus == 0">N</td>
-							<td>Rs.{{items.extra_bonus}}/-</td>
-						</tr>      
+						</tr>     
 					</tbody>
 				</table>
 			</div>

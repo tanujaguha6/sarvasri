@@ -16,7 +16,7 @@ export class ProfileService {
     let headers = new HttpHeaders(); 
       headers.delete("Content-Type");
       return this.http
-      .post('https://myshpl.com/api/member/profile_image_upload1.php', userdata, 
+      .post('https://myshpl.com/api/member/profile_image_upload.php', userdata, 
       {
         headers: headers
       }
