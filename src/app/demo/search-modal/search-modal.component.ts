@@ -14,6 +14,7 @@ import {
   NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 
   const now = new Date();
+  
   const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
     one && two && two.year === one.year && two.month === one.month && two.day === one.day;
   
@@ -57,6 +58,7 @@ export class SearchModalComponent implements OnInit  {
     fromDate: any;
     toDate: any;
     model: any;
+    range_date: any;
     private _subscription: Subscription;
     private _selectSubscription: Subscription;
     @ViewChild("d") input: NgbInputDatepicker;
@@ -68,7 +70,7 @@ export class SearchModalComponent implements OnInit  {
     isInside = date => after(date, this.fromDate) && before(date, this.toDate);
     isFrom = date => equals(date, this.fromDate);
     isTo = date => equals(date, this.toDate);
-
+    
   constructor(private cdref: ChangeDetectorRef,
               element: ElementRef, 
               private renderer: Renderer2, 
@@ -89,20 +91,29 @@ export class SearchModalComponent implements OnInit  {
                   pdt_code: [srchForm?srchForm.pdt_code:''],
                   date_custom: [srchForm?srchForm.date_custom:'']
                 });
+                console.log(this.isFrom);
     
   }
 
   ngOnInit(){
     this.startDate = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
-        this.maxDate = { year: now.getFullYear() + 1, month: now.getMonth() + 1, day: now.getDate()};
-        this.minDate = {year: now.getFullYear() - 1, month: now.getMonth() + 1, day: now.getDate()};
+    this.maxDate = { year: now.getFullYear() + 1, month: now.getMonth() + 1, day: now.getDate()};
+    this.minDate = {year: now.getFullYear() - 1, month: now.getMonth() + 1, day: now.getDate()};
+    
+    const searchFilter = JSON.parse(localStorage.getItem('searchFilter'));
+    if(searchFilter){
+      this.range_date = searchFilter.date;
+    }
+    else
+    this.range_date = '';
+    
   }
 
   ngAfterViewInit(){
       this.uimoadal.show();
       this.cdref.detectChanges();
   }
-  onDateSelection(date: NgbDateStruct) {
+  onDateSelection(date: NgbDateStruct, d) {
     let parsed = '';
     if (!this.fromDate && !this.toDate) {
         this.fromDate = date;
@@ -115,21 +126,24 @@ export class SearchModalComponent implements OnInit  {
         this.fromDate = date;
     }
     if(this.fromDate) {
-      parsed += this._parserFormatter.format(this.fromDate);
+      const fromDate = this.fromDate.year+'/'+ this.fromDate.month +'/'+this.fromDate.day;
+      parsed += fromDate;
     }
     if(this.toDate) {
-      parsed += ' / ' + this._parserFormatter.format(this.toDate);
+      const toDate = this.toDate.year+'/'+this.toDate.month+'/'+ this.toDate.day;
+      parsed += ' - ' + toDate;
     }
-   
-    this.renderer.setProperty(this.myRangeInput.nativeElement, 'value', parsed);
+    this.range_date= parsed; //This can help you, 
+    console.log(this.range_date, this.fromDate)
+    //this.renderer.setProperty(this.myRangeInput.nativeElement, 'value', parsed);
 }
 closeModals(){
     this.uimoadal.hide();
     this.closeModal.emit('false');
   }
   search(){
-    if(this.myRangeInput){
-    this.searchForm.controls['date'].setValue(this.myRangeInput.nativeElement.value);
+    if(this.range_date){
+    this.searchForm.controls['date'].setValue(this.range_date);
     }
     localStorage.setItem('searchFilter',JSON.stringify(this.searchForm.value))
     this.sendSearchData.emit(this.searchForm.value);

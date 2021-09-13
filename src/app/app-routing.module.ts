@@ -17,6 +17,10 @@ const routes: Routes = [
       {
         path: 'auth',
         loadChildren: () => import('./demo/pages/authentication/authentication.module').then(module => module.AuthenticationModule)
+      },
+      {
+        path: 'signin',
+        loadChildren: () => import('./demo/pages/authentication/authentication.module').then(module => module.AuthenticationModule)
       }
     ]
   },

@@ -69,6 +69,7 @@ export class FirstIncomeDeductionComponent implements OnInit,OnDestroy {
   getSearchData(event){
     this.params.start_date = event.date.split('/')[0];
     this.params.end_date = event.date.split('/')[1];
+    this.total = 0;
     this.loadData();
   }
   ngOnDestroy(){

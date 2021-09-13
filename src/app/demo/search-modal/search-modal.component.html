@@ -32,26 +32,25 @@
                     <label for="date_range" class="col-lg-4 control-label">Date</label>
                     <div class="col-lg-8">
                         <div class="input-group">
+                            <input class="form-control btn-outline-secondary" [value]="range_date" placeholder="mm/dd/yyyy - mm/dd/yyyy" />
                             <input
-                               #myRangeInput
-                              class="form-control btn-outline-secondary" 
-                              placeholder="mm/dd/yyyy - mm/dd/yyyy"
-                              name="dp" 
-                              [(ngModel)]="model"
-                              formControlName="date" 
-                              ngbDatepicker 
-                              [dayTemplate]="t"
-                              [autoClose]="false"
-                              [displayMonths]="2"
-                              [maxDate]="maxDate"
-                              [minDate]="minDate"
-                              #d="ngbDatepicker">
-                      
+                            class="form-control d-none"
+                            placeholder="mm/dd/yyyy"
+                            name="dp"
+                            [(ngModel)]="model"
+                            ngbDatepicker
+                            [dayTemplate]="t"
+                            [autoClose]="false"
+                            [displayMonths]="2"
+                            [maxDate]="maxDate"
+                            [minDate]="minDate"
+                            formControlName="date" 
+                            #d="ngbDatepicker">
                               <ng-template #t let-date="date" let-focused="focused">
                                   <span class="custom-day"
                                       [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
                                       [class.faded]="isHovered(date) || isInside(date)"
-                                      (click)="onDateSelection(date)"
+                                      (click)="onDateSelection(date, d)"
                                       (mouseenter)="hoveredDate = date"
                                       (mouseleave)="hoveredDate = null"
                                       >

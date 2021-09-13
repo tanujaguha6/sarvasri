@@ -15,7 +15,7 @@
       <span class="sr-only">Loading...</span>
     </div>
     </div>
-    <table class="table table-dark" style="background-color: #3e5871;">
+    <table *ngIf="!isLoading" class="table table-dark" style="background-color: #3e5871;">
       <thead>
       <tr>
         <th *ngFor="let column of columns ">{{column }}</th>

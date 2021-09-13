@@ -80,6 +80,7 @@ export class FirstPurchaseIncomeComponent implements OnInit, OnDestroy {
     this.params.end_date = event.date.split('/')[1];
     this.params.income_type = event.income_type;
     this.params.status = event.status;
+    this.total = 0;
     this.loadData();
   }
   ngOnDestroy(){

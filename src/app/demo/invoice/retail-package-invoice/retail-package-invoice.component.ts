@@ -88,6 +88,7 @@ export class RetailPackageInvoiceComponent implements OnInit {
     this.params.upliner_side = event.upliner_side;
     this.params.invoice_no = event.invoice_no;
     this.params.amount = event.amount;
+    this.total = 0;
     this.loadData();
   }
   onPageChange(e){
